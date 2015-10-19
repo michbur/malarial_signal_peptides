@@ -7,4 +7,4 @@
 library(hmeasure)
 real_labels <- c(rep(1, 102), rep(0, 358))
 
-HMeasure(real_labels, read.csv2("benchmark_plas_other.csv"))[["metrics"]]
+HMeasure(real_labels, read.csv2("./plasmodium_benchmark/benchmark_plas_other.csv"))[["metrics"]]

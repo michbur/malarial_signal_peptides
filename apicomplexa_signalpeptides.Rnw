@@ -1,0 +1,358 @@
+\documentclass[10pt]{beamer}
+\usetheme{Warsaw}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[notocbib]{apacite}
+\usepackage{booktabs}
+\usepackage{colortbl, xcolor}
+\usepackage{epstopdf}
+
+% rysunki
+\usepackage{tikz}
+\usepackage{ifthen}
+\usepackage{xxcolor}
+\usetikzlibrary{arrows}
+\usetikzlibrary[topaths]
+\usetikzlibrary{decorations.pathreplacing}
+
+
+\setbeamertemplate{caption}{\centering\insertcaption\par}
+\setlength{\belowcaptionskip}{15pt}
+\renewcommand{\thetable}{}
+
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\begin{document}
+
+
+<<knitrIntro, echo = FALSE, message=FALSE>>=
+library(xtable)
+library(biogram)
+library(ggplot2)
+library(reshape2)
+library(dplyr)
+library(printr)
+
+size_mod = -5
+cool_theme <- theme(plot.background=element_rect(fill = "transparent",
+                                                 colour = "transparent"),
+                    panel.grid.major = element_line(colour="lightgrey", linetype = "dashed"),
+                    panel.background = element_rect(fill = "white",colour = "black"),
+                    legend.background = element_rect(fill="NA"),
+                    legend.position = "right",
+                    axis.text = element_text(size=12 + size_mod),
+                    axis.title.x = element_text(size=16 + size_mod, vjust = -1), 
+                    axis.title.y = element_text(size=16 + size_mod, vjust = 1),
+                    strip.text = element_text(size=17 + size_mod, face = "bold"),
+                    strip.background = element_rect(fill="grey", colour = "black"),
+                    legend.text = element_text(size=13 + size_mod), 
+                    legend.title = element_text(size=17 + size_mod),
+                    plot.title = element_text(size=20 + size_mod))
+
+tfres <- function(x, cn = c("1-ngram", "2-gram", "3-gram"),
+                  rn = round(seq(from = 0.25, to = 0.91, length.out = 6), 2)) {
+  colnames(x) <- cn
+  rownames(x) <- rn
+  x <- melt(x)
+  #significant proportion, ngram, value
+  colnames(x) <- c("sig", "ngram", "value")
+  x[["sig"]] <- as.factor(x[["sig"]])
+  x
+}
+
+load("apicomplexa_signalpeptides.RData")
+@
+
+
+\date{}
+\author{Micha\l{} Burdukiewicz}
+
+\title{Signal peptides of Plasmodiidae}
+
+
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{Outline}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\section{Apicomplexa signal peptides}
+
+\begin{frame}
+
+\begin{table}[ht]
+\small
+\centering
+\caption{Comparison of Area Under the Curve, Sensitivity and Specificity for different classifiers.} 
+\begin{tabular}{lrrrr}
+\toprule
+Software name & AUC & Sensitivity & Specificity \\ 
+\midrule
+signalP 4.1 (no tm) \shortcite{2011petersensignalp} & 0.9416 & \textbf{0.9720} & 0.9112 \\ 
+\rowcolor[gray]{0.85}signalP 4.1 (tm) \shortcite{2011petersensignalp} & \textbf{0.9673} & 0.9579 & \textbf{0.9766} \\ 
+PrediSi \shortcite{2004hillerpredisi} & 0.8949 & 0.9065 & 0.8832 \\ 
+\rowcolor[gray]{0.85}Phobius \shortcite{2004klla} & 0.9509 & 0.9673 & 0.9346 \\ 
+Philius \shortcite{2008reynoldstransmembrane} & 0.9369 & 0.9533 & 0.9206 \\ 
+\rowcolor[gray]{0.85}signalHsmm-2010 & 0.9526 & 0.9533 & 0.8832 \\ 
+signalHsmm-1989 & 0.9562 & 0.9626 & 0.8972 \\ 
+\bottomrule
+\end{tabular}
+\label{tab:bench2010}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\begin{table}[ht]
+\small
+\centering
+\caption{Comparison of Area Under the Curve and H-measure for different classifiers considering only proteins belonging to Plasmodiidae.} 
+\begin{tabular}{lrrrr}
+\toprule
+Software name & AUC & Sensitivity & Specificity \\ 
+\midrule
+signalP 4.1 (no tm) \shortcite{2011petersensignalp} & 0.8356 & 0.7745 & 0.8966  \\ 
+\rowcolor[gray]{0.85}signalP 4.1 (tm) \shortcite{2011petersensignalp} & 0.7928 & 0.6471 & 0.9385 \\ 
+PrediSi \shortcite{2004hillerpredisi} & 0.6597 & 0.3725 & 0.9469 \\ 
+\rowcolor[gray]{0.85}Phobius \shortcite{2004klla} & 0.7963 & 0.6765 & 0.9162 \\ 
+Philius \shortcite{2008reynoldstransmembrane} & 0.7753 & 0.6176 & 0.9330 \\ 
+\rowcolor[gray]{0.85}signalHsmm-2010 & \textbf{0.9340} & \textbf{1.0000} & 0.8436 \\ 
+signalHsmm-1989 & 0.9326 & 0.9510 & \textbf{0.8631}  \\ 
+\rowcolor[gray]{0.85}signalHsmm-2010 with k-mers & 0.9334 & 0.9902 & 0.7989 \\ 
+\bottomrule
+\end{tabular}
+\label{tab:bench2010plas}
+\end{table}
+
+\end{frame}
+
+\section{Data}
+
+
+\begin{frame}
+\begin{block}{Query}
+taxonomy:"Eukaryota [2759]" NOT taxonomy:"Plasmodium [5820]" annotation:(type:signal evidence:ECO\_0000269) AND reviewed:yes
+\end{block}
+2543 proteins.
+\end{frame}
+
+\begin{frame}
+\begin{block}{Query}
+taxonomy:"Plasmodium [5820]" annotation:(type:signal evidence:manual) AND reviewed:yes
+\end{block}
+102 proteins.
+\end{frame}
+
+\section{Lengths of proteins and signal peptides}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(length_dat, variable == "len"), aes(x = value, fill = plasmodium)) +
+  geom_density(alpha = 0.5) +
+  ggtitle("Length of proteins") + 
+  scale_x_continuous("Number of amino acids\n") +
+  scale_y_continuous("Density\n") +
+  scale_fill_discrete("Plasmodium") +
+  cool_theme
+@
+\end{frame}
+
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+filter(length_dat, variable == "len") %>% 
+  group_by(plasmodium) %>%
+  summarize(mean = mean(value), sd = sd(value), median = median(value), IQR = IQR(value))
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(length_dat, variable == "sig"), aes(x = value, fill = plasmodium)) +
+  geom_density(alpha = 0.5) +
+  ggtitle("Lengths of signal peptides") + 
+  scale_x_continuous("Number of amino acids\n") +
+  scale_y_continuous("Density\n") +
+  scale_fill_discrete("Plasmodium") +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+filter(length_dat, variable == "sig") %>% 
+  group_by(plasmodium) %>%
+  summarize(mean = mean(value), sd = sd(value), median = median(value), IQR = IQR(value))
+@
+\end{frame}
+
+\section{1-gram frequency}
+
+\begin{frame}
+Since lengths of signal peptides seem to be comparable between proteins belonging to Plasmodium and other Eukaryotes, we chose not to normalize frequency of amino acids in signal peptides.
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(diff_dat, sig), aes(x = aa, y = dmfreq)) +
+  geom_bar(stat = "identity") +
+  scale_x_discrete("1-gram\n") +
+  ggtitle("Signal peptides") + 
+  scale_y_continuous("Absolute mean\nfrequency difference") +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(diff_dat, !sig), aes(x = aa, y = dmfreq)) +
+  geom_bar(stat = "identity") +
+  scale_x_discrete("1-gram\n") +
+  ggtitle("Mature proteins") + 
+  scale_y_continuous("Absolute mean\nfrequency difference") +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(mean_diff_dat, sig), aes(x = aa, y = mfreq, fill = plasmodium)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_x_discrete("1-gram\n") +
+  ggtitle("Signal peptides") + 
+  scale_y_continuous("Mean frequency")  +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+Plasmodium transit peptides are enriched in lysine and asparagine~\cite{Zuegge2001}.
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(mean_diff_dat, !sig), aes(x = aa, y = mfreq, fill = plasmodium)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_x_discrete("1-gram\n") +
+  ggtitle("Mature proteins") + 
+  scale_y_continuous("Mean frequency")  +
+  scale_fill_discrete("Plasmodium") +
+  cool_theme
+@
+\end{frame}
+
+\section{Group frequency}
+
+\begin{frame}
+\begin{table}[ht]
+\small
+\centering
+\caption{The signalHsmm encoding.} 
+\begin{tabular}{c|l}
+  \toprule
+Group ID & Amino acids \\ 
+  \midrule
+1 & D, E, H, K, N, Q, R \\ 
+   \rowcolor[gray]{0.85}2 & G, P, S, T, Y \\ 
+  3 & F, I, L, M, V, W \\ 
+   \rowcolor[gray]{0.85}4 & A, C \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(mean_group_dat, sig), aes(x = aa, y = mfreq, fill = plasmodium)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_x_discrete("Group\n") +
+  ggtitle("Signal peptides") + 
+  scale_y_continuous("Mean group frequency")  +
+  scale_fill_discrete("Plasmodium") +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+tmp <- filter(mean_group_dat, sig)[, -1]
+colnames(tmp) <- c("Group", "Plasmodium", "Mean frequency")
+tmp
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+ggplot(filter(mean_group_dat, !sig), aes(x = aa, y = mfreq, fill = plasmodium)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_x_discrete("Group\n") +
+  ggtitle("Mature proteins") + 
+  scale_y_continuous("Mean group frequency") +
+  scale_fill_discrete("Plasmodium") +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+levels(region_dat[["region"]]) <- paste0(levels(region_dat[["region"]]), "-region")
+
+ggplot(region_dat, aes(x = aa, y = mfreq, fill = plasmodium)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_x_discrete("Group\n") +
+  scale_y_continuous("Mean group frequency") +
+  scale_fill_discrete("Plasmodium") +
+  facet_wrap(~region) +
+  cool_theme
+@
+\end{frame}
+
+\section{Length of regions}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+levels(reg_length[["variable"]]) <- paste0(c("n", "h", "c"), "-region length")
+
+ggplot(reg_length, aes(x = value, fill = plasmodium)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~ variable) +
+  scale_fill_discrete("Plasmodium") +
+  scale_x_continuous("Number of amino acids\n") +
+  scale_y_continuous("Density") +
+  cool_theme
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE, message=FALSE,fig.height=5>>=
+  group_by(reg_length, plasmodium, variable) %>%
+  summarize(mean = mean(value), sd = sd(value), median = median(value), IQR = IQR(value))
+@
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+The mean frequency of group 3 (large, hydrophobic amino acids) are more common in the Plasmodium signal peptides.
+\end{frame}
+
+\section{References}
+\begin{frame}[allowframebreaks]
+\bibliographystyle{apacite}
+\bibliography{lokalizom}
+\end{frame}
+
+\end{document}

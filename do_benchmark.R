@@ -7,7 +7,7 @@
 # library(seqinr)
 # dat <- read.fasta("benchmark_plas_data.fasta")
 # #truncated data for signalP 3.0
-# short_dat <- lapply(dat, function(i) i[1L:200])
+# short_dat <- lapply(dat, function(i) i[1L:ifelse(length(i) < 200, length(i), 200)])
 # write.fasta(short_dat, names = names(dat), file.out = "benchmark_plas_data_tr.fasta")
 
 # library(hmeasure)
@@ -90,29 +90,33 @@ read_philius <- function(connection) {
   res
 }
 
+real_labels <- c(rep(1, 102), rep(0, 358))
+
+preds <- do.call(cbind, lapply(list(signalP41notm = read_signalp41("./plasmodium_benchmark_results/signaP41notm.txt"), 
+                                    signalP41tm = read_signalp41("./plasmodium_benchmark_results/signaP41tm.txt"), 
+                                    signalP3nn = read_signalp3nn("plasmodium_benchmark_results/signalP30.txt"),
+                                    signalP3hmm = read_signalp3hmm("plasmodium_benchmark_results/signalP30.txt"),
+                                    predsi = read_predsi("./plasmodium_benchmark_results/predsi.txt"),
+                                    phobius = read_phobius("./plasmodium_benchmark_results/phobius.txt"),
+                                    philius = read_philius("./plasmodium_benchmark_results/philius.xml")), function(predictor)
+                                      predictor[["sp.probability"]]))
+
+HMeasure(real_labels, preds)
+
+metrics
+
+
 signal.hsmm1987_preds <- pred2df(predict(signal.hsmm1987, c(plas_pos, plas_neg)))
 signal.hsmm_preds <- pred2df(run_signalHsmm(c(plas_pos, plas_neg)))
 
-real_labels <- c(rep(1, length(plas_pos)), rep(0, length(plas_neg)))
 
-metrics <- do.call(rbind, lapply(list(signalP41notm = read_signalp41("./plasmodium_benchmark_results/signaP41notm.txt"), 
-                                      signalP41tm = read_signalp41("./plasmodium_benchmark_results/signaP41tm.txt"), 
-                                      signalP3nn = read_signalp3nn("plasmodium_benchmark_results/signalP30.txt"),
-                                      signalP3hmm = read_signalp3hmm("plasmodium_benchmark_results/signalP30.txt"),
-                                      predsi = read_predsi("./plasmodium_benchmark_results/predsi.txt"),
-                                      phobius = read_phobius("./plasmodium_benchmark_results/phobius.txt"),
-                                      philius = read_philius("./plasmodium_benchmark_results/philius.xml"),
-                                      signalHsmm = signal.hsmm1987_preds,
-                                      signalHsmm1987 = signal.hsmm1987_preds), function(predictor)
-                                        HMeasure(real_labels, predictor[["sp.probability"]])[["metrics"]]))
+
 TP <- as.numeric(metrics[["TP"]])
 FP <- as.numeric(metrics[["FP"]])
 TN <- as.numeric(metrics[["TN"]])
 FN <- as.numeric(metrics[["FN"]])
 
-
-write.table(round(cbind(metrics[, c("AUC", "H")], 
-                  MCC = (TP*TN - FP*FN)/sqrt((TP + FP)*(TP + FN)*(TN + FP)*(TN + FN))), 4), sep = "\t", file = "grant_short.txt")
+MCC = (TP*TN - FP*FN)/sqrt((TP + FP)*(TP + FN)*(TN + FP)*(TN + FN))
 
 
 other_software <- t(do.call(rbind, lapply(list(signalPnotm = read_signalp41("./benchmark/signaP41notm.txt"), 

@@ -193,28 +193,6 @@ Pawe\l{} Mackiewicz*\textsuperscript{1},
 \\
 \bigskip
 
-% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
-% 
-% Remove or comment out the author notes below if they aren't used.
-%
-% Primary Equal Contribution Note
-% \Yinyang These authors contributed equally to this work.
-% 
-% % Additional Equal Contribution Note
-% % Also use this double-dagger symbol for special authorship notes, such as senior authorship.
-% \ddag These authors also contributed equally to this work.
-% 
-% % Current address notes
-% \textcurrency a Insert current address of first author with an address update
-% % \textcurrency b Insert current address of second author with an address update
-% % \textcurrency c Insert current address of third author with an address update
-% 
-% % Deceased author note
-% \dag Deceased
-% 
-% % Group/Consortium Author Note
-% \textpilcrow Membership list can be found in the Acknowledgments section.
-
 % Use the asterisk to denote corresponding authorship and provide email address in note below.
 * pamac@smorfland.uni.wroc.pl
 
@@ -253,7 +231,7 @@ Some data indicate that signal peptides may be universal. It was found, for exam
 
 \subsection*{Software predicting signal peptides}
 
-Although many experimental methods determining the subcellular localization of proteins were devised, they are time consuming and laborious. Therefore, signal peptides became the subject of many computational programs to their prediction. Many software incorporates 'black-box’ models, such as: neural networks~\cite{2011petersensignalp}, support vector machines~\cite{2014zhangprediction}, Bayesian networks~\cite{2012zhengsignalbnf} or k-nearest neighbours~\cite{2007shensignall}. However, these models do not provide direct biological information about organization of signal peptides and are not able to predict properly atypical signal peptides. Although there are programs that do not share the innate flaws of ???black-box’ models, they also demand an improvement. Some of them are based on position matrices or their variants~\cite{2014zhangprediction, 2004hillerpredisi}. Others (Phobius, Philius and SignalP 3.0) use hidden Markov models (HMMs)~\cite{2004klla, 2008reynoldstransmembrane, 2004bendtsenimproved}, which try to reflect structure of signal peptides regions in their limited probabilistic frameworks. The used HMMs, however, imply a geometric distribution for duration of regions length. We studied the distribution for regions from the first work utilizing HMMs in prediction of signal peptides~\cite{1998nielsenprediction} and found that the length distribution for every region was not geometric (Fig. \ref{fig:reglen}). Moreover, the commonly used rigid scheme of signal peptide's organization (Fig. \ref{fig:sparch}) does not describe extremely long or short peptides. Theoretically, HMMs that describe the atypical signal peptides could be developed to consider also the unusual structures but such probabilistic frameworks have not yet been implemented.
+Although many experimental methods determining the subcellular localization of proteins were devised, they are time consuming and laborious. Therefore, signal peptides became the subject of many computational programs to their prediction. Many software incorporates 'black-box’ models, such as: neural networks~\cite{2011petersensignalp}, support vector machines~\cite{2014zhangprediction}, Bayesian networks~\cite{2012zhengsignalbnf} or k-nearest neighbours~\cite{2007shensignall}. However, these models do not provide direct biological information about organization of signal peptides and are not able to predict properly atypical signal peptides. Although there are programs that do not share the innate flaws of 'black-box' models, they also demand an improvement. Some of them are based on position matrices or their variants~\cite{2014zhangprediction, 2004hillerpredisi}. Others (Phobius, Philius and SignalP 3.0) use hidden Markov models (HMMs)~\cite{2004klla, 2008reynoldstransmembrane, 2004bendtsenimproved}, which try to reflect structure of signal peptides regions in their limited probabilistic frameworks. The used HMMs, however, imply a geometric distribution for duration of regions length. We studied the distribution for regions from the first work utilizing HMMs in prediction of signal peptides~\cite{1998nielsenprediction} and found that the length distribution for every region was not geometric (Fig. \ref{fig:reglen}). Moreover, the commonly used rigid scheme of signal peptide's organization (Fig. \ref{fig:sparch}) does not describe extremely long or short peptides. Theoretically, HMMs that describe the atypical signal peptides could be developed to consider also the unusual structures but such probabilistic frameworks have not yet been implemented.
 
 \begin{figure}[ht]\centering
 %\includegraphics[width=0.95\textwidth]{figures/reglen.eps}
@@ -279,7 +257,9 @@ Since the functionality of signal peptides depends on the physicochemical proper
 
 \subsection*{Data selection}
 
-Eukaryotic protein sequences and their annotations were properly prepared according to the literature of the subject and downloaded from UniProt database release 2015\_06. The positive set contained 2~589 sequences with an experimentally confirmed signal peptide, containing its start and cleavage site information. Sequences with more than one cleavage site were excluded from the final data set. The negative set comprised 152~272 sequences without any signal peptide annotation. Protein sequences with ambiguous symbols: X, J, Z, B and selenocysteine (U) were finally removed.
+Eukaryotic protein sequences and their annotations were downloaded from UniProt database release 2015\_06. The preparations included the usual removal of sequences with more than one cleavage site, unknown cleavage site position, ambiguous symbols: X, J, Z, B or selenocysteine (U) from the final data set. The positive set contained 102 sequences with a signal peptide, containing its start and cleavage site information. The negative set comprised 358 sequences without any signal peptide annotation. All proteins belonged to the organisms from Plasmodiidae family.
+
+
 
 \subsection*{Clustering of amino acids}
 

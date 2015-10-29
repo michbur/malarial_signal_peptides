@@ -103,9 +103,6 @@ preds <- do.call(cbind, lapply(list(signalP41notm = read_signalp41("./plasmodium
 
 HMeasure(real_labels, preds)
 
-metrics
-
-
 signal.hsmm1987_preds <- pred2df(predict(signal.hsmm1987, c(plas_pos, plas_neg)))
 signal.hsmm_preds <- pred2df(run_signalHsmm(c(plas_pos, plas_neg)))
 

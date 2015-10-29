@@ -1,0 +1,1 @@
+The positive set contained 2~589 sequences with an experimentally confirmed signal peptide, containing its start and cleavage site information. The negative set comprised 152~272 sequences without any signal peptide annotation. 

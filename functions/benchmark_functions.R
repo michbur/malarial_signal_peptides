@@ -85,3 +85,16 @@ read_other_software <- function(directory_name) {
                                predictor[["sp.probability"]]))
 }
 
+
+calc_metrics <- function(real_labels, preds, threshold = 0.5) {
+  library(hmeasure)
+  metrics <- HMeasure(true.class = real_labels, scores = preds, threshold = threshold)[["metrics"]]
+  
+  TP <- as.numeric(metrics[["TP"]])
+  FP <- as.numeric(metrics[["FP"]])
+  TN <- as.numeric(metrics[["TN"]])
+  FN <- as.numeric(metrics[["FN"]])
+  
+  MCC = (TP*TN - FP*FN)/sqrt((TP + FP)*(TP + FN)*(TN + FP)*(TN + FN))
+  data.frame(metrics, MCC)
+}

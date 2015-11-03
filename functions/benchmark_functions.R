@@ -98,3 +98,8 @@ calc_metrics <- function(real_labels, preds, threshold = 0.5) {
   MCC = (TP*TN - FP*FN)/sqrt((TP + FP)*(TP + FN)*(TN + FP)*(TN + FN))
   data.frame(metrics, MCC)
 }
+
+count_signals <- function(connection) {
+  lines <- readLines(connection)
+  length(grep(pattern = "^FT   SIGNAL", lines))
+}

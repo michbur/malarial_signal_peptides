@@ -34,9 +34,6 @@ calc_metrics(c(rep(1, 102), rep(0, 358)),
 
 # BENCHMARK - all -------------------------------------------------
 
-real_labels <- 
-
-
 calc_metrics(c(rep(1, 214), rep(0, 214)), 
              data.frame(read_other_software("./benchmark_results"), 
                         signalHsmm2010 = pred2df(predict(signalHsmm2010, 

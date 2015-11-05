@@ -80,14 +80,14 @@ read_other_software <- function(directory_name) {
                              signalP3nn = read_signalp3nn(paste0(directory_name, "/signalP30.txt")),
                              signalP3hmm = read_signalp3hmm(paste0(directory_name, "/signalP30.txt")),
                              predsi = read_predsi(paste0(directory_name, "/predsi.txt")),
-                             phobius = read_phobius(paste0(directory_name, "/phobius.txt")),
-                             philius = read_philius(paste0(directory_name, "/philius.xml"))), function(predictor)
+                             #philius = read_philius(paste0(directory_name, "/philius.xml")),
+                             phobius = read_phobius(paste0(directory_name, "/phobius.txt"))), function(predictor)
                                predictor[["sp.probability"]]))
 }
 
 
 calc_metrics <- function(real_labels, preds, threshold = 0.5) {
-  library(hmeasure)
+  require(hmeasure)
   metrics <- HMeasure(true.class = real_labels, scores = preds, threshold = threshold)[["metrics"]]
   
   TP <- as.numeric(metrics[["TP"]])

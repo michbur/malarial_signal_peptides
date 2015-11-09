@@ -18,10 +18,7 @@ source("./functions/benchmark_functions.R")
 
 # CROSS-VALIDATION
 
-load(paste0(pathway, "fold_res_df.RData"))
-
-
-
+load("signalHsmm_cv.RData")
 
 # signalHsmm1986 and signalHsmm2010 -------------------------------------
 

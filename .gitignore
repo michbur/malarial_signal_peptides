@@ -7,7 +7,6 @@ plos_latex_template.log
 plos_latex_template.synctex.gz
 PLOS-submission-eps-converted-to.pdf
 plos_latex_template.pdf
-figures/
 apicomplexa_signalpeptides.snm
 apicomplexa_signalpeptides.synctex.gz
 apicomplexa_signalpeptides.tex
@@ -18,4 +17,3 @@ apicomplexa_signalpeptides.log
 apicomplexa_signalpeptides.nav
 apicomplexa_signalpeptides.out
 apicomplexa_signalpeptides.bbl
-figure

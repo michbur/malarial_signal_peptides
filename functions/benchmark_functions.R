@@ -1,4 +1,11 @@
-# directory_name - for example "./plasmodium_benchmark_results"
+#' Read prediction of other software
+#'
+#' Read predictions from other signal peptide predictors provided that they are in 
+#' the proper format and in specified directory.
+#'
+#' @param directory_name for example "./plasmodium_benchmark_results"
+#'
+#' @return a data frame of predictions
 
 read_other_software <- function(directory_name) {
   
@@ -85,6 +92,16 @@ read_other_software <- function(directory_name) {
                                predictor[["sp.probability"]]))
 }
 
+#' Calculate performance metrics
+#'
+#' Calculate performance metrics as \code{\link[hmeasure]{HMeasure}} plus 
+#' MCC.
+#'
+#' @param real_labels real labels of data.
+#' @param preds data.frame of predictions, preferably named.
+#' @param threshold cut-off.
+#'
+#' @return a data frame of performance measures
 
 calc_metrics <- function(real_labels, preds, threshold = 0.5) {
   require(hmeasure)
@@ -99,7 +116,7 @@ calc_metrics <- function(real_labels, preds, threshold = 0.5) {
   data.frame(metrics, MCC)
 }
 
-count_signals <- function(connection) {
-  lines <- readLines(connection)
-  length(grep(pattern = "^FT   SIGNAL", lines))
-}
+# count_signals <- function(connection) {
+#   lines <- readLines(connection)
+#   length(grep(pattern = "^FT   SIGNAL", lines))
+# }

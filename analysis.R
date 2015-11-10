@@ -15,10 +15,21 @@ if(Sys.info()["nodename"] == "MICHALKOMP" )
 
 source("./functions/plot_tools.R")
 source("./functions/benchmark_functions.R")
+source("./functions/cv_analysis.R")
 
 # CROSS-VALIDATION
 
-load("signalHsmm_cv.RData")
+# time-consuming part of the code silenced
+# load("/Qnap/Publikacje/gcbsubmission_data/signalHsmm_cv.RData")
+# rep_res <- perf_rep(fold_res, 0.05)
+# save(rep_res, file = "./analysis_data/cv_results.RData")
+load("./analysis_data/cv_results.RData")
+p1 <- plot_p1(create_p1dat(rep_res))
+
+cairo_ps("./figures/cvres.eps", width = 9, height = 5, onefile = FALSE)
+print(p1[["plot"]])
+dev.off()
+p1[["cpt"]]
 
 # signalHsmm1986 and signalHsmm2010 -------------------------------------
 

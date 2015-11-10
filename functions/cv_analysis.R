@@ -35,6 +35,9 @@ perf_rep <- function(folds, threshold = 0.5) {
 
 #compute results of cv analysis
 create_cvplotdat <- function(rep_res) {
+  require(dplyr)
+  require(reshape2)
+  
   mean_res <- rep_res %>% filter(measure %in% c("AUC", "Sens", "Spec", "MCC")) %>%
     group_by(encoding, measure) %>% summarise(mean_value = mean(value, na.rm = TRUE)) %>% ungroup
   

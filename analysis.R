@@ -16,7 +16,9 @@ if(Sys.info()["nodename"] == "MICHALKOMP" )
 source("./functions/plot_tools.R")
 source("./functions/reglen_plot.R")
 source("./functions/cv_analysis.R")
+source("./functions/enc_region.R")
 source("./functions/benchmark_functions.R")
+
 
 
 
@@ -45,6 +47,18 @@ print(cvplot[["plot"]])
 dev.off()
 cvplot[["cpt"]]
 cat(cvplot[["xtab"]])
+
+# THE BEST ENCODINGS -------------------------
+
+
+create_enc_region(p1_dat = create_cvplotdat(rep_res))
+
+cairo_ps("./figures/enccomp.eps", width = 9, height = 8, onefile = FALSE)
+print(arrangeGrob(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), p1, 
+                  textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), p2,
+                  nrow = 2, ncol = 2, widths = c(0.05, 0.95)))
+dev.off()
+
 
 # signalHsmm1986 and signalHsmm2010 -------------------------------------
 

@@ -30,6 +30,7 @@ cairo_ps("./figures/cvres.eps", width = 9, height = 5, onefile = FALSE)
 print(p1[["plot"]])
 dev.off()
 p1[["cpt"]]
+cat(p1[["xtab"]])
 
 # signalHsmm1986 and signalHsmm2010 -------------------------------------
 

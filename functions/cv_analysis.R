@@ -68,9 +68,14 @@ create_p1dat <- function(rep_res) {
 #' Create p1 plot and dynamically generate caption.
 #' @param p1_dat processed data for the plot as produced by \code{\link{create_p1dat}}.
 #'
-#' @return a list, the first element is a plot, the second is a caption.
+#' @return a list, the first element is a plot, the second is a caption, the third is 
+#' the table.
 
 plot_p1 <- function(p1_dat) {
+  library(xtable)
+  library(ggplot2)
+  library(dplyr)
+  
   p1 <- ggplot(p1_dat, aes(x = Sens, y = Spec, label = encoding, colour = encoding == "", fill = encoding == "")) +
   geom_point(size = 5, shape = 21) +
   geom_text(size = 6, hjust = -0.75, vjust = 1) +
@@ -91,52 +96,25 @@ plot_p1 <- function(p1_dat) {
            ", MCC = ", 
            round(mean(p1_dat[p1_dat[, "encoding"] == "2", "MCC"]), 4),
            ").")
-  list(plot = p1, cpt = cpt)
+  
+  #cv table for the best encoding (69)
+  tab <- filter(rep_res, encoding == 69, measure %in% c("AUC", "Sens", "Spec", "MCC")) %>%
+    group_by(measure) %>% 
+    summarize(m_value = mean(value), sd_value = sd(value)) %>% 
+    droplevels %>% 
+    data.frame
+  
+  levels(tab[["measure"]]) <- c("AUC", "Sensitivity", "Specificity", "MCC")
+  
+  rws <- seq(1, nrow(tab) - 1, by = 2)
+  colnames(tab) <- c("Measure", "Mean", "SD")
+  col <- rep("\\rowcolor[gray]{0.85}", length(rws))
+  xtab <- print(xtable(tab, caption = "Performance measures for the best encoding. 60 repetitions of cross-validation.", 
+               label = "tab:perfmeas", digits = 4), include.rownames = FALSE, booktabs = TRUE,
+        add.to.row = list(pos = as.list(rws), command = col), print.results = FALSE)
+  
+  
+  list(plot = p1, 
+       cpt = cpt, 
+       xtab = xtab)
 }
-
-
-
-
-
-
-# cv for the best encoding
-fold_res[[1]][[69]]
-
-perf_rep2 <- function(folds, threshold = 0.5)
-  do.call(rbind, lapply(1L:length(folds), function(repetition_id) {
-    single_fold <- folds[[repetition_id]][[69]]
-    
-    res <- rowMeans(sapply(single_fold, function(single_group) {
-      metrics <- unlist(HMeasure(as.numeric(!is.na(single_group[, "cs_real"])),
-                                 single_group[, "prob"], threshold = threshold)[["metrics"]])
-      TP <- metrics["TP"]
-      TN <- metrics["TN"]
-      FP <- metrics["FP"]
-      FN <- metrics["FN"]
-      
-      c(metrics, 
-        mcc = unname((TP*TN - FP*FN)/sqrt((TP + FP)*(TP + FN)*(TN + FP)*(TN + FN))))
-    }))
-    
-    res <- data.frame(names(res), res)
-    
-    colnames(res) <- c("measure", "value")
-    
-    cbind(repetition = factor(rep(repetition_id, nrow(res))), res)
-  }))
-
-best_perf <- perf_rep2(fold_res, 0.05)
-
-
-
-library(xtable)
-
-tab <- best_perf %>% filter(measure %in% c("AUC", "Sens", "Spec", "mcc")) %>%
-  group_by(measure) %>% summarize(m_value = mean(value), sd_value = sd(value)) %>% droplevels %>% data.frame
-levels(tab[["measure"]]) <- c("AUC", "MCC", "Sensitivity", "Specificity")
-rws <- seq(1, nrow(tab) - 1, by = 2)
-colnames(tab) <- c("Measure", "Mean", "SD")
-col <- rep("\\rowcolor[gray]{0.85}", length(rws))
-print(xtable(tab, caption = "Performance measures for the best encoding. 60 repetitions of cross-validation.", 
-             label = "tab:perfmeas", digits = 4), include.rownames = FALSE, booktabs = TRUE,
-      add.to.row = list(pos = as.list(rws), command = col))

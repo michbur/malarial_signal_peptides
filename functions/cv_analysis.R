@@ -26,15 +26,15 @@ perf_rep <- function(folds, threshold = 0.5) {
   }))
 }
 
-#' Create data for p1 plot
+#' Create data for cvplot
 #'
-#' Create data for p1 plot (cross-validation results for all encodings).
+#' Create data for cvplot (cross-validation results for all encodings).
 #' @param rep_res results cross-validation  as produced by \code{\link{perf_rep}}
 #'
 #' @return a data frame ready for p1 plot.
 
 #compute results of cv analysis
-create_p1dat <- function(rep_res) {
+create_cvplotdat <- function(rep_res) {
   mean_res <- rep_res %>% filter(measure %in% c("AUC", "Sens", "Spec", "MCC")) %>%
     group_by(encoding, measure) %>% summarise(mean_value = mean(value, na.rm = TRUE)) %>% ungroup
   
@@ -65,13 +65,13 @@ create_p1dat <- function(rep_res) {
 
 #' Create p1 plot
 #'
-#' Create p1 plot and dynamically generate caption.
-#' @param p1_dat processed data for the plot as produced by \code{\link{create_p1dat}}.
+#' Create cross-validation plot and dynamically generate caption as well as table.
+#' @param p1_dat processed data for the plot as produced by \code{\link{create_cvplotdat}}.
 #'
 #' @return a list, the first element is a plot, the second is a caption, the third is 
 #' the table.
 
-plot_p1 <- function(p1_dat) {
+plot_cvplot <- function(p1_dat) {
   library(xtable)
   library(ggplot2)
   library(dplyr)

@@ -14,8 +14,22 @@ if(Sys.info()["nodename"] == "MICHALKOMP" )
   pathway <- "C:/Users/Michal/Dropbox/signal-peptide2_data/"
 
 source("./functions/plot_tools.R")
-source("./functions/benchmark_functions.R")
+source("./functions/reglen_plot.R")
 source("./functions/cv_analysis.R")
+source("./functions/benchmark_functions.R")
+
+
+
+# DENSITY OF LENGTH DISTRIBUTION (BOTH SIGNAL PEPTIDES AND THEIR REGIONS) --------------------------
+
+reglen <- plot_reglen()
+
+cairo_ps("./figures/reglen.eps", width = 9, height = 5, onefile = FALSE)
+grid.arrange(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), reglen[["sp_len"]], 
+             textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), reglen[["regions"]], 
+             nrow = 2, ncol = 2, widths = c(0.05, 0.95))
+dev.off()
+
 
 # CROSS-VALIDATION -------------------------
 

@@ -9,13 +9,6 @@
 #' sensitivity encoding and d) the best specificity encoding.
 
 create_enc_region <- function(p1_dat) {
-  require(reshape2)
-  require(signalHsmm)
-  require(biogram)
-  require(xtable)
-  require(ggplot2)
-  require(seqinr)
-  require(dplyr)
 
   group2df <- function(group_list, caption = NULL, label = NULL) {
     tab <- data.frame(Groups = sapply(group_list, function(i)
@@ -49,7 +42,7 @@ create_enc_region <- function(p1_dat) {
   
   all_traits_combn <- expand.grid(traits)
   
-  apply(all_traits_combn, 1, function(single_trait_combn) {
+  all_groups <- apply(all_traits_combn, 1, function(single_trait_combn) {
     #use ward, because Piotr does
     cl <- hclust(dist(t(aa_nvals[single_trait_combn, ])), method = "ward.D2")
     gr <- cutree(cl, k = 4)
@@ -65,7 +58,7 @@ create_enc_region <- function(p1_dat) {
   pos_seqs <- read_uniprot(paste0(pathway, "signal_peptides.txt"), ft_names = "signal")
   
   int_enc <- as.numeric(rownames(p1_dat[p1_dat[, "encoding"] != "", ]))
-  group_best <- create_all_groups()[int_enc][[1]]
+  group_best <- all_groups[int_enc][[1]]
   #re-arrange group for better comparision
   group_best <- group_best[c(2, 3, 4, 1)]
   names(group_best) <- 1L:4

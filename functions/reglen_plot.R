@@ -7,11 +7,6 @@
 #' lengths. \code{regions} is distribution of regions' lengths.  
 
 plot_reglen <- function() {
-  require(reshape2)
-  require(signalHsmm)
-  require(fitdistrplus)
-  require(ggplot2)
-  
   fit_dgeom <- function(x) {
     dens <- density(x)
     

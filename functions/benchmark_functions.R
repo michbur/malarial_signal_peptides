@@ -65,7 +65,6 @@ read_other_software <- function(directory_name) {
   }
   
   read_philius <- function(connection) {
-    require(XML)
     all_dat <- xmlToList(xmlTreeParse(connection, asTree = TRUE))
     seq_dat_id <- 1L:(length(all_dat)/2)*2
     #data for table
@@ -104,7 +103,6 @@ read_other_software <- function(directory_name) {
 #' @return a data frame of performance measures
 
 calc_metrics <- function(real_labels, preds, threshold = 0.5) {
-  require(hmeasure)
   metrics <- HMeasure(true.class = real_labels, scores = preds, threshold = threshold)[["metrics"]]
   
   TP <- as.numeric(metrics[["TP"]])

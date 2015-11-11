@@ -1,11 +1,19 @@
 #set data source
 
-library(seqinr)
-library(dplyr)
-library(signalHsmm)
-library(hmeasure)
-library(pbapply)
-library(reshape2)
+require(XML)
+require(seqinr)
+require(fitdistrplus)
+require(dplyr)
+require(signalHsmm)
+require(hmeasure)
+require(pbapply)
+require(reshape2)
+require(hmeasure)
+require(xtable)
+require(biogram)
+library(ggplot2)
+library(grid)
+library(gridExtra)
 
 if(Sys.info()["nodename"] == "phobos" )
   pathway <- "/home/michal/Dropbox/signal-peptide2_data/"
@@ -26,7 +34,7 @@ source("./functions/benchmark_functions.R")
 
 reglen <- plot_reglen()
 
-cairo_ps("./figures/reglen.eps", width = 9, height = 5, onefile = FALSE)
+cairo_ps("./publication/figures/reglen.eps", width = 9, height = 5, onefile = FALSE)
 grid.arrange(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), reglen[["sp_len"]], 
              textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), reglen[["regions"]], 
              nrow = 2, ncol = 2, widths = c(0.05, 0.95))
@@ -42,7 +50,7 @@ dev.off()
 load("./analysis_data/cv_results.RData")
 cvplot <- plot_cvplot(create_cvplotdat(rep_res))
 
-cairo_ps("./figures/cvres.eps", width = 9, height = 5, onefile = FALSE)
+cairo_ps("./publication/figures/cvres.eps", width = 9, height = 5, onefile = FALSE)
 print(cvplot[["plot"]])
 dev.off()
 cvplot[["cpt"]]
@@ -51,14 +59,16 @@ cat(cvplot[["xtab"]])
 # THE BEST ENCODINGS -------------------------
 
 
-create_enc_region(p1_dat = create_cvplotdat(rep_res))
+enc_region <- create_enc_region(p1_dat = create_cvplotdat(rep_res))
 
-cairo_ps("./figures/enccomp.eps", width = 9, height = 8, onefile = FALSE)
-print(arrangeGrob(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), p1, 
-                  textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), p2,
-                  nrow = 2, ncol = 2, widths = c(0.05, 0.95)))
+cairo_ps("./publication/figures/enccomp.eps", width = 9, height = 8, onefile = FALSE)
+grid.arrange(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), enc_region[["prop_plot"]], 
+             textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), enc_region[["freq_plot"]],
+             nrow = 2, ncol = 2, widths = c(0.05, 0.95))
 dev.off()
 
+cat(enc_region[["best_sens"]])
+cat(enc_region[["best_spec"]])
 
 # signalHsmm1986 and signalHsmm2010 -------------------------------------
 

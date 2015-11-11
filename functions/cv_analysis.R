@@ -7,8 +7,6 @@
 #' @return a data frame of cross-validation performance measures
 
 perf_rep <- function(folds, threshold = 0.5) {
-  library(pbapply)
-  library(reshape2)
   do.call(rbind, pblapply(1L:length(folds), function(repetition_id) {
     res <- t(sapply(folds[[repetition_id]], function(single_fold)
       rowMeans(sapply(single_fold, function(single_group) 
@@ -35,9 +33,6 @@ perf_rep <- function(folds, threshold = 0.5) {
 
 #compute results of cv analysis
 create_cvplotdat <- function(rep_res) {
-  require(dplyr)
-  require(reshape2)
-  
   mean_res <- rep_res %>% filter(measure %in% c("AUC", "Sens", "Spec", "MCC")) %>%
     group_by(encoding, measure) %>% summarise(mean_value = mean(value, na.rm = TRUE)) %>% ungroup
   
@@ -75,10 +70,6 @@ create_cvplotdat <- function(rep_res) {
 #' the table.
 
 plot_cvplot <- function(p1_dat) {
-  library(xtable)
-  library(ggplot2)
-  library(dplyr)
-  
   p1 <- ggplot(p1_dat, aes(x = Sens, y = Spec, label = encoding, colour = encoding == "", fill = encoding == "")) +
   geom_point(size = 5, shape = 21) +
   geom_text(size = 6, hjust = -0.75, vjust = 1) +

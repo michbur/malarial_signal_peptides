@@ -149,7 +149,3 @@ create_enc_region <- function(p1_dat) {
        best_sens = group2df(group_best, "The best sensitivity (final) encoding", "tab:best"),
        best_spec = group2df(group_worst, "The best specificity encoding", "tab:worst"))
 }
-
-
-
-

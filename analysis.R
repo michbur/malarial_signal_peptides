@@ -81,6 +81,14 @@ signalHsmm1986 <- train_hsmm(read_uniprot("./training_data/sp1950_1987.txt", ft_
 signalHsmm2010 <- train_hsmm(read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal"),
                              aaaggregation)
 
+aas <- tolower(a()[-1])
+names(aas) <- 1L:20
+
+signalHsmm2010NODEG <- train_hsmm(read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal"),
+           aas)
+
+signalHsmm1987NODEG <- train_hsmm(read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal"),
+                                  aas)
 # BENCHMARK - PLASMODIUM -------------------------------------------------
 
 #taxonomy:"Plasmodium [5820]" annotation:(type:signal evidence:manual) AND reviewed:yes
@@ -93,9 +101,15 @@ metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)),
                                         signalHsmm2010 = pred2df(predict(signalHsmm2010, 
                                                                          read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
                                                                                     seqtype = "AA")))[, "sp.probability"], 
+                                        signalHsmm2010NODEG = pred2df(predict(signalHsmm2010NODEG, 
+                                                                         read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
+                                                                                    seqtype = "AA")))[, "sp.probability"], 
                                         signalHsmm1987 = pred2df(predict(signalHsmm1986, 
                                                                          read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
-                                                                                    seqtype = "AA")))[, "sp.probability"]), 0.005)
+                                                                                    seqtype = "AA")))[, "sp.probability"], 
+                                        signalHsmm1987NODEG = pred2df(predict(signalHsmm1987NODEG, 
+                                                                          read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
+                                                                                     seqtype = "AA")))[, "sp.probability"]), 0.005)
 
 # BENCHMARK - ALL -------------------------------------------------
 
@@ -104,6 +118,12 @@ metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)),
                                        signalHsmm2010 = pred2df(predict(signalHsmm2010, 
                                                                         read.fasta("./benchmark_data/benchmark_data.fasta",
                                                                                    seqtype = "AA")))[, "sp.probability"], 
+                                       signalHsmm2010NODEG = pred2df(predict(signalHsmm2010NODEG, 
+                                                                         read.fasta("./benchmark_data/benchmark_data.fasta",
+                                                                                    seqtype = "AA")))[, "sp.probability"], 
                                        signalHsmm1987 = pred2df(predict(signalHsmm1986, 
                                                                         read.fasta("./benchmark_data/benchmark_data.fasta",
-                                                                                   seqtype = "AA")))[, "sp.probability"]), 0.005)
+                                                                                   seqtype = "AA")))[, "sp.probability"], 
+                                       signalHsmm1987NODEG = pred2df(predict(signalHsmm1987NODEG, 
+                                                                         read.fasta("./benchmark_data/benchmark_data.fasta",
+                                                                                    seqtype = "AA")))[, "sp.probability"]), 0.005)

@@ -206,7 +206,7 @@ Signal peptides play an essential role in targeting of proteins to endomembrane 
 % Use first person. PLOS ONE authors please skip this step. 
 % Author Summary not valid for PLOS ONE submissions.   
 \section*{Author Summary}
-Apicoplasts are organella unique for medically significant parasites belonging to phylum Apicomplexa. Since they occur solely in parasite, they are perfect drug targets. We studied molecular signals directing proteins to apicoplasts and created 
+
 
 \linenumbers
 
@@ -220,7 +220,7 @@ Signal peptides are responsible for targeting of proteins via the Sec61 transloc
 Despite the low sequence homology between signal peptides~\cite{1999ladungaphysean}, some general architecture were proposed~\cite{1994izardsignal, 2013vossmechanism} - Fig. \ref{fig:sparch}. It is assumed that signal peptides start with a positively charged sequence of amino acid residues, called the n-region with the length of about 5-8 residues. They probably enforce a proper topology on the polypeptide during its translocation through membrane based on the positive-inside rule~\cite{1988vonheijnetopogenic}. The first region is followed by a stretch of hydrophobic amino acids (h-region) with the length of about 8-12 residues. It constitutes a core region of signal peptide and usually forms $\alpha$-helix. The third part of a signal peptide is a polar, but uncharged c-region. It is usually 6 residues long and ends with a cleavage site, in which a signal peptidase cleaves the signal peptide, during or after translocation of the protein into the endoplasmic reticulum ~\cite{2002paetzelsignal}. The cleavage site is characterized by a variable amino acid composition. It typically contains small and neutral residues at -3 and -1 positions~\cite{1994palzkillselection}. This site is, however, absent from some membrane proteins in which the first transmembrane domain acts both as a signal peptide and signal anchor~\cite{1988szczesnaskorupapositive}. The amino acid composition and the length of these regions vary between signal peptides, which influences the efficiency of protein secretion~\cite{2006hegdethe}.
 
 \begin{figure}[ht]\centering
-%\includegraphics[width=0.55\textwidth]{figures/SP.eps}
+\includegraphics[width=0.55\textwidth]{figures/SP.eps}
 \caption{The organization of typical signal peptide. The regions are not drawn in scale.}
 \label{fig:sparch}
 \end{figure}
@@ -234,7 +234,7 @@ Some data indicate that signal peptides may be universal. It was found, for exam
 Although many experimental methods determining the subcellular localization of proteins were devised, they are time consuming and laborious. Therefore, signal peptides became the subject of many computational programs to their prediction. Many software incorporates 'black-box’ models, such as: neural networks~\cite{2011petersensignalp}, support vector machines~\cite{2014zhangprediction}, Bayesian networks~\cite{2012zhengsignalbnf} or k-nearest neighbours~\cite{2007shensignall}. However, these models do not provide direct biological information about organization of signal peptides and are not able to predict properly atypical signal peptides. Although there are programs that do not share the innate flaws of 'black-box' models, they also demand an improvement. Some of them are based on position matrices or their variants~\cite{2014zhangprediction, 2004hillerpredisi}. Others (Phobius, Philius and SignalP 3.0) use hidden Markov models (HMMs)~\cite{2004klla, 2008reynoldstransmembrane, 2004bendtsenimproved}, which try to reflect structure of signal peptides regions in their limited probabilistic frameworks. The used HMMs, however, imply a geometric distribution for duration of regions length. We studied the distribution for regions from the first work utilizing HMMs in prediction of signal peptides~\cite{1998nielsenprediction} and found that the length distribution for every region was not geometric (Fig. \ref{fig:reglen}). Moreover, the commonly used rigid scheme of signal peptide's organization (Fig. \ref{fig:sparch}) does not describe extremely long or short peptides. Theoretically, HMMs that describe the atypical signal peptides could be developed to consider also the unusual structures but such probabilistic frameworks have not yet been implemented.
 
 \begin{figure}[ht]\centering
-%\includegraphics[width=0.95\textwidth]{figures/reglen.eps}
+\includegraphics[width=0.95\textwidth]{figures/reglen.eps}
 \caption{Distribution of lengths of signal peptides (A) and their regions (B) expressed in the number of amino acid residues. The data was extracted from 2~589 signal peptide sequences derived from UniProt database (see \textbf{Data selection} in \textbf{Methods}).}
 \label{fig:reglen}
 \end{figure}
@@ -242,12 +242,6 @@ Although many experimental methods determining the subcellular localization of p
 All programs used in signal peptide recognition are trained on real protein sequences. Therefore, they succeed in the recognition of peptides similar to those in the learning set but fail in the case of artificial signal peptides. Such peptides are designed to increase effectiveness of protein secretion~\cite{2010futatsumorisugaisignal}. They are especially important in industrial applications to increase yield of proteins. Therefore, only explicit knowledge about the organization of signal peptides allows creating sequences that will be the most efficient in the export of proteins~\cite{2013ngengineering}. Signal peptides have also an important application in gene therapy. Mimicking the natural mechanism of protein export, artificial signal peptides with tumor epitopes increase the antitumor immune response~\cite{2003heenhanced}. Such epitopes must be properly inserted into a signal peptide without decreasing its secretion properties through disruption of the regional structure. Instead of time-consuming and expensive laboratory experiments, it would be very useful to survey \textit{in silico} many artificial peptides to select the ones that would fulfill the designed role.
 
 Majority of the signal peptide predicting software uses the orthogonal encoding of amino acids, in which a vector of 20 digits represents every amino acid. This method of encoding, however, does not take into account relationships between amino acids and differences in their physicochemical properties. This is disadvantage of such signal peptide models because their regions are in fact characterized by specific features of amino acid residues and not by the simple occurrence of specific amino acids. In addition to this, such sparse encoding enforces larger data sets, which hinders their management and analysis~\cite{2002linamino}. Therefore, we elaborated a new approach based on hidden semi-Markov models using grouping of amino acids into physicochemical groups characteristic of signal peptides. The new methods proved better in comparison to the current software.
-
-\begin{figure}[h]
-\caption{{\bf Figure Title first bold sentence Nulla mi mi, venenatis sed ipsum varius, volutpat euismod diam.}
-Figure Caption Proin rutrum vel massa non gravida. Quisque tempor sem et dignissim rutrum. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
-\label{fig1}
-\end{figure}
 
 \section*{Methods}
 
@@ -328,47 +322,47 @@ are difficult to capture in this way.
 \tikzstyle{frameComp}=[text=black,below, bottom color=red!50!white!70, top color=red!50!white!70  ]
  \tikzstyle{line3} = [color=green!50!black!70, line width=1.5mm]
 \def\names{{"$O_{1,1}$","...","$O_{1,d_1}$", "...","$O_{k, 1}$", "...", "$O_{k, d_k}$"}}%
-% \begin{tikzpicture}[>=latex']
-% %wąsate nawiasy
-% \draw [decorate, decoration={brace,amplitude=10pt},line3,xshift=0pt,yshift=0pt] (2.5,1) -> (10.5,1) node [branch,midway,yshift=0.8cm,color=black] 
-% 	{\textbf{Hidden states}};
-% % \draw [->,decoration={brace,mirror,amplitude=10pt},line2,xshift=0pt,yshift=0pt] (11,-3) -- (3,-3) node [branch2,midway,yshift=-0.6cm,color=black] 
-% % 	{\textbf{Kierunek odczytu na nici Cricka ($3' \to 5'$)}}; 
-%    % Draw blocks, inputs and outputs
-%  
-% \node[block, text width=3em] at (1+2,0) (block1) {\footnotesize 1st hidden state};
-% \node[blockComp] at (-.5+2,-2)  (komp1) {\footnotesize \pgfmathparse{\names[0]}\pgfmathresult};
-% \node[blockComp] at (1+2,-2)  (komp2) {\footnotesize \pgfmathparse{\names[1]}\pgfmathresult};
-% \node[blockComp] at (2.5+2,-2)  (komp3) {\footnotesize \pgfmathparse{\names[2]}\pgfmathresult};
-% \draw[line,->]  (block1) --  (komp1);
-% \draw[line,->]  (block1) --  (komp2);
-% \draw[line,->]  (block1) --  (komp3);
-% \draw[line3,->] (block1.east) -- +(2,0) node [branch,midway,yshift=0.3cm,xshift=-0.2cm,color=black] {\footnotesize \textbf{transition}};
-% 
-% \node[block, bottom color=green!50!white!80,] at (4.5+2,0) (block2) {...};
-% \draw[line3,->] (block2.east) -- +(2,0) node [branch,midway,yshift=0.3cm,xshift=-0.2cm,color=black] {\footnotesize \textbf{transition}};
-% \node[blockComp] at (4.5+2,-2)  (komp4) {\footnotesize \pgfmathparse{\names[3]}\pgfmathresult};
-% \draw[line,->]  (block2) --  (komp4) ;
-% 
-% \node[block,text width=3em, bottom color=green!50!white!70] at (8+2,0) (block3) {\footnotesize $k^{th}$ hidden state};
-% \node[blockComp] at (6.5+2,-2)  (komp5) {\footnotesize \pgfmathparse{\names[4]}\pgfmathresult};
-% \node[blockComp] at (8+2,-2)  (komp6) {\footnotesize \pgfmathparse{\names[5]}\pgfmathresult};
-% \node[blockComp] at (9.5+2,-2)  (komp7) {\footnotesize \pgfmathparse{\names[6]}\pgfmathresult};
-% \draw[line,->]  (block3) --  (komp5);
-% \draw[line,->]  (block3) --  (komp6);
-% \draw[line,->]  (block3) --  (komp7);
-% 
-% % \draw[<->, color=red!30!black!50, line width=1.5mm] (komp1) |- +(5,-1.5) node[line2, yshift=-0.5cm] {\textbf{Observations}} -| (komp7); 
-% 
-% \draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=10pt,mirror,raise=10pt},yshift=-10pt]
-% (1,-1.8) -- (5,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_1$}};
-% 
-% \draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=10pt,mirror,raise=10pt},yshift=-10pt]
-% (8,-1.8) -- (12,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_k$}};
-% 
-% \draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=15pt,mirror,raise=10pt},yshift=-10pt]
-% (1,-2.6) -- (12,-2.6) node [branch2, midway, yshift=-1.3cm,color=black] {\textbf{Observations, $\sum_{i=1}^k d_i = T$}};
-% \end{tikzpicture}
+\begin{tikzpicture}[>=latex']
+%wąsate nawiasy
+\draw [decorate, decoration={brace,amplitude=10pt},line3,xshift=0pt,yshift=0pt] (2.5,1) -> (10.5,1) node [branch,midway,yshift=0.8cm,color=black] 
+	{\textbf{Hidden states}};
+% \draw [->,decoration={brace,mirror,amplitude=10pt},line2,xshift=0pt,yshift=0pt] (11,-3) -- (3,-3) node [branch2,midway,yshift=-0.6cm,color=black] 
+% 	{\textbf{Kierunek odczytu na nici Cricka ($3' \to 5'$)}}; 
+   % Draw blocks, inputs and outputs
+ 
+\node[block, text width=3em] at (1+2,0) (block1) {\footnotesize 1st hidden state};
+\node[blockComp] at (-.5+2,-2)  (komp1) {\footnotesize \pgfmathparse{\names[0]}\pgfmathresult};
+\node[blockComp] at (1+2,-2)  (komp2) {\footnotesize \pgfmathparse{\names[1]}\pgfmathresult};
+\node[blockComp] at (2.5+2,-2)  (komp3) {\footnotesize \pgfmathparse{\names[2]}\pgfmathresult};
+\draw[line,->]  (block1) --  (komp1);
+\draw[line,->]  (block1) --  (komp2);
+\draw[line,->]  (block1) --  (komp3);
+\draw[line3,->] (block1.east) -- +(2,0) node [branch,midway,yshift=0.3cm,xshift=-0.2cm,color=black] {\footnotesize \textbf{transition}};
+
+\node[block, bottom color=green!50!white!80,] at (4.5+2,0) (block2) {...};
+\draw[line3,->] (block2.east) -- +(2,0) node [branch,midway,yshift=0.3cm,xshift=-0.2cm,color=black] {\footnotesize \textbf{transition}};
+\node[blockComp] at (4.5+2,-2)  (komp4) {\footnotesize \pgfmathparse{\names[3]}\pgfmathresult};
+\draw[line,->]  (block2) --  (komp4) ;
+
+\node[block,text width=3em, bottom color=green!50!white!70] at (8+2,0) (block3) {\footnotesize $k^{th}$ hidden state};
+\node[blockComp] at (6.5+2,-2)  (komp5) {\footnotesize \pgfmathparse{\names[4]}\pgfmathresult};
+\node[blockComp] at (8+2,-2)  (komp6) {\footnotesize \pgfmathparse{\names[5]}\pgfmathresult};
+\node[blockComp] at (9.5+2,-2)  (komp7) {\footnotesize \pgfmathparse{\names[6]}\pgfmathresult};
+\draw[line,->]  (block3) --  (komp5);
+\draw[line,->]  (block3) --  (komp6);
+\draw[line,->]  (block3) --  (komp7);
+
+% \draw[<->, color=red!30!black!50, line width=1.5mm] (komp1) |- +(5,-1.5) node[line2, yshift=-0.5cm] {\textbf{Observations}} -| (komp7); 
+
+\draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=10pt,mirror,raise=10pt},yshift=-10pt]
+(1,-1.8) -- (5,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_1$}};
+
+\draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=10pt,mirror,raise=10pt},yshift=-10pt]
+(8,-1.8) -- (12,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_k$}};
+
+\draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=15pt,mirror,raise=10pt},yshift=-10pt]
+(1,-2.6) -- (12,-2.6) node [branch2, midway, yshift=-1.3cm,color=black] {\textbf{Observations, $\sum_{i=1}^k d_i = T$}};
+\end{tikzpicture}
 \caption{General scheme of hidden semi-Markov model.}
 \label{fig:hsmm}
 \end{figure}
@@ -391,7 +385,7 @@ Fig.~\ref{fig:ngramext} is easy to interpret for a researcher without any mathem
 %model structure
 
 \begin{figure}[ht]\centering
-%\includegraphics[width=0.51\textwidth]{figures/HSMMs.eps}
+\includegraphics[width=0.51\textwidth]{figures/HSMMs.eps}
 \caption{The diagram of simple (A) and extended version of signalHsmm with the n-gram cleavage site model (B).}
 \label{fig:ngramext}
 \end{figure}
@@ -407,8 +401,8 @@ Hidden semi-Markov models may be flexibly enhanced by adding additional hidden s
 \subsection*{Cross-validation}
 
 \begin{figure}[ht]\centering
-%\includegraphics[width=0.95\textwidth, height=7cm]{figures/cvres.eps}
-\caption{Sensitivity and specificity of amino acid encodings after cross-validation. 1 indicates the encoding providing the best sensitivity (AUC = 0.9683, MCC = 0.8677), whereas 2 means the encoding providing the best specificity (AUC = 0.9338, MCC = 0.6474).}
+\includegraphics[width=0.95\textwidth, height=7cm]{figures/cvres.eps}
+\caption{Sensitivity and specificity of amino acid encodings after cross-validation. 1 indicates the encoding providing the best sensitivity ($\textrm{AUC} = 0.9683$, $\textrm{MCC} = 0.8677$), whereas 2 means the encoding providing the best specificity ($\textrm{AUC} = 0.9338$, $\textrm{MCC} = 0.6474$).}
 \label{fig:cvres}
 \end{figure}
 

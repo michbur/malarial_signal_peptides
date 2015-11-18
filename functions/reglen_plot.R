@@ -2,6 +2,7 @@
 #'
 #' Calculates densities of length of a) whole signal peptides,
 #' b) n-regions, c) h-regions d) c-regions.
+#' Fits geometric distribution.
 #'
 #' @return a list of two plots. \code{sp_len} is the density of signal peptides
 #' lengths. \code{regions} is distribution of regions' lengths.  
@@ -13,7 +14,8 @@ plot_reglen <- function() {
     dens_dat <- data.frame(xd = dens[["x"]], yd = dens[["y"]])
     dgeom_dat <- data.frame(x = seq(min(x), max(x))) %>%
       #mutate(y = dgeom(x, fitdist(x, "geom")[["estimate"]]))
-      mutate(y = dpois(x, mean(x)))
+      #mutate(y = dpois(x, mean(x)))
+      mutate(y = dgeom(x, 1/mean(x)))
     
     list(dens_dat = dens_dat,
          dgeom_dat = dgeom_dat)

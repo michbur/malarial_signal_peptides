@@ -40,3 +40,4 @@ require(signalHsmm)
 require(seqinr)
 
 plas_seqs <- read_uniprot("./plasmodium_benchmark_data/plas.txt", ft_names = "signal")
+cdhit(plas_seqs)

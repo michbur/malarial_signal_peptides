@@ -24,6 +24,7 @@ cdhit <- function(input_seq, thresh = 0.9, only_signal = TRUE) {
   cdhit <- paste0("/home/michal/cd-hit/cd-hit -i ", input,  " -o ", output, " -c ", thresh)
   
   if(only_signal) {
+    #doesn't really make a lot of sense in the context of negative data set
     write.fasta(lapply(input_seq, function(single_seq) single_seq[1L:attr(single_seq, "signal")[2]]), 
                 names = names(input_seq), input)
   } else {
@@ -40,5 +41,4 @@ require(signalHsmm)
 require(seqinr)
 
 plas_seqs <- read_uniprot("./plasmodium_benchmark_data/plas.txt", ft_names = "signal")
-sig <- cdhit(plas_seqs, only_signal = TRUE)
 nsig <- cdhit(plas_seqs, only_signal = FALSE)

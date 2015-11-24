@@ -26,7 +26,7 @@ source("./functions/reglen_plot.R")
 source("./functions/cv_analysis.R")
 source("./functions/enc_region.R")
 source("./functions/benchmark_functions.R")
-
+source("./functions/cdhit.R")
 
 
 
@@ -72,23 +72,35 @@ cat(enc_region[["best_spec"]])
 
 # signalHsmm1986 and signalHsmm2010 -------------------------------------
 
+# data
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 19870000] AND reviewed:yes
 #354 proteins, 335 after purification
-signalHsmm1986 <- train_hsmm(read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal"),
-                             aaaggregation)
-#taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 19870000] AND reviewed:yes
-#2372 proteins, 2313 after purification
-signalHsmm2010 <- train_hsmm(read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal"),
-                             aaaggregation)
+seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
 
+#taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 20100000] AND reviewed:yes
+#2372 proteins, 2313 after purification
+seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
+    
+#iterations without degeneration
 aas <- tolower(a()[-1])
 names(aas) <- 1L:20
 
-signalHsmm2010NODEG <- train_hsmm(read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal"),
-           aas)
+signalHsmm2010NODEG <- train_hsmm(seq50_10, aas)
+signalHsmm1987NODEG <- train_hsmm(seq50_87, aas)
 
-signalHsmm1987NODEG <- train_hsmm(read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal"),
-                                  aas)
+
+#iterations with degeneration
+signalHsmm1987 <- train_hsmm(seq50_87, aaaggregation)
+signalHsmm2010 <- train_hsmm(seq50_10, aaaggregation)
+
+#iterations with removal of homologs
+seq50_87f <- cdhit(seq50_87, thresh = 0.5, word_length = 2, only_signal = TRUE)
+seq50_10f <- cdhit(seq50_10, thresh = 0.5, word_length = 2, only_signal = TRUE)
+
+signalHsmm1987NOHOMO <- train_hsmm(seq50_87[seq50_87f], aaaggregation)
+signalHsmm2010NOHOMO <- train_hsmm(seq50_10[seq50_10f], aaaggregation)
+
+
 # BENCHMARK - PLASMODIUM -------------------------------------------------
 
 #taxonomy:"Plasmodium [5820]" annotation:(type:signal evidence:manual) AND reviewed:yes
@@ -96,34 +108,17 @@ signalHsmm1987NODEG <- train_hsmm(read_uniprot("./training_data/sp1950_1987.txt"
 #taxonomy:"Plasmodium [5820]" NOT annotation:(type:signal evidence:manual) AND reviewed:yes
 #361 proteins, 358 proteins after purification
 
+
 metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)), 
                              data.frame(read_other_software("./plasmodium_benchmark_results"), 
-                                        signalHsmm2010 = pred2df(predict(signalHsmm2010, 
-                                                                         read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
-                                                                                    seqtype = "AA")))[, "sp.probability"], 
-                                        signalHsmm2010NODEG = pred2df(predict(signalHsmm2010NODEG, 
-                                                                         read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
-                                                                                    seqtype = "AA")))[, "sp.probability"], 
-                                        signalHsmm1987 = pred2df(predict(signalHsmm1986, 
-                                                                         read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
-                                                                                    seqtype = "AA")))[, "sp.probability"], 
-                                        signalHsmm1987NODEG = pred2df(predict(signalHsmm1987NODEG, 
-                                                                          read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta",
-                                                                                     seqtype = "AA")))[, "sp.probability"]), 0.005)
+                                        get_signalHsmm_preds(list(signalHsmm2010, signalHsmm2010NODEG, signalHsmm2010NOHOMO, 
+                                                                  signalHsmm1987, signalHsmm1987NODEG),
+                                                             "./plasmodium_benchmark_data/benchmark_plas_data.fasta")), 0.005)
 
 # BENCHMARK - ALL -------------------------------------------------
 
 metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)), 
                             data.frame(read_other_software("./benchmark_results"), 
-                                       signalHsmm2010 = pred2df(predict(signalHsmm2010, 
-                                                                        read.fasta("./benchmark_data/benchmark_data.fasta",
-                                                                                   seqtype = "AA")))[, "sp.probability"], 
-                                       signalHsmm2010NODEG = pred2df(predict(signalHsmm2010NODEG, 
-                                                                         read.fasta("./benchmark_data/benchmark_data.fasta",
-                                                                                    seqtype = "AA")))[, "sp.probability"], 
-                                       signalHsmm1987 = pred2df(predict(signalHsmm1986, 
-                                                                        read.fasta("./benchmark_data/benchmark_data.fasta",
-                                                                                   seqtype = "AA")))[, "sp.probability"], 
-                                       signalHsmm1987NODEG = pred2df(predict(signalHsmm1987NODEG, 
-                                                                         read.fasta("./benchmark_data/benchmark_data.fasta",
-                                                                                    seqtype = "AA")))[, "sp.probability"]), 0.005)
+                                       get_signalHsmm_preds(list(signalHsmm2010, signalHsmm2010NODEG, signalHsmm2010NOHOMO, 
+                                                                 signalHsmm1987, signalHsmm1987NODEG),
+                                                            "./benchmark_data/benchmark_data.fasta")), 0.005)

@@ -1,14 +1,3 @@
-#require(msa)
-# require(signalHsmm)
-# require(seqinr)
-# plas_seqs <- read_uniprot("./plasmodium_benchmark_data/plas.txt", ft_names = "signal")
-# 
-# #write only SPs
-# 
-# 
-# plas_fasta <- readAAStringSet("./plasmodium_benchmark_data/plas.fasta")
-# plas_aln <- msaClustalW(plas_fasta, verbose = TRUE)
-
 #' Filter sequrences using cd-hit
 #'
 #' Filters sequences using external software cd-hit.
@@ -17,11 +6,11 @@
 #' @param only_signal if \code{TRUE}, only signal peptides are filtered.
 #' @return vector of names of filtered sequences
 
-cdhit <- function(input_seq, thresh = 0.9, only_signal = TRUE) {
+cdhit <- function(input_seq, thresh = 0.5, word_length = 2, only_signal = TRUE) {
   
   input <- tempfile(tmpdir = getwd())
   output <- tempfile(tmpdir = getwd())
-  cdhit <- paste0("/home/michal/cd-hit/cd-hit -i ", input,  " -o ", output, " -c ", thresh)
+  cdhit <- paste0("/home/michal/cd-hit/cd-hit -i ", input,  " -o ", output, " -c ", thresh, " -n ", word_length)
   
   if(only_signal) {
     #doesn't really make a lot of sense in the context of negative data set
@@ -36,9 +25,3 @@ cdhit <- function(input_seq, thresh = 0.9, only_signal = TRUE) {
   names(res)
 }
 
-
-require(signalHsmm)
-require(seqinr)
-
-plas_seqs <- read_uniprot("./plasmodium_benchmark_data/plas.txt", ft_names = "signal")
-nsig <- cdhit(plas_seqs, only_signal = FALSE)

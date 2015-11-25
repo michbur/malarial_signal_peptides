@@ -94,11 +94,19 @@ signalHsmm1987 <- train_hsmm(seq50_87, aaaggregation)
 signalHsmm2010 <- train_hsmm(seq50_10, aaaggregation)
 
 #iterations with removal of homologs
+#homology 50
 seq50_87f <- cdhit(seq50_87, thresh = 0.5, word_length = 2, only_signal = TRUE)
 seq50_10f <- cdhit(seq50_10, thresh = 0.5, word_length = 2, only_signal = TRUE)
 
-signalHsmm1987NOHOMO <- train_hsmm(seq50_87[seq50_87f], aaaggregation)
-signalHsmm2010NOHOMO <- train_hsmm(seq50_10[seq50_10f], aaaggregation)
+signalHsmm1987NOHOM50 <- train_hsmm(seq50_87[seq50_87f], aaaggregation)
+signalHsmm2010NOHOM50 <- train_hsmm(seq50_10[seq50_10f], aaaggregation)
+
+#homology 90
+seq90_87f <- cdhit(seq50_87, thresh = 0.9, word_length = 5, only_signal = TRUE)
+seq90_10f <- cdhit(seq50_10, thresh = 0.9, word_length = 5, only_signal = TRUE)
+
+signalHsmm1987NOHOM90 <- train_hsmm(seq50_87[seq90_87f], aaaggregation)
+signalHsmm2010NOHOM90 <- train_hsmm(seq50_10[seq90_10f], aaaggregation)
 
 
 # BENCHMARK - PLASMODIUM -------------------------------------------------
@@ -111,14 +119,22 @@ signalHsmm2010NOHOMO <- train_hsmm(seq50_10[seq50_10f], aaaggregation)
 
 metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)), 
                              data.frame(read_other_software("./plasmodium_benchmark_results"), 
-                                        get_signalHsmm_preds(list(signalHsmm2010, signalHsmm2010NODEG, signalHsmm2010NOHOMO, 
-                                                                  signalHsmm1987, signalHsmm1987NODEG, signalHsmm1987NOHOMO),
+                                        get_signalHsmm_preds(list(signalHsmm2010, 
+                                                                  signalHsmm2010NODEG, 
+                                                                  signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+                                                                  signalHsmm1987, 
+                                                                  signalHsmm1987NODEG, 
+                                                                  signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                              "./plasmodium_benchmark_data/benchmark_plas_data.fasta")), 0.005)
 
 # BENCHMARK - ALL -------------------------------------------------
 
 metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)), 
                             data.frame(read_other_software("./benchmark_results"), 
-                                       get_signalHsmm_preds(list(signalHsmm2010, signalHsmm2010NODEG, signalHsmm2010NOHOMO, 
-                                                                 signalHsmm1987, signalHsmm1987NODEG, signalHsmm1987NOHOMO),
+                                       get_signalHsmm_preds(list(signalHsmm2010, 
+                                                                 signalHsmm2010NODEG, 
+                                                                 signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+                                                                 signalHsmm1987, 
+                                                                 signalHsmm1987NODEG, 
+                                                                 signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                             "./benchmark_data/benchmark_data.fasta")), 0.005)

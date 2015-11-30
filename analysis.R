@@ -1,5 +1,3 @@
-#set data source
-
 require(XML)
 require(seqinr)
 require(fitdistrplus)
@@ -11,9 +9,9 @@ require(reshape2)
 require(hmeasure)
 require(xtable)
 require(biogram)
-library(ggplot2)
-library(grid)
-library(gridExtra)
+require(ggplot2)
+require(grid)
+require(gridExtra)
 
 if(Sys.info()["nodename"] == "phobos" )
   pathway <- "/home/michal/Dropbox/signal-peptide2_data/"

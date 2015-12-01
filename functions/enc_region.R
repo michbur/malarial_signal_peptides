@@ -9,16 +9,16 @@
 #' sensitivity encoding and d) the best specificity encoding.
 
 create_enc_region <- function(p1_dat) {
-
+  
   group2df <- function(group_list, caption = NULL, label = NULL) {
     tab <- data.frame(Groups = sapply(group_list, function(i)
       paste0(toupper(sort(i)), collapse = ", ")))
     rws <- seq(1, nrow(tab) - 1, by = 2)
     col <- rep("\\rowcolor[gray]{0.85}", length(rws))
     print(xtable(tab, caption = caption, label = label), include.rownames = FALSE, booktabs = TRUE,
-          add.to.row = list(pos = as.list(rws), command = col), print.results = FALSE)
+          add.to.row = list(pos = as.list(rws), command = col), print.results = FALSE, caption.placement = "top")
   }
-
+  
   data(aaindex)
   
   #normalized values of amino acids 
@@ -67,7 +67,8 @@ create_enc_region <- function(p1_dat) {
   
   nhc_borders <- t(sapply(pos_seqs, find_nhc))
   
-  deg_pos <- lapply(list(group_best, group_worst), function(single_encoding)
+  deg_pos <- lapply(list(group_best, group_worst), function(single_encoding) {
+    single_encoding <- lapply(single_encoding, toupper)
     lapply(1L:length(pos_seqs), function(seq_id) {
       single_seq <- pos_seqs[[seq_id]]
       aa_n <- single_seq[1L:(nhc_borders[seq_id, "start_h"] - 1)]
@@ -80,7 +81,8 @@ create_enc_region <- function(p1_dat) {
                   aa_m = aa_mature)
       lapply(res, function(i) 
         degenerate(i, single_encoding))
-    }))
+    })
+  })
   
   deg_region <- do.call(rbind, lapply(deg_pos, function(single_encoding)
     cbind(region = unlist(lapply(c("n", "h", "c", "m"), function(i) rep(i, 4))), 
@@ -112,10 +114,8 @@ create_enc_region <- function(p1_dat) {
     scale_fill_manual("Encoding: ", values = c(adjustcolor("red", 0.25), adjustcolor("blue", 0.25))) + 
     guides(colour = FALSE) +
     my_theme
-  
-  
+
   #figure comparing encodings ---------------------------
-  data(aaindex)
   group_properties <- function(group) {
     res <- do.call(rbind, lapply(1L:length(group), function(subgroup_id)
       melt(data.frame(group = paste0("Group ", as.character(rep(subgroup_id, 4))), critertion = c("size", "hydroph", "polarity", "alpha"),

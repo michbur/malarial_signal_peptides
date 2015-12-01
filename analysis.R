@@ -165,10 +165,3 @@ metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)),
                                                             "./benchmark_data/benchmark_data.fasta")), 0.005)
 
 
-# seqs <- read.fasta("./benchmark_data/benchmark_data.fasta", seqtype = "AA")
-# options(warn=0)
-# lapply(seqs, function(i) {
-#   predict(old_model, i)
-# })
-# #debug(signalHsmm:::signalHsmm_decision)
-# predict(signalHsmm2010NODEG, seqs[["sp|B3A0K0|FAR5_PACBA"]])

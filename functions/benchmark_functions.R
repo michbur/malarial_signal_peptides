@@ -86,7 +86,7 @@ read_other_software <- function(directory_name) {
                              signalP3nn = read_signalp3nn(paste0(directory_name, "/signalP30.txt")),
                              signalP3hmm = read_signalp3hmm(paste0(directory_name, "/signalP30.txt")),
                              predsi = read_predsi(paste0(directory_name, "/predsi.txt")),
-                             #philius = read_philius(paste0(directory_name, "/philius.xml")),
+                             philius = read_philius(paste0(directory_name, "/philius.xml")),
                              phobius = read_phobius(paste0(directory_name, "/phobius.txt"))), function(predictor)
                                predictor[["sp.probability"]]))
 }
@@ -131,6 +131,47 @@ get_signalHsmm_preds <- function(list_of_predictors, connection) {
   res
 }
 
+#' Format benchmark table
+#'
+#' Format table returned by \code{calc_metrics}. Automatically adds citations, bolds 
+#' highest measures and so on.
+#'
+#' @param x \code{data.frame} of benchmark data - output of \code{calc_metrics}.
+#' @param caption caption.
+#' @param label label.
+#'
+#' @return a \code{xtable} object.
+format_bench_table <- function(x, caption, label) {
+  bold_max <- function(x) {
+    nx <- as.numeric(x)
+    x[x = max(nx)] <- paste0("\\textbf{", x[x = max(nx)], "}")
+    x
+  }
+  
+  tab <- data.frame(x)[, c("AUC", "Sens", "Spec", "MCC")] %>%
+    format(digits = 4) %>% mutate(AUC = bold_max(AUC),
+                                  Sens = bold_max(Sens),
+                                  Spec = bold_max(Spec),
+                                  MCC = bold_max(MCC))
+  colnames(tab) <- c("AUC", "Sensitivity", "Specificity", "MCC")
+  rownames(tab) <- c("signalP 4.1 (no tm) \\cite{2011petersensignalp}",
+                     "signalP 4.1 (tm) \\cite{2011petersensignalp}",
+                     "signalP 3.0 (NN) \\cite{bendtsen_improved_2004}",
+                     "signalP 3.0 (HMM) \\cite{bendtsen_improved_2004}",
+                     "PrediSi \\cite{2004hillerpredisi}",
+                     "Phobius \\cite{2004klla}",
+                     "Philius \\cite{2008reynoldstransmembrane}",
+                     "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 90%)", "signalHsmm2010 (hom. 50%)", 
+                     "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 90%)", "signalHsmm1987 (hom. 50%)")
+  
+  rws <- seq(1, nrow(tab) - 1, by = 2)
+  col <- rep("\\rowcolor[gray]{0.85}", length(rws))
+  
+  res <- print(xtable(tab, caption = caption, label = label), include.rownames = TRUE, booktabs = TRUE,
+               add.to.row = list(pos = as.list(rws), command = col), print.results = FALSE, caption.placement = "top",
+               sanitize.text.function = identity, sanitize.rownames.function = identity)
+  res
+}
 
 # count_signals <- function(connection) {
 #   lines <- readLines(connection)

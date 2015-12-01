@@ -78,7 +78,7 @@ seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 20100000] AND reviewed:yes
 #2372 proteins, 2313 after purification
 seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
-    
+
 #iterations without degeneration
 #aas <- tolower(a()[-1])
 aas <- a()[-1]
@@ -131,6 +131,26 @@ metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)),
                                                                   signalHsmm1987NODEG, 
                                                                   signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                              "./plasmodium_benchmark_data/benchmark_plas_data.fasta")), 0.005)
+
+# BENCHMARK - PLASMODIUM HOMOLOGY REDUCED -------------------------------------------------
+
+all_seqs_plas <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta")
+all_seqs_plasf <- cdhit(all_seqs_plas, thresh = 0.5, word_length = 2, only_signal = FALSE)
+et <- c(rep(1, 102), rep(0, 358))
+names(et) <- names(all_seqs_plas)
+write.fasta(lapply(all_seqs_plas[all_seqs_plasf], function(i) i[1L:150]), 
+            names = all_seqs_plasf, 
+            file.out = "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")
+
+metrics_plas_NOHOM <- calc_metrics(et[all_seqs_plasf], 
+                                   data.frame(read_other_software("./plasmodium_benchmark_results_NOHOM"), 
+                                              get_signalHsmm_preds(list(signalHsmm2010, 
+                                                                        signalHsmm2010NODEG, 
+                                                                        signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+                                                                        signalHsmm1987, 
+                                                                        signalHsmm1987NODEG, 
+                                                                        signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+                                                                   "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")), 0.005)
 
 # BENCHMARK - ALL -------------------------------------------------
 

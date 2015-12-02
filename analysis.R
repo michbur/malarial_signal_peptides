@@ -164,4 +164,29 @@ metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)),
                                                                  signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                             "./benchmark_data/benchmark_data.fasta")), 0.005)
 
+# BENCHMARK - ALL NO HOMOLOGOUS -------------------------------------
 
+# removal of homologs is commented out (time consuming)
+# sp_seqs <- read.fasta("./benchmark_data/sp2010_2015.fasta", seqtype = "AA")
+# nsp_seqs <- read.fasta("./benchmark_data/nsp2010_2015.fasta", seqtype = "AA")
+# 
+# sp_seqsf <- cdhit(sp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
+# nsp_seqsf <- cdhit(nsp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
+# 
+# set.seed(1)
+# chosen_nsp <- nsp_seqsf[sample(1L:length(nsp_seqsf), length(sp_seqsf), replace = FALSE)]
+# seq_NOHOM <- c(sp_seqs[sp_seqsf], nsp_seqs[chosen_nsp])
+# 
+# write.fasta(lapply(seq_NOHOM, function(i) i[1L:ifelse(length(i) > 150, 150, length(i))]), 
+#             names = names(seq_NOHOM), 
+#             file.out = "./benchmark_data/benchmark_data_NOHOM.fasta")
+
+metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
+                              data.frame(read_other_software("./benchmark_results_NOHOM"),
+                                         get_signalHsmm_preds(list(signalHsmm2010, 
+                                                                   signalHsmm2010NODEG, 
+                                                                   signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+                                                                   signalHsmm1987, 
+                                                                   signalHsmm1987NODEG, 
+                                                                   signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+                                                              "./benchmark_data/benchmark_data_NOHOM.fasta")), 0.005)

@@ -151,8 +151,8 @@ format_bench_table <- function(x, caption, label) {
   colnames(tab) <- c("AUC", "Sensitivity", "Specificity", "MCC")
   rownames(tab) <- c("signalP 4.1 (no tm) \\cite{2011petersensignalp}",
                      "signalP 4.1 (tm) \\cite{2011petersensignalp}",
-                     "signalP 3.0 (NN) \\cite{bendtsen_improved_2004}",
-                     "signalP 3.0 (HMM) \\cite{bendtsen_improved_2004}",
+                     "signalP 3.0 (NN) \\cite{2004bendtsenimproved}",
+                     "signalP 3.0 (HMM) \\cite{2004bendtsenimproved}",
                      "PrediSi \\cite{2004hillerpredisi}",
                      "Phobius \\cite{2004klla}",
                      "Philius \\cite{2008reynoldstransmembrane}",

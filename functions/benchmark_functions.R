@@ -10,21 +10,16 @@
 read_other_software <- function(directory_name) {
   
   read_signalp41 <- function(connection) {
-    all_lines <- readLines(connection)[-c(1L:2)]
-    do.call(rbind, lapply(all_lines, function(i) {
-      line <- strsplit(i, " ")[[1]]
-      line <- line[!line == ""]
-      res <- data.frame(sp.probability = line[10] == "Y",
-                        sp.start = ifelse(line[10] == "Y", 1, NA),
-                        sp.end = ifelse(line[10] == "Y", as.numeric(line[5]) - 1, NA))
-      rownames(res) <- line[1]
-      res
-    }))
+    dat <- read.table(connection)
+    
+    data.frame(sp.probability = dat[, 10] == "Y",
+               sp.start = ifelse(dat[, 10] == "Y", 1, NA),
+               sp.end = ifelse(dat[, 10] == "Y", as.numeric(dat[, 5]) - 1, NA))
   }
   
   read_signalp3 <- function(connection) {
     #columns: nn Ymax, nn Ymax position, hmm Ymax 
-    dat <- do.call(rbind, strsplit(readLines(connection)[-1], " +"))[, c(5, 6, 17, 19)]
+    dat <- do.call(rbind, strsplit(readLines(connection)[-1], " +"))[, c(13, 6, 17, 19)] #mean D for NN and Signal peptide probability for HMM
     res <- data.frame(t(apply(dat, 1, as.numeric)))
     colnames(res) <- c("nn_prob", "nn_pos", "hmm_prob", "hmm_pos")
     res
@@ -79,7 +74,6 @@ read_other_software <- function(directory_name) {
     res[cleaved, "sig.end"] <- as.numeric(sapply(table_dat[cleaved], function(i) i[2])) - 1
     res
   }
-  
   
   do.call(cbind, lapply(list(signalP41notm = read_signalp41(paste0(directory_name, "/signaP41notm.txt")), 
                              signalP41tm = read_signalp41(paste0(directory_name, "/signaP41tm.txt")), 
@@ -144,7 +138,7 @@ get_signalHsmm_preds <- function(list_of_predictors, connection) {
 format_bench_table <- function(x, caption, label) {
   bold_max <- function(x) {
     nx <- as.numeric(x)
-    x[x = max(nx)] <- paste0("\\textbf{", x[x = max(nx)], "}")
+    x[nx == max(nx)] <- paste0("\\textbf{", x[nx == max(nx)], "}")
     x
   }
   
@@ -153,6 +147,7 @@ format_bench_table <- function(x, caption, label) {
                                   Sens = bold_max(Sens),
                                   Spec = bold_max(Spec),
                                   MCC = bold_max(MCC))
+  
   colnames(tab) <- c("AUC", "Sensitivity", "Specificity", "MCC")
   rownames(tab) <- c("signalP 4.1 (no tm) \\cite{2011petersensignalp}",
                      "signalP 4.1 (tm) \\cite{2011petersensignalp}",
@@ -161,8 +156,8 @@ format_bench_table <- function(x, caption, label) {
                      "PrediSi \\cite{2004hillerpredisi}",
                      "Phobius \\cite{2004klla}",
                      "Philius \\cite{2008reynoldstransmembrane}",
-                     "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 90%)", "signalHsmm2010 (hom. 50%)", 
-                     "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 90%)", "signalHsmm1987 (hom. 50%)")
+                     "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 90\\%)", "signalHsmm2010 (hom. 50\\%)", 
+                     "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 90\\%)", "signalHsmm1987 (hom. 50\\%)")
   
   rws <- seq(1, nrow(tab) - 1, by = 2)
   col <- rep("\\rowcolor[gray]{0.85}", length(rws))

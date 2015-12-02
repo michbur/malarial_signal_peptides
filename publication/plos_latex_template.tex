@@ -252,7 +252,7 @@ Since the functionality of signal peptides depends on the physicochemical proper
 
 \subsection*{Data selection}
 
-Eukaryotic protein sequences and their annotations were downloaded from UniProt database release 2015\_06. The preparations included the usual removal of sequences with more than one cleavage site, unknown cleavage site position, ambiguous symbols: X, J, Z, B or selenocysteine (U) from the final data set. The positive set contained 102 sequences with a signal peptide, containing its start and cleavage site information. The negative set comprised 358 sequences without any signal peptide annotation. All proteins belonged to the organisms from Plasmodiidae family.
+Since there are no experimentally confirmed signal peptides of proteins belonging \textit{Plasmodiidae}, we decided to train the predictor using signal peptides of other Eukaryotes. Eukaryotic protein sequences and their annotations were downloaded from UniProt database release 2015\_06. The preparations included the usual removal of sequences with more than one cleavage site, unknown cleavage site position, ambiguous symbols: X, J, Z, B or selenocysteine (U) from the final data set. The positive set contained 102 sequences with a signal peptide, containing its start and cleavage site information. The negative set comprised 358 sequences without any signal peptide annotation. All proteins belonged to the organisms from Plasmodiidae family.
 
 \subsection*{Clustering of amino acids}
 
@@ -263,7 +263,7 @@ signalHsmm is not the first software which uses amino acid encoding in signal pe
 \caption{Properties used in amino acid clusterization.} 
 \begin{tabular}{ll}
   \toprule
-Property name & Amino acid scale and its reference \\ 
+Property name & Amino acid scale \\ 
   \midrule
 Size & Size~\cite{dawson1972size} \\ 
    \rowcolor[gray]{0.85}Size & Molecular weight~\cite{fasman1976handbook}\\ 
@@ -465,7 +465,7 @@ AUC & 0.9682 & 0.0023 \\
 
 \subsection*{Comparison of encodings}
 
-We examined in detail encodings with the best sensitivity and the best specificity (Tab.~\ref{tab:best}, Tab.~\ref{tab:worst} and Fig.~\ref{fig:enccomp}). In both cases, the group 1 tends to contain average-sized polar amino acids. In the best sensitivity encoding, all charged amino acids, both acidic and basic (also weakly basic histidine)   belong to this group. These amino acids are nearly absent from h-region and provide very good distinction between regions of signal peptide (Fig.~\ref{fig:enccomp}). In the best specificity encoding, where polar and charged character of the group 1 is not so explicit, the difference in its distribution between the regions is also less visible.
+We examined in detail encodings with the best sensitivity and the best specificity (Tab.~\ref{tab:best}, Tab.~\ref{tab:worst} and Fig.~\ref{fig:enccomp}). In both cases, the group 1 tends to contain average-sized polar amino acids. In the best sensitivity encoding, all charged amino acids, both acidic and basic (also weakly basic histidine) belong to this group. These amino acids are nearly absent from h-region and provide very good distinction between regions of signal peptide (Fig.~\ref{fig:enccomp}). In the best specificity encoding, where polar and charged character of the group 1 is not so explicit, the difference in its distribution between the regions is also less visible.
 The amino acids belonging to the group 2 have a quite low probability of occurrence in $\alpha$-helix and are very diverse. This group includes polar but uncharged serine and threonine as well as hydrophobic tyrosine, aliphatic glycine and proline. In the best specificity encoding, the polar character of this group is emphasized by the addition of asparagine and aspartic acid. Despite these differences, the distribution of group 2 seems to be comparable in two encodings. The both groupings have strongly non-polar and aliphatic group 3 containing isoleucine, leucine, methionine and valine. The hydrophobic property of this group in the best sensitivity encoding are even more pronounced by the presence of tryptophan and phenylalanine. On the contrary, more polar histidine belongs to the group 3 in the best specificity encoding. Because of the hydrophobic character, this group dominates in the h-region in the case of both amino acid classifications.
 The fourth group is the most diverse in both encodings. In the case of the best specificity encoding, this group comprises aromatic amino acids: phenylalanine, tryptophan and tyrosine. In contrast, the group 4 in the best sensitivity encoding contains only alanine and cysteine, which both are rather small amino acids and tend to appear in $\alpha$-helices. This very unique composition seems to be typical of the c-region of signal peptide.
 
@@ -473,49 +473,51 @@ The encoding of amino acid plays crucial role in the recognition of signal pepti
 
 \subsection*{Benchmark tests}
 
-To provide the honest comparison, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (an iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1. Interestingly, our algorithm performed very well even if it was trained on a very small sets including only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 was able to very accurately predict a signal peptide, even better than predictors trained on richer data sets. It indicates that signalHsmm is very stable and able to recover the structure of signal peptides from even very small data sets (Tab.~\ref{tab:bench2010}).
+To provide the honest comparison, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (an iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1, the newest classifier present in the benchmark. We also prepared much smaller data set, including only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 iteration has to extract the signal peptide model from data set much limited than training sets of any classifier included in the benchmark.
+
+The testing data set extracted from UniProt data base contained 102 sequences with a signal peptide and 358 sequences without it belonging to organisms from \textit{Plasmodiidae} family. The homology of tested sequences was reduced by cd-hit (identity threshold 50\%, word length 2). For sequences with signal peptide, we use only signal peptides for homology reduction. For protein without signal peptide, we used first 70 amino acids as proposed elsewhere~\cite{1997nielsenidentification}.
+
+Together with signalHsmm, we evaluated several signal peptide predicting algorithms: signalP 4.1, PrediSi, Phobius and Philius (See Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for all performance measures).. signalP 3.0 was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa (CITE APICOAP HERE).
+
+We trained several versions of signalHsmm  based on iteration described above to separately check improvements introduced by our software: a new probabilistic model (hidden semi-Markov models) and a simplified alphabet of amino acids. The latter was addressed by training signalHsmm on raw amino acids sequences (denoted 'raw aa' in the table). The performance of this iteration was slightly lower than performance of its counterpart trained on the reduced alphabet. This result confirms that unique function of signal peptide does not depend on specific amino acids, but on more general features.
+
+The advantage of hidden semi-Markov model over normal Markov model can be seen through the comparison of the signalHsmm with signal peptide predictors utilizing HMM: Phobius, Philius and signalP 3.0 (HMM).
+
+Although we
+
+The signalHsmm-1987 was able to very accurately predict a signal peptide, even better than predictors trained on richer data sets.
+
+
 
 \begin{table}[ht]
 \centering
-\caption{Comparison of Area Under the Curve, Sensitivity, Specificity and Matthews Correlation Coefficient for different classifiers.} 
-\begin{tabular}{lrrrr}
-  \toprule
-Software name & AUC & Sensitivity & Specificity & MCC \\ 
-  \midrule
-signalP 4.1 (no tm) \cite{2011petersensignalp} & 0.9416 & \textbf{0.9720} & 0.9112 & 0.8848 \\ 
-   \rowcolor[gray]{0.85}signalP 4.1 (tm) \cite{2011petersensignalp} & 0.9673 & 0.9579 & \textbf{0.9766} & \textbf{0.9347} \\ 
-  PrediSi \cite{2004hillerpredisi} & 0.8949 & 0.9065 & 0.8832 & 0.7899 \\ 
-   \rowcolor[gray]{0.85}Phobius \cite{2004klla} & 0.9509 & 0.9673 & 0.9346 & 0.9024 \\ 
-  Philius \cite{2008reynoldstransmembrane} & 0.9369 & 0.9533 & 0.9206 & 0.8743 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-2010 & 0.9526 & 0.9533 & 0.8832 & 0.8385 \\ 
-  signalHsmm-1989 & 0.9562 & 0.9626 & 0.8972 & 0.8617 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-2010 with k-mers & \textbf{0.9679} & 0.9673 & 0.9112 & 0.8799 \\ 
-   \bottomrule
-\end{tabular}
-\label{tab:bench2010}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\caption{Comparison of Area Under the Curve, H-measure and Matthews Correlation Coefficient for different classifiers considering only proteins belonging to Plasmodiidae.} 
-\begin{tabular}{lrrrr}
-  \toprule
-Software name & AUC & Sensitivity & Specificity & MCC \\ 
-  \midrule
-signalP 4.1 (no tm) \cite{2011petersensignalp} & 0.8356 & 0.7745 & 0.8966 & 0.6420 \\ 
-   \rowcolor[gray]{0.85}signalP 4.1 (tm) \cite{2011petersensignalp} & 0.7928 & 0.6471 & 0.9385 & 0.6185 \\ 
-  PrediSi \cite{2004hillerpredisi} & 0.6597 & 0.3725 & 0.9469 & 0.4028 \\ 
-   \rowcolor[gray]{0.85}Phobius \cite{2004klla} & 0.7963 & 0.6765 & 0.9162 & 0.5991 \\ 
-  Philius \cite{2008reynoldstransmembrane} & 0.7753 & 0.6176 & 0.9330 & 0.5841 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-2010 & \textbf{0.9340} & \textbf{1.0000} & 0.8436 & \textbf{0.7380} \\ 
-  signalHsmm-1989 & 0.9326 & 0.9510 & \textbf{0.8631} & 0.7266 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-2010 with k-mers & 0.9334 & 0.9902 & 0.7989 & 0.6767 \\ 
-   \bottomrule
-\end{tabular}
+\caption{Comparison of Area Under the Curve, H-measure and Matthews Correlation Coefficient 
+for different classifiers considering proteins belonging to Plasmodiidae.} 
 \label{tab:bench2010plas}
+\begin{tabular}{rllll}
+  \toprule
+ & AUC & Sensitivity & Specificity & MCC \\ 
+  \midrule
+signalP 4.1 (no tm) \cite{2011petersensignalp} & 0.8816 & 0.8627 & 0.9005 & 0.6997 \\ 
+   \rowcolor[gray]{0.85}signalP 4.1 (tm) \cite{2011petersensignalp} & 0.7927 & 0.6471 & 0.9384 & 0.6093 \\ 
+  signalP 3.0 (NN) \cite{bendtsen_improved_2004} & 0.8938 & 0.8824 & 0.9052 & \textbf{0.7220} \\ 
+   \rowcolor[gray]{0.85}signalP 3.0 (HMM) \cite{bendtsen_improved_2004} & 0.7773 & \textbf{1.0000} & 0.5545 & 0.4416 \\ 
+  PrediSi \cite{2004hillerpredisi} & 0.6453 & 0.3333 & \textbf{0.9573} & 0.3849 \\ 
+   \rowcolor[gray]{0.85}Phobius \cite{2004klla} & 0.7707 & 0.6078 & 0.9336 & 0.5684 \\ 
+  Philius \cite{2008reynoldstransmembrane} & 0.7880 & 0.6471 & 0.9289 & 0.5895 \\ 
+   \rowcolor[gray]{0.85}signalHsmm-2010 & \textbf{0.9372} & \textbf{1.0000} & 0.7583 & 0.6157 \\ 
+  signalHsmm-2010 (raw aa) & 0.9216 & 0.9608 & 0.7109 & 0.5389 \\ 
+   \rowcolor[gray]{0.85}signalHsmm2010 (hom. 90\%) & 0.9354 & \textbf{1.0000} & 0.7536 & 0.6108 \\ 
+  signalHsmm2010 (hom. 50\%) & 0.9371 & \textbf{1.0000} & 0.7251 & 0.5825 \\ 
+   \rowcolor[gray]{0.85}signalHsmm-1987 & 0.9356 & 0.9608 & 0.8057 & 0.6391 \\ 
+  signalHsmm-1987 (raw aa) & 0.9215 & 0.9608 & 0.8152 & 0.6505 \\ 
+   \rowcolor[gray]{0.85}signalHsmm1987 (hom. 90\%) & 0.9357 & 0.9608 & 0.8057 & 0.6391 \\ 
+  signalHsmm1987 (hom. 50\%) & 0.9358 & 0.9804 & 0.7962 & 0.6426 \\ 
+   \bottomrule
+\end{tabular}
 \end{table}
 
-To check universality of our probabilistic model, we also validated it on signal peptides belonging to specific taxonomic groups. As an example, we chose the \textit{Plasmodiidae} family including malaria parasites because of their medical significance. The testing data set extracted from UniProt data base contained 102 sequences with a signal peptide and 358 sequences without it. Interestingly, signalHsmm showed much better performance than other algorithms (Tab.~\ref{tab:bench2010plas}). Since our algorithm considers more general decision rules, it is able to recognize also atypical signal peptides.
+To check universality of our probabilistic model, we also validated it on signal peptides belonging to specific taxonomic groups. As an example, we chose the  including malaria parasites because of their medical significance.  Interestingly, signalHsmm showed much better performance than other algorithms (Tab.~\ref{tab:bench2010plas}). Since our algorithm considers more general decision rules, it is able to recognize also atypical signal peptides.
 
 
 \subsection*{Conclusions}
@@ -549,7 +551,7 @@ The signalHsmm prediction web-server is available at: \url{http://smorfland.uni.
 {\bf Lorem Ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
 
 \subsection*{S1 Table}
-\label{S1_Table}
+\label{tab:bench2010plas_full}
 {\bf Lorem Ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
 
 \section*{Acknowledgments}

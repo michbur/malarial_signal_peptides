@@ -152,6 +152,14 @@ metrics_plas_NOHOM <- calc_metrics(et[all_seqs_plasf],
                                                                         signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                                    "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")), 0.005)
 
+write.csv(metrics_plas_NOHOM, file = "./publication/supplements/S1_plasmodium_benchmark.csv")
+
+pub_tab <- format_bench_table(metrics_plas_NOHOM, 
+                              caption = "Comparison of Area Under the Curve, H-measure and Matthews Correlation Coefficient 
+for different classifiers considering proteins belonging to Plasmodiidae.",
+                              "tab:bench2010plas")
+cat(pub_tab)
+
 # BENCHMARK - ALL -------------------------------------------------
 
 metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)), 
@@ -190,3 +198,5 @@ metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_s
                                                                    signalHsmm1987NODEG, 
                                                                    signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                               "./benchmark_data/benchmark_data_NOHOM.fasta")), 0.005)
+
+write.csv(metrics_all_NOHOM, file = "./publication/supplements/S2_general_benchmark.csv")

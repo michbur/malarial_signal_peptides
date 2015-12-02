@@ -134,7 +134,7 @@ metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)),
 
 # BENCHMARK - PLASMODIUM HOMOLOGY REDUCED -------------------------------------------------
 
-all_seqs_plas <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta")
+all_seqs_plas <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta", seqtype = "AA")
 all_seqs_plasf <- cdhit(all_seqs_plas, thresh = 0.5, word_length = 2, only_signal = FALSE)
 et <- c(rep(1, 102), rep(0, 358))
 names(et) <- names(all_seqs_plas)

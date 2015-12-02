@@ -105,7 +105,8 @@ plot_cvplot <- function(p1_dat) {
   col <- rep("\\rowcolor[gray]{0.85}", length(rws))
   xtab <- print(xtable(tab, caption = "Performance measures for the best encoding. 60 repetitions of cross-validation.", 
                label = "tab:perfmeas", digits = 4), include.rownames = FALSE, booktabs = TRUE,
-        add.to.row = list(pos = as.list(rws), command = col), print.results = FALSE)
+        add.to.row = list(pos = as.list(rws), command = col), print.results = FALSE,
+        caption.placement = "top")
   
   
   list(plot = p1, 

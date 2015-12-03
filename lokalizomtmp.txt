@@ -6876,6 +6876,34 @@ J Parasitol Res. 2012;2012:852591. doi: 10.1155/2012/852591. Epub 2011 Aug 18.},
 }
 
 @article{
+   author = {Fu, L. and Niu, B. and Zhu, Z. and Wu, S. and Li, W.},
+   title = {CD-HIT: accelerated for clustering the next-generation sequencing data},
+   journal = {Bioinformatics},
+   volume = {28},
+   number = {23},
+   pages = {3150-2},
+   note = {Fu, Limin
+Niu, Beifang
+Zhu, Zhengwei
+Wu, Sitao
+Li, Weizhong
+R01 HG005978/HG/NHGRI NIH HHS/
+R01 RR025030/RR/NCRR NIH HHS/
+R01HG005978/HG/NHGRI NIH HHS/
+R01RR025030/RR/NCRR NIH HHS/
+England
+Oxford, England
+Bioinformatics. 2012 Dec 1;28(23):3150-2. doi: 10.1093/bioinformatics/bts565. Epub 2012 Oct 11.},
+   abstract = {SUMMARY: CD-HIT is a widely used program for clustering biological sequences to reduce sequence redundancy and improve the performance of other sequence analyses. In response to the rapid increase in the amount of sequencing data produced by the next-generation sequencing technologies, we have developed a new CD-HIT program accelerated with a novel parallelization strategy and some other techniques to allow efficient clustering of such datasets. Our tests demonstrated very good speedup derived from the parallelization for up to approximately 24 cores and a quasi-linear speedup for up to approximately 8 cores. The enhanced CD-HIT is capable of handling very large datasets in much shorter time than previous versions. AVAILABILITY: http://cd-hit.org. CONTACT: liwz@sdsc.edu SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
+   keywords = {Algorithms
+Cluster Analysis
+Computational Biology/*methods
+Sequence Analysis, Protein/*methods
+*Software},
+   year = {2012}
+}
+
+@article{
    author = {Fujiwara, Yukiko and Asogawa, Minoru and Nakai, Kenta},
    title = {Prediction of Mitochondrial Targeting Signals Using Hidden Markov Models},
 
@@ -9335,6 +9363,39 @@ Sequence Alignment
 Temperature
 *Thermodynamics},
    year = {2006}
+}
+
+@article{
+   author = {Huang, Y. and Niu, B. and Gao, Y. and Fu, L. and Li, W.},
+   title = {CD-HIT Suite: a web server for clustering and comparing biological sequences},
+   journal = {Bioinformatics},
+   volume = {26},
+   number = {5},
+   pages = {680-2},
+   note = {Huang, Ying
+Niu, Beifang
+Gao, Ying
+Fu, Limin
+Li, Weizhong
+1R01RR025030/RR/NCRR NIH HHS/
+R01 RR025030/RR/NCRR NIH HHS/
+R01 RR025030-01/RR/NCRR NIH HHS/
+R01 RR025030-02/RR/NCRR NIH HHS/
+R01 RR025030-02S1/RR/NCRR NIH HHS/
+R01 RR025030-03/RR/NCRR NIH HHS/
+England
+Oxford, England
+Bioinformatics. 2010 Mar 1;26(5):680-2. doi: 10.1093/bioinformatics/btq003. Epub 2010 Jan 6.},
+   abstract = {CD-HIT is a widely used program for clustering and comparing large biological sequence datasets. In order to further assist the CD-HIT users, we significantly improved this program with more functions and better accuracy, scalability and flexibility. Most importantly, we developed a new web server, CD-HIT Suite, for clustering a user-uploaded sequence dataset or comparing it to another dataset at different identity levels. Users can now interactively explore the clusters within web browsers. We also provide downloadable clusters for several public databases (NCBI NR, Swissprot and PDB) at different identity levels. AVAILABILITY: Free access at http://cd-hit.org},
+   keywords = {Cluster Analysis
+Computational Biology/methods
+Databases, Genetic
+Internet
+Sequence Alignment
+*Sequence Analysis
+*Software
+User-Computer Interface},
+   year = {2010}
 }
 
 @article{
@@ -12740,6 +12801,36 @@ Internet
 Phylogeny
 Proteomics},
    year = {2004}
+}
+
+@article{
+   author = {Li, W. and Godzik, A.},
+   title = {Cd-hit: a fast program for clustering and comparing large sets of protein or nucleotide sequences},
+   journal = {Bioinformatics},
+   volume = {22},
+   number = {13},
+   pages = {1658-9},
+   note = {Li, Weizhong
+Godzik, Adam
+England
+Oxford, England
+Bioinformatics. 2006 Jul 1;22(13):1658-9. Epub 2006 May 26.},
+   abstract = {MOTIVATION: In 2001 and 2002, we published two papers (Bioinformatics, 17, 282-283, Bioinformatics, 18, 77-82) describing an ultrafast protein sequence clustering program called cd-hit. This program can efficiently cluster a huge protein database with millions of sequences. However, the applications of the underlying algorithm are not limited to only protein sequences clustering, here we present several new programs using the same algorithm including cd-hit-2d, cd-hit-est and cd-hit-est-2d. Cd-hit-2d compares two protein datasets and reports similar matches between them; cd-hit-est clusters a DNA/RNA sequence database and cd-hit-est-2d compares two nucleotide datasets. All these programs can handle huge datasets with millions of sequences and can be hundreds of times faster than methods based on the popular sequence comparison and database search tools, such as BLAST.},
+   keywords = {Algorithms
+Animals
+*Cluster Analysis
+Computational Biology/*methods
+DNA/chemistry
+Databases, Nucleic Acid
+Databases, Protein
+Expressed Sequence Tags
+Humans
+Programming Languages
+RNA/chemistry
+Sequence Analysis, DNA/*methods
+Sequence Analysis, Protein/*methods
+Software},
+   year = {2006}
 }
 
 @article{

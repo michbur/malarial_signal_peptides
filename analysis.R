@@ -122,15 +122,15 @@ signalHsmm2010NOHOM90 <- train_hsmm(seq50_10[seq90_10f], aaaggregation)
 #361 proteins, 358 proteins after purification
 
 
-metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)), 
-                             data.frame(read_other_software("./plasmodium_benchmark_results"), 
-                                        get_signalHsmm_preds(list(signalHsmm2010, 
-                                                                  signalHsmm2010NODEG, 
-                                                                  signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
-                                                                  signalHsmm1987, 
-                                                                  signalHsmm1987NODEG, 
-                                                                  signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
-                                                             "./plasmodium_benchmark_data/benchmark_plas_data.fasta")), 0.005)
+# metrics_plas <- calc_metrics(c(rep(1, 102), rep(0, 358)), 
+#                              data.frame(read_other_software("./plasmodium_benchmark_results"), 
+#                                         get_signalHsmm_preds(list(signalHsmm2010, 
+#                                                                   signalHsmm2010NODEG, 
+#                                                                   signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+#                                                                   signalHsmm1987, 
+#                                                                   signalHsmm1987NODEG, 
+#                                                                   signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+#                                                              "./plasmodium_benchmark_data/benchmark_plas_data.fasta")), 0.005)
 
 # BENCHMARK - PLASMODIUM HOMOLOGY REDUCED -------------------------------------------------
 
@@ -152,34 +152,34 @@ metrics_plas_NOHOM <- calc_metrics(et[all_seqs_plasf],
                                                                         signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
                                                                    "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")), 0.005)
 
-write.csv(metrics_plas_NOHOM, file = "./publication/supplements/S1_plasmodium_benchmark.csv")
+write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
 
 pub_tab <- format_bench_table(metrics_plas_NOHOM, 
                               caption = "Comparison of Area Under the Curve, H-measure and Matthews Correlation Coefficient 
-for different classifiers considering proteins belonging to Plasmodiidae.",
+for different classifiers considering proteins belonging to \\textit{Plasmodiidae}.",
                               "tab:bench2010plas")
 cat(pub_tab)
 
 # BENCHMARK - ALL -------------------------------------------------
 
-metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)), 
-                            data.frame(read_other_software("./benchmark_results"), 
-                                       get_signalHsmm_preds(list(signalHsmm2010, 
-                                                                 signalHsmm2010NODEG, 
-                                                                 signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
-                                                                 signalHsmm1987, 
-                                                                 signalHsmm1987NODEG, 
-                                                                 signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
-                                                            "./benchmark_data/benchmark_data.fasta")), 0.005)
+# metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)), 
+#                             data.frame(read_other_software("./benchmark_results"), 
+#                                        get_signalHsmm_preds(list(signalHsmm2010, 
+#                                                                  signalHsmm2010NODEG, 
+#                                                                  signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+#                                                                  signalHsmm1987, 
+#                                                                  signalHsmm1987NODEG, 
+#                                                                  signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+#                                                             "./benchmark_data/benchmark_data.fasta")), 0.005)
 
 # BENCHMARK - ALL NO HOMOLOGOUS -------------------------------------
 
 # removal of homologs is commented out (time consuming)
-# sp_seqs <- read.fasta("./benchmark_data/sp2010_2015.fasta", seqtype = "AA")
-# nsp_seqs <- read.fasta("./benchmark_data/nsp2010_2015.fasta", seqtype = "AA")
+sp_seqs <- read.fasta("./benchmark_data/sp2010_2015.fasta", seqtype = "AA")
+nsp_seqs <- read.fasta("./benchmark_data/nsp2010_2015.fasta", seqtype = "AA")
 # 
-# sp_seqsf <- cdhit(sp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
-# nsp_seqsf <- cdhit(nsp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
+sp_seqsf <- cdhit(sp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
+nsp_seqsf <- cdhit(nsp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
 # 
 # set.seed(1)
 # chosen_nsp <- nsp_seqsf[sample(1L:length(nsp_seqsf), length(sp_seqsf), replace = FALSE)]
@@ -189,14 +189,15 @@ metrics_all <- calc_metrics(c(rep(1, 214), rep(0, 214)),
 #             names = names(seq_NOHOM), 
 #             file.out = "./benchmark_data/benchmark_data_NOHOM.fasta")
 
-metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
-                              data.frame(read_other_software("./benchmark_results_NOHOM"),
-                                         get_signalHsmm_preds(list(signalHsmm2010, 
-                                                                   signalHsmm2010NODEG, 
-                                                                   signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
-                                                                   signalHsmm1987, 
-                                                                   signalHsmm1987NODEG, 
-                                                                   signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
-                                                              "./benchmark_data/benchmark_data_NOHOM.fasta")), 0.005)
+# metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
+metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)), 
+                                  data.frame(read_other_software("./benchmark_results_NOHOM"),
+                                             get_signalHsmm_preds(list(signalHsmm2010, 
+                                                                       signalHsmm2010NODEG, 
+                                                                       signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
+                                                                       signalHsmm1987, 
+                                                                       signalHsmm1987NODEG, 
+                                                                       signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+                                                                  "./benchmark_data/benchmark_data_NOHOM.fasta")), 0.005)
 
-write.csv(metrics_all_NOHOM, file = "./publication/supplements/S2_general_benchmark.csv")
+write.csv(round(metrics_all_NOHOM, 6), file = "./publication/supplements/S2_general_benchmark.csv")

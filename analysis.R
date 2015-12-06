@@ -25,6 +25,7 @@ source("./functions/cv_analysis.R")
 source("./functions/enc_region.R")
 source("./functions/benchmark_functions.R")
 source("./functions/cdhit.R")
+source("./functions/train_signalHsmms.R")
 
 
 
@@ -79,40 +80,12 @@ seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
 #2372 proteins, 2313 after purification
 seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
 
-#iterations without degeneration
-#aas <- tolower(a()[-1])
-aas <- a()[-1]
-names(aas) <- 1L:20
 
-signalHsmm2010NODEG <- train_hsmm(seq50_10, aas)
-signalHsmm1987NODEG <- train_hsmm(seq50_87, aas)
+signalHsmms87 <- train_signalHsmms(seq50_87)
+names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
 
-
-#iterations with degeneration
-# signalHsmm1987 <- train_hsmm(seq50_87, aaaggregation)
-# signalHsmm2010 <- train_hsmm(seq50_10, aaaggregation)
-signalHsmm1987 <- train_hsmm(seq50_87, aaaggregation)
-signalHsmm2010 <- train_hsmm(seq50_10, aaaggregation)
-
-#iterations with removal of homologs
-#homology 50
-seq50_87f <- cdhit(seq50_87, thresh = 0.5, word_length = 2, only_signal = TRUE)
-seq50_10f <- cdhit(seq50_10, thresh = 0.5, word_length = 2, only_signal = TRUE)
-
-# signalHsmm1987NOHOM50 <- train_hsmm(seq50_87[seq50_87f], aaaggregation)
-# signalHsmm2010NOHOM50 <- train_hsmm(seq50_10[seq50_10f], aaaggregation)
-signalHsmm1987NOHOM50 <- train_hsmm(seq50_87[seq50_87f], aaaggregation)
-signalHsmm2010NOHOM50 <- train_hsmm(seq50_10[seq50_10f], aaaggregation)
-
-#homology 90
-seq90_87f <- cdhit(seq50_87, thresh = 0.9, word_length = 5, only_signal = TRUE)
-seq90_10f <- cdhit(seq50_10, thresh = 0.9, word_length = 5, only_signal = TRUE)
-
-# signalHsmm1987NOHOM90 <- train_hsmm(seq50_87[seq90_87f], aaaggregation)
-# signalHsmm2010NOHOM90 <- train_hsmm(seq50_10[seq90_10f], aaaggregation)
-signalHsmm1987NOHOM90 <- train_hsmm(seq50_87[seq90_87f], aaaggregation)
-signalHsmm2010NOHOM90 <- train_hsmm(seq50_10[seq90_10f], aaaggregation)
-
+signalHsmms10 <- train_signalHsmms(seq50_10)
+names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
 
 # BENCHMARK - PLASMODIUM -------------------------------------------------
 
@@ -144,12 +117,7 @@ write.fasta(lapply(all_seqs_plas[all_seqs_plasf], function(i) i[1L:150]),
 
 metrics_plas_NOHOM <- calc_metrics(et[all_seqs_plasf], 
                                    data.frame(read_other_software("./plasmodium_benchmark_results_NOHOM"), 
-                                              get_signalHsmm_preds(list(signalHsmm2010, 
-                                                                        signalHsmm2010NODEG, 
-                                                                        signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
-                                                                        signalHsmm1987, 
-                                                                        signalHsmm1987NODEG, 
-                                                                        signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+                                              get_signalHsmm_preds(c(signalHsmms87, signalHsmms10),
                                                                    "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")), 0.005)
 
 write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
@@ -192,12 +160,7 @@ nsp_seqsf <- cdhit(nsp_seqs, thresh = 0.5, word_length = 2, only_signal = FALSE)
 # metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
 metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)), 
                                   data.frame(read_other_software("./benchmark_results_NOHOM"),
-                                             get_signalHsmm_preds(list(signalHsmm2010, 
-                                                                       signalHsmm2010NODEG, 
-                                                                       signalHsmm2010NOHOM90, signalHsmm2010NOHOM50, 
-                                                                       signalHsmm1987, 
-                                                                       signalHsmm1987NODEG, 
-                                                                       signalHsmm1987NOHOM90, signalHsmm1987NOHOM50),
+                                             get_signalHsmm_preds(c(signalHsmms87, signalHsmms10),
                                                                   "./benchmark_data/benchmark_data_NOHOM.fasta")), 0.005)
 
 write.csv(round(metrics_all_NOHOM, 6), file = "./publication/supplements/S2_general_benchmark.csv")

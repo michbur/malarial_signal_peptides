@@ -112,16 +112,17 @@ get_signalHsmm_preds <- function(list_of_predictors, connection) {
   seqs <- read.fasta(connection, seqtype = "AA")
   res <- sapply(list_of_predictors, function(single_predictor)
     pred2df(predict(single_predictor, seqs))[, "sp.probability"])
-  colnames(res) <- substitute(list_of_predictors) %>%
-    deparse %>%
-    paste0(collapse = "") %>% #paste too long calls
-    strsplit(., "(", fixed = TRUE) %>% 
-    unlist %>%
-    nth(2) %>%
-    strsplit(x = ., split = ")", fixed = TRUE) %>%
-    unlist %>%
-    strsplit(., ",[ ]+") %>%
-    unlist
+  colnames(res) <- names(list_of_predictors)
+#   colnames(res) <- substitute(list_of_predictors) %>%
+#     deparse %>%
+#     paste0(collapse = "") %>% #paste too long calls
+#     strsplit(., "(", fixed = TRUE) %>% 
+#     unlist %>%
+#     nth(2) %>%
+#     strsplit(x = ., split = ")", fixed = TRUE) %>%
+#     unlist %>%
+#     strsplit(., ",[ ]+") %>%
+#     unlist
   res
 }
 

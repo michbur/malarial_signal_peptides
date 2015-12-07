@@ -26,6 +26,7 @@ source("./functions/enc_region.R")
 source("./functions/benchmark_functions.R")
 source("./functions/cdhit.R")
 source("./functions/train_signalHsmms.R")
+source("./functions/signalHsmm_kmer.R")
 
 # DENSITY OF LENGTH DISTRIBUTION (BOTH SIGNAL PEPTIDES AND THEIR REGIONS) --------------------------
 
@@ -72,19 +73,19 @@ cat(enc_region[["best_spec"]])
 # data
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 19870000] AND reviewed:yes
 #354 proteins, 335 after purification
-#seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
+# seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
 
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 20100000] AND reviewed:yes
 #2372 proteins, 2313 after purification
-#seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
-
+# seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
+# 
 # signalHsmms10 <- train_signalHsmms(seq50_10)
 # names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
 # 
 # signalHsmms87 <- train_signalHsmms(seq50_87)
 # names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
-
-#save(signalHsmms87, signalHsmms10, file = "./cache/signalHsmms.RData")
+# 
+# save(signalHsmms87, signalHsmms10, file = "./cache/signalHsmms.RData")
 load("./cache/signalHsmms.RData")
 
 # BENCHMARK - PLASMODIUM HOMOLOGY REDUCED -------------------------------------------------
@@ -96,14 +97,19 @@ load("./cache/signalHsmms.RData")
 
 # all_seqs_plas <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data.fasta", seqtype = "AA")
 # all_seqs_plasf <- cdhit(all_seqs_plas, thresh = 0.5, word_length = 2, only_signal = FALSE)
-# et <- c(rep(1, 102), rep(0, 358))
-# names(et) <- names(all_seqs_plas)
 # write.fasta(lapply(all_seqs_plas[all_seqs_plasf], function(i) i[1L:150]), 
 #             names = all_seqs_plasf, 
 #             file.out = "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")
 
-metrics_plas_NOHOM <- calc_metrics(et[all_seqs_plasf], 
+# et <- c(rep(1, 102), rep(0, 358))
+# names(et) <- names(all_seqs_plas)
+# etiquettes are commented out and written by hand in calc_metrics
+# et[all_seqs_plasf]
+
+metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)), 
                                    data.frame(read_other_software("./plasmodium_benchmark_results_NOHOM"), 
+                                              #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
+                                              #                                    read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")),
                                               get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
                                                                    "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")), 0.005)
 
@@ -137,6 +143,8 @@ cat(pub_tab)
 # metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
 metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)), 
                                   data.frame(read_other_software("./benchmark_results_NOHOM"),
+                                             #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
+                                             #                                    read.fasta("./benchmark_data/benchmark_data_NOHOM.fasta", seqtype = "AA")),
                                              get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
                                                                   "./benchmark_data/benchmark_data_NOHOM.fasta")), 0.005)
 

@@ -157,6 +157,7 @@ format_bench_table <- function(x, caption, label) {
                      "PrediSi \\cite{2004hillerpredisi}",
                      "Phobius \\cite{2004klla}",
                      "Philius \\cite{2008reynoldstransmembrane}",
+                     #"signalHsmm-2010 (k-mer)", 
                      "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 90\\%)", "signalHsmm2010 (hom. 50\\%)", 
                      "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 90\\%)", "signalHsmm1987 (hom. 50\\%)")
   

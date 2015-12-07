@@ -4,13 +4,15 @@
 #' @param input_seq list of input sequences
 #' @param threshold threshold value
 #' @param only_signal if \code{TRUE}, only signal peptides are filtered.
+#' @param cdhit_path \code{character} path to cd-hit
 #' @return vector of names of filtered sequences
 
-cdhit <- function(input_seq, thresh = 0.5, word_length = 2, only_signal = TRUE, roi_length = 70) {
+cdhit <- function(input_seq, thresh = 0.5, word_length = 2, only_signal = TRUE, roi_length = 70,
+                  cdhit_path = "/home/michal/cd-hit") {
   
   input <- tempfile(tmpdir = getwd())
   output <- tempfile(tmpdir = getwd())
-  cdhit <- paste0("/home/michal/cd-hit/cd-hit -i ", input,  " -o ", output, " -c ", thresh, " -n ", word_length)
+  cdhit <- paste0(cdhit_path, "/cd-hit -i ", input,  " -o ", output, " -c ", thresh, " -n ", word_length)
   
   if(only_signal) {
     #doesn't really make a lot of sense in the context of negative data set

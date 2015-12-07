@@ -23,7 +23,7 @@ train_signalHsmms <- function(seqs) {
   signalHsmmNOHOM50 <- train_hsmm(seqs[seq50f], aaaggregation)
   
   #homology 90
-  seq90f <- cdhit(seq50_10, thresh = 0.9, word_length = 5, only_signal = TRUE)
+  seq90f <- cdhit(seqs, thresh = 0.9, word_length = 5, only_signal = TRUE)
   signalHsmmNOHOM90 <- train_hsmm(seqs[seq90f], aaaggregation)
   
   list(signalHsmm = signalHsmm,

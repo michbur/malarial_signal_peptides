@@ -199,7 +199,7 @@ Pawe\l{} Mackiewicz*\textsuperscript{1},
 \end{flushleft}
 % Please keep the abstract below 300 words
 \section*{Abstract}
-Signal peptides play an essential role in targeting of proteins to endomembrane system and their export outside the cell. The proteins equipped with such peptides are of great importance in metabolism, maintenance of tissue structure, immune response and regulation of other organismal functions. These peptides may be recognized with adequate accuracy using learning systems. However, existing signal peptide predictors do not perform well on atypical signal peptides of the parasites belonging to the phylum Apicomplexa. That is why, we designed a new more universal probabilistic model for eukaryotic signal peptides, which includes knowledge about their organization, amino acid composition and variability. The proposed approach called signalHsmm is based on hidden semi-Markov models (HSMMs) and uses intrinsic knowledge about signal peptides. It is able to recognize signal peptides from malaria parasites \textit{Plasmodium} and their relatives more accurately (with AUC = 0.93) than popular programs (0.79). Moreover, our model showed the largest AUC = 0.97 on the eukaryotic sequences in comparison to other signal peptide predictor even when trained on very small data sets. Moreover, it proved to be very stable regardless of types of learning data. Therefore, our model does not need to be permanently retrained with the continuous expansion of sequence databases. The web-server of signalHsmm is available at \url{http://smorfland.uni.wroc.pl/signalhsmm}.
+Signal peptides play an essential role in targeting of proteins to endomembrane system and their export outside the cell. The proteins equipped with such peptides are of great importance in metabolism, maintenance of tissue structure, immune response and regulation of other organismal functions. These peptides may be recognized with adequate accuracy using learning systems. However, existing signal peptide predictors do not perform well on atypical signal peptides of the medically significant parasites belonging to the phylum Apicomplexa. That is why, we designed a new more universal probabilistic model for eukaryotic signal peptides, which includes knowledge about their organization, amino acid composition and variability. The proposed approach called signalHsmm is based on hidden semi-Markov models (HSMMs) and uses intrinsic knowledge about signal peptides. Since there are no experimentally confirmed signal peptides of \textit{Plasmodiidae}, our model extract universal decision rules from eukaryotic proteins with signal peptides. It is able to extracrecognize signal peptides from malaria parasites \textit{Plasmodium} and their relatives more accurately (with AUC = 0.93) than popular programs (0.89) while still being universal enough to provide prediction of eukaryotic signal peptides on par with the best preforming predictors. Moreover, it proved to be very stable regardless of types of learning data. Therefore, our model does not need to be permanently retrained with the continuous expansion of sequence databases. The web-server of signalHsmm is available at \url{http://smorfland.uni.wroc.pl/signalhsmm}.
 
 
 % Please keep the Author Summary between 150 and 200 words
@@ -257,6 +257,12 @@ Since the functionality of signal peptides depends on the physicochemical proper
 \subsection*{Data selection}
 
 Since there are no experimentally confirmed signal peptides of proteins belonging \textit{Plasmodiidae}, we decided to train the predictor using signal peptides of other Eukaryotes. Eukaryotic protein sequences and their annotations were downloaded from UniProt database release 2015\_06. The preparations included the usual removal of sequences with more than one cleavage site, unknown cleavage site position, ambiguous symbols: X, J, Z, B or selenocysteine (U) from the final data set. We also created a testing data set consisting of proteins belonging to the organisms from \testit{Plasmodiidae} family. The positive set contained 102 sequences with a putative signal peptide, containing its start and cleavage site information. The negative set comprised 358 sequences without any signal peptide annotation.
+
+\subsection*{Homology reduction}
+
+To reduce homology of obtained protein sequences, we filtered them using cd-hit~\cite{2012fucdhit}. For sequences with signal peptide, we use only signal peptides for homology reduction. For protein without signal peptide, we used first 70 amino acids as proposed elsewhere~\cite{1997nielsenidentification}.
+
+We prepare two learning data sets by removing homology on 90\% threshold (word length 5) and 50\% (word length 2). The testing data set was filtered only on 50\% threshold with words of lenth 2.
 
 \subsection*{Clustering of amino acids}
 
@@ -477,15 +483,17 @@ The encoding of amino acid plays crucial role in the recognition of signal pepti
 
 \subsection*{Benchmark tests}
 
-To provide the honest comparison, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (an iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1, the newest classifier present in the benchmark. In addition to this, we prepared smaller data set, covering only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 iteration has to extract the signal peptide model from data set much limited than training sets of any classifier included in the benchmark.
+To provide the honest comparison, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (an iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1, the newest classifier present in the benchmark. In addition to this, we prepared smaller data set, covering only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 iteration has to extract the signal peptide model from data set much limited than training sets of any classifier included in the benchmark. 
 
-The testing data set extracted from UniProt data base contained 102 sequences with a signal peptide and 358 sequences without it belonging to organisms from \textit{Plasmodiidae} family. The homology of tested sequences was reduced by cd-hit (identity threshold 50\%, word length 2). For sequences with signal peptide, we use only signal peptides for homology reduction. For protein without signal peptide, we used first 70 amino acids as proposed elsewhere~\cite{1997nielsenidentification}.
+The testing data set extracted from UniProt data base contained 102 sequences with a signal peptide and 358 sequences without it belonging to organisms from \textit{Plasmodiidae} family (respectively 51 and 211 after homology reduction).
 
-Together with signalHsmm, we evaluated several signal peptide predicting algorithms: signalP 4.1, PrediSi, Phobius and Philius (See Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for all performance measures).. signalP 3.0 was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa~\cite{2012cilingirapicoap}.
+Together with signalHsmm, we evaluated several signal peptide predicting algorithms: signalP 4.1, PrediSi, Phobius and Philius (See Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for all performance measures). The older version of signalP 4.1, signalP 3.0, was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa~\cite{2012cilingirapicoap}.
 
-We trained several versions of signalHsmm  based on iteration described above to separately check improvements introduced by our software: a new probabilistic model (hidden semi-Markov models) and a simplified alphabet of amino acids. The latter was addressed by training signalHsmm on raw amino acids sequences (denoted 'raw aa' in the table). The performance of this iteration was slightly lower than performance of its counterpart trained on the reduced alphabet. This result confirms that unique function of signal peptide does not depend on specific amino acids, but on more general features.
+We trained several versions of signalHsmm  based on iteration described above to separately check improvements introduced by our software: a new probabilistic model (hidden semi-Markov models) and a simplified alphabet of amino acids. The latter was addressed by training signalHsmm on raw amino acids sequences (denoted 'raw aa' in the table). The performance of this iteration was slightly lower than performance of its counterpart trained on the reduced alphabet. This result confirms that unique function of signal peptide does not depend on specific amino acids, but on more general features and our simpler model is able to portrait the unique architecture of signal peptide more accurately.
 
 The advantage of hidden semi-Markov model over normal Markov model can be seen through the comparison of the signalHsmm with signal peptide predictors utilizing HMM: Phobius, Philius and signalP 3.0 (HMM).
+
+To check susceptibility of our model to overfitting, we trained several iterations on data sets with different levels of homology reduction. We discovered that our model, probably thanks to its relative simplicity, does not overfit and results are similar for models with very restrictive and no homology reduction.
 
 \begin{table}[ht]
 \centering
@@ -505,56 +513,41 @@ signalP 4.1 (no tm) \cite{2011petersensignalp} & 0.8816 & 0.8627 & 0.9005 & 0.69
   Philius \cite{2008reynoldstransmembrane} & 0.7880 & 0.6471 & 0.9289 & 0.5895 \\ 
    \rowcolor[gray]{0.85}signalHsmm-2010 & \textbf{0.9372} & \textbf{1.0000} & 0.7583 & 0.6157 \\ 
   signalHsmm-2010 (raw aa) & 0.9216 & 0.9608 & 0.7109 & 0.5389 \\ 
-   \rowcolor[gray]{0.85}signalHsmm2010 (hom. 90\%) & 0.9354 & \textbf{1.0000} & 0.7536 & 0.6108 \\ 
-  signalHsmm2010 (hom. 50\%) & 0.9371 & \textbf{1.0000} & 0.7251 & 0.5825 \\ 
+   \rowcolor[gray]{0.85}signalHsmm2010 (hom. 90\%) & 0.9371 & \textbf{1.0000} & 0.7251 & 0.5825 \\ 
+  signalHsmm2010 (hom. 50\%) & 0.9354 & \textbf{1.0000} & 0.7536 & 0.6108 \\ 
    \rowcolor[gray]{0.85}signalHsmm-1987 & 0.9356 & 0.9608 & 0.8057 & 0.6391 \\ 
   signalHsmm-1987 (raw aa) & 0.9215 & 0.9608 & 0.8152 & 0.6505 \\ 
-   \rowcolor[gray]{0.85}signalHsmm1987 (hom. 90\%) & 0.9357 & 0.9608 & 0.8057 & 0.6391 \\ 
-  signalHsmm1987 (hom. 50\%) & 0.9358 & 0.9804 & 0.7962 & 0.6426 \\ 
+   \rowcolor[gray]{0.85}signalHsmm1987 (hom. 90\%) & 0.9358 & 0.9804 & 0.7962 & 0.6426 \\ 
+  signalHsmm1987 (hom. 50\%) & 0.9357 & 0.9608 & 0.8057 & 0.6391 \\ 
    \bottomrule
 \end{tabular}
 \end{table}
 
-To check universality of our probabilistic model, we also validated it on signal peptides belonging to specific taxonomic groups. As an example, we chose the  including malaria parasites because of their medical significance.  Interestingly, signalHsmm showed much better performance than other algorithms (Tab.~\ref{tab:bench2010plas}). Since our algorithm considers more general decision rules, it is able to recognize also atypical signal peptides.
-
+The overall simplicity of our approach does not hinder its capabilities of recognising signal peptides from other taxa. We also benchmarked signalHsmm iterations and other software on the set of 127 Eukaryotic proteins with signal peptide added after year 2010 to UniProt and randomly chosen 127 proteins without signal peptide (homology in the testing set was reduced as described above). signalHsmm-2010 performed comparably to signalP 4.1 (both achieved AUC above 0.97, see Supplemental Table~\ref{tab:bench2010_full} for all performance measures).
 
 \subsection*{Conclusions}
 
-We propose a novel solution to the problem of predicting signal peptides in proteins of \textit{Plasmodiidae}. Our software is not limited to very specific taxonomic group, but is able to compete with state-of-art algorithms in predicting signal peptides of other organisms.
+We propose a novel solution to the problem of predicting signal peptides in proteins of \textit{Plasmodiidae} using only data coming from the signal peptides coming from other Eukaryotes. Our software is not limited to very specific taxonomic group, but is able to compete with state-of-art algorithms in predicting signal peptides of other organisms.
 
 One of the most important features of signalHsmm is its stability. The difference in performance measures of iterations trained on large and small data set is marginal. It implies that signalHsmm extracts roughly the same general architecture of signal peptide regadless of the size of training data set. Moreover, the decision rules are roughly comparable for iterations trained on data sets without removal of homologues sequences.  Such result may suggest, that our probabilistic model is at least partially resistant to overfitting and do not adjust itself to the patterns most common in training data sets. On the contrary, signalHsmm always retrieves the universal model of signal peptide.
 
 The existing signal peptide detecting software usually does not reveal decision rules responsible for predictions. Considering the biological context of the problem, we see a need for a transparent model of signal peptide. signalHsmm is the first step in this direction. The encoding of amino acids not only reduces dimensionality of the problem, but also makes our probabilistic model more interpretable. We were able to determine that properties of signal peptides do not depend on their exact sequence but on the physicochemical features of the amino acids. The model confirmed not only the high hydrophibicity of the h-region and polarity of the n-region but also found that alanine is one of the most typical amino acids in the c-region.
 
-The flexibility and efficient information recovery makes our model unique among similar software. signalHsmm is also adjustable to model properly very specific signal peptides belonging to taxonomic groups which are poorly represented in databases. Moreover, our method can effectively extract information from very small data sets, which in future may lead to new predictors specialized in recognition of atypical signaling sequences.
+The flexibility and efficient information recovery makes our model unique among similar software. signalHsmm models properly very specific signal peptides belonging to taxonomic groups which are poorly represented in databases. Moreover, our method can effectively extract information from very small data sets, which in future may lead to new predictors specialized in recognition of atypical signaling sequences.
 
-The prediction of signal peptides of \textit{Plasmodiidae} is a medically significant issue. Our software, signalHsmm, contains probabilistic model of signal peptide that reveals the architecture of signal peptides not only in a specific taxa, but may be extended to other organisms.
 
 \subsection*{Availability and implementation}
 The signalHsmm prediction web-server is available at: \url{http://smorfland.uni.wroc.pl/signalhsmm}. signalHsmm is implemented as an R package available at: \url{http://cran.r-project.org/web/packages/signalHsmm}. Stand-alone version offers prediction and tools to build, train and test novel signal peptide models.
 
 \section*{Supporting Information}
 
-% Include only the SI item label in the subsection heading. Use the \nameref{label} command to cite SI items in the text.
-\subsection*{S1 Video}
-\label{S1_Video}
-{\bf Bold the first sentence.}  Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
-
-\subsection*{S1 Text}
-\label{S1_Text}
-{\bf Lorem Ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
-
-\subsection*{S1 Fig}
-\label{S1_Fig}
-{\bf Lorem Ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
-
-\subsection*{S2 Fig}
-\label{S2_Fig}
-{\bf Lorem Ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
-
 \subsection*{S1 Table}
 \label{tab:bench2010plas_full}
-{\bf Lorem Ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
+{\bf Benchmark results - \textit{Plasmodiidae}.} Performance measures for benchmark test of signal peptide predictors using sequences belonging to \textit{Plasmodiidae}.
+
+\subsection*{S2 Table}
+\label{tab:bench2010_full}
+{\bf Benchmark results - Eukaryots} Performance measures for benchmark test of signal peptide predictors using eukaryotic sequences.
 
 \section*{Acknowledgments}
 

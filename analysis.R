@@ -73,17 +73,17 @@ cat(enc_region[["best_spec"]])
 # data
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 19870000] AND reviewed:yes
 #354 proteins, 335 after purification
-# seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
+seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
 
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 20100000] AND reviewed:yes
 #2372 proteins, 2313 after purification
-# seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
-# 
-# signalHsmms10 <- train_signalHsmms(seq50_10)
-# names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
-# 
-# signalHsmms87 <- train_signalHsmms(seq50_87)
-# names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
+seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
+
+signalHsmms10 <- train_signalHsmms(seq50_10)
+names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
+
+signalHsmms87 <- train_signalHsmms(seq50_87)
+names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
 # 
 # save(signalHsmms87, signalHsmms10, file = "./cache/signalHsmms.RData")
 load("./cache/signalHsmms.RData")

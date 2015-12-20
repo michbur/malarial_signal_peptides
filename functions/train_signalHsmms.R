@@ -26,8 +26,14 @@ train_signalHsmms <- function(seqs) {
   seq90f <- cdhit(seqs, thresh = 0.9, word_length = 5, only_signal = TRUE)
   signalHsmmNOHOM90 <- train_hsmm(seqs[seq90f], aaaggregation)
   
+  #strange enc
+  strange <- list(`1` = c("A", "G", "L"),
+                  `2` = setdiff(a()[-1], c("A", "G", "L")))
+  signalHsmmStrange <- train_hsmm(seqs, strange)
+  
   list(signalHsmm = signalHsmm,
        signalHsmmNODEG = signalHsmmNODEG,
        signalHsmmNOHOM50 = signalHsmmNOHOM50,
-       signalHsmmNOHOM90 = signalHsmmNOHOM90)
+       signalHsmmNOHOM90 = signalHsmmNOHOM90,
+       signalHsmmStrange = signalHsmmStrange)
 }

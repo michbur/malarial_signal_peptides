@@ -1,0 +1,21 @@
+---
+title: "Identification of regional structure in signal peptides"
+author: "Michal Burdukiewicz"
+date: "21-12-2015"
+output:
+  ioslides_presentation:
+    widescreen: yes
+  slidy_presentation: default
+---
+
+## Architecture of signal peptide
+
+<img src="SP.png" alt="SP" style="width: 950px;"/>
+
+
+## Architecture of signal peptide
+
+1. **n-region**: 5-8 residues long, build mainly by basic residues.  
+1. **h-region**: 8-12 residues long, consisting of strongly hydrophobic residues.  
+1. **c-region**: usually 6 residues long, containing few polar and uncharged residues.  
+

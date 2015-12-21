@@ -6,6 +6,19 @@ library(reshape2)
 library(signalHsmm)
 library(biogram)
 
+if(Sys.info()["nodename"] == "phobos" )
+  pathway <- "/home/michal/Dropbox/signal-peptide2_data/"
+
+if(Sys.info()["nodename"] == "MICHALKOMP" )
+  pathway <- "C:/Users/Michal/Dropbox/signal-peptide2_data/"
+
+
+group2df <- function(group_list, caption = NULL, label = NULL) {
+  data.frame(ID = 1L:length(group_list), 
+             Groups = sapply(group_list, function(i)
+               paste0(toupper(sort(i)), collapse = ", ")))
+}
+
 degreg <-  function(single_encoding, nhc_borders, pos_seqs) {
   single_encoding <- lapply(single_encoding, toupper)
   res <- lapply(1L:length(pos_seqs), function(seq_id) {

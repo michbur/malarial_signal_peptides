@@ -8,6 +8,37 @@ output:
   slidy_presentation: default
 ---
 
+```{r, echo = FALSE, message = FALSE, results='asis'}
+library(DT)
+source("code.R")
+
+library(knitr)
+library(ggplot2)
+library(grid)
+library(gridExtra)
+
+options(DT.options = list(iDisplayLength = 6))
+
+size_mod <- -5
+
+my_theme <- theme(plot.background=element_rect(fill = "transparent",
+                                               colour = "transparent"),
+                  panel.grid.major = element_line(colour="grey", linetype = "dashed", size = 0.5),
+                  panel.grid.major = element_line(colour="lightgrey", linetype = "dashed", size = 0.5),
+                  panel.background = element_rect(fill = "transparent",colour = "black"),
+                  legend.background = element_rect(fill = "NA"),
+                  legend.position = "bottom",
+                  axis.text = element_text(size=13 + size_mod),
+                  axis.title.x = element_text(size=16 + size_mod, vjust = -1), 
+                  axis.title.y = element_text(size=16 + size_mod, vjust = 1),
+                  strip.text = element_text(size=17 + size_mod, face = "bold"),
+                  legend.text = element_text(size=13 + size_mod), 
+                  legend.title = element_text(size=17 + size_mod),
+                  plot.title = element_text(size=20 + size_mod),
+                  strip.background = element_rect(fill = "NA", colour = "NA"))
+```
+
+
 ## Architecture of signal peptide
 
 <img src="SP.png" alt="SP" style="width: 950px;"/>
@@ -19,3 +50,63 @@ output:
 1. **h-region**: 8-12 residues long, consisting of strongly hydrophobic residues.  
 1. **c-region**: usually 6 residues long, containing few polar and uncharged residues.  
 
+## Cleavage site
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+ggplot(sumcleaves, aes(x = aa, y = n, fill = aa)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ pos) + my_theme + theme(legend.position = "right")
+```
+
+## Cleavage site encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+kable(group2df(cs_enc))
+```
+
+## Cleavage site encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+ggplot(cs_dat, aes(x = group, y = freq, fill = group)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  facet_wrap(~ region, nrow = 1) + 
+  scale_y_continuous("Frequency") +
+  scale_x_discrete("Region\n") + my_theme
+```
+
+## Cleavage site encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+datatable(cs_dat, filter = "top", options = list(searching = TRUE)) %>% formatRound(4L:7, 4)
+```
+
+
+## n-region
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+ggplot(nregions, aes(x = aa, y = n, fill = aa)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ pos) + my_theme + theme(legend.position = "right")
+```
+
+## n-region encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+kable(group2df(nreg_enc))
+```
+
+## n-region encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+ggplot(nreg_dat, aes(x = group, y = freq, fill = group)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  facet_wrap(~ region, nrow = 1) + 
+  scale_y_continuous("Frequency") +
+  scale_x_discrete("Region\n") + my_theme
+```
+
+## n-region encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis'}
+datatable(nreg_dat, filter = "top", options = list(searching = TRUE)) %>% formatRound(4L:7, 4)
+```

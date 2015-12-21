@@ -1,10 +1,17 @@
-library(ggplot2)
-library(pbapply)
-library(seqinr)
-library(dplyr)
-library(reshape2)
-library(signalHsmm)
-library(biogram)
+require(XML)
+require(seqinr)
+require(fitdistrplus)
+require(dplyr)
+require(signalHsmm)
+require(hmeasure)
+require(pbapply)
+require(reshape2)
+require(hmeasure)
+require(xtable)
+require(biogram)
+require(ggplot2)
+require(grid)
+require(gridExtra)
 
 if(Sys.info()["nodename"] == "phobos" )
   pathway <- "/home/michal/Dropbox/signal-peptide2_data/"
@@ -12,6 +19,11 @@ if(Sys.info()["nodename"] == "phobos" )
 if(Sys.info()["nodename"] == "MICHALKOMP" )
   pathway <- "C:/Users/Michal/Dropbox/signal-peptide2_data/"
 
+
+source("/home/michal/Dokumenty/gits/malarial_signal_peptides/functions/plot_tools.R")
+source("/home/michal/Dokumenty/gits/malarial_signal_peptides/functions/reglen_plot.R")
+source("/home/michal/Dokumenty/gits/malarial_signal_peptides/functions/cv_analysis.R")
+source("/home/michal/Dokumenty/gits/malarial_signal_peptides/functions/enc_region.R")
 
 group2df <- function(group_list, caption = NULL, label = NULL) {
   data.frame(ID = 1L:length(group_list), 
@@ -49,10 +61,16 @@ degreg <-  function(single_encoding, nhc_borders, pos_seqs) {
   tab
 }
 
+load("/home/michal/Dokumenty/gits/malarial_signal_peptides/analysis_data/cv_results.RData")
+enc_region <- create_enc_region(p1_dat = create_cvplotdat(rep_res))
+
 
 pos_seqs <- read_uniprot(paste0(pathway, "signal_peptides.txt"), ft_names = "signal")
 longer_seqs <- pos_seqs[lengths(pos_seqs) > 100]
 nhc_borders <- t(sapply(longer_seqs, find_nhc))
+
+total_freqs <- as.vector(table(unlist(longer_seqs)))
+total_freqs <- total_freqs/sum(total_freqs)
 
 sumcleaves <- do.call(rbind, lapply(longer_seqs, function(single_seq) {
   sig <- attr(single_seq, "signal")[2]
@@ -63,13 +81,14 @@ sumcleaves <- do.call(rbind, lapply(longer_seqs, function(single_seq) {
   summarise(n = length(aa)) %>%
   ungroup %>%
   mutate(pos = pos - 6)
+sumcleaves[["n"]] <- sumcleaves[["n"]]*total_freqs
 
 ggplot(sumcleaves, aes(x = aa, y = n, fill = aa)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_wrap(~ pos)
 
 
-cs_aa <- c("A", "G", "L", "V", "P")
+cs_aa <- c("A", "G", "L", "V", "P", "D", "E", "S", "T")
 
 cs_enc <- list(`1` = cs_aa,
                `2` = setdiff(a()[-1], cs_aa))
@@ -91,14 +110,16 @@ nregions <- do.call(rbind, lapply(longer_seqs, function(single_seq) {
   summarise(n = length(aa)) %>%
   ungroup 
   
+nregions[["n"]] <- nregions[["n"]]*total_freqs
+
 ggplot(nregions, aes(x = aa, y = n, fill = aa)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_wrap(~ pos)
 
-nreg_enc <- list(`1` = c("A", "G", "L", "V"), #both n-region and cs
-                 `2` = c("G", "P", "K"), #only cs
-                 `3` = c("R", "S", "T"), #only n-region
-                 `4` = c("C", "D", "E", "F", "H", "I", "M", "N", "Q", "W", "Y"))
+nreg_enc <- list(`1` = c("A", "G", "L", "V", "S", "T"), #both n-region and cs
+                 `2` = c("G", "P", "K", "D", "E"), #only cs
+                 `3` = c("R"), #only n-region
+                 `4` = c("C", "F", "H", "I", "M", "N", "Q", "W", "Y"))
 
 nreg_dat <- degreg(nreg_enc, nhc_borders, longer_seqs)
 ggplot(nreg_dat, aes(x = group, y = freq, fill = group)) +

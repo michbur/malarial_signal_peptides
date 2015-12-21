@@ -147,5 +147,7 @@ create_enc_region <- function(p1_dat) {
   list(prop_plot = p1, 
        freq_plot = p2, 
        best_sens = group2df(group_best, "The best sensitivity (final) encoding", "tab:best"),
-       best_spec = group2df(group_worst, "The best specificity encoding", "tab:worst"))
+       best_spec = group2df(group_worst, "The best specificity encoding", "tab:worst"),
+       best_sens_raw = group_best,
+       best_spec_raw = group_worst)
 }

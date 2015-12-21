@@ -4,11 +4,13 @@ author: "Michal Burdukiewicz"
 date: "21-12-2015"
 output:
   ioslides_presentation:
+    fig_height: 5.5
+    fig_width: 9.5
     widescreen: yes
   slidy_presentation: default
 ---
 
-```{r, echo = FALSE, message = FALSE, results='asis'}
+```{r, echo = FALSE, message = FALSE, results='asis',warning=FALSE}
 library(DT)
 source("code.R")
 
@@ -17,7 +19,7 @@ library(ggplot2)
 library(grid)
 library(gridExtra)
 
-options(DT.options = list(iDisplayLength = 6))
+options(DT.options = list(iDisplayLength = 6, searching = TRUE))
 
 size_mod <- -5
 
@@ -39,6 +41,10 @@ my_theme <- theme(plot.background=element_rect(fill = "transparent",
 ```
 
 
+## Reduced amino acid alphabet
+
+signalHsmm employs reduced amino acid alphabet chosen from around 100 alphabets created through clustering physicochemical properties of amino acids.
+
 ## Architecture of signal peptide
 
 <img src="SP.png" alt="SP" style="width: 950px;"/>
@@ -50,12 +56,44 @@ my_theme <- theme(plot.background=element_rect(fill = "transparent",
 1. **h-region**: 8-12 residues long, consisting of strongly hydrophobic residues.  
 1. **c-region**: usually 6 residues long, containing few polar and uncharged residues.  
 
+## Frequency of amino acids
+
+```{r, echo = FALSE, message = FALSE, results='asis', warning=FALSE}
+plot(enc_region[["freq_plot"]] + ggtitle("Regional frequency of amino acids belonging to different encodings"))
+```
+
+## Best specificity encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis', warning=FALSE}
+kable(group2df(enc_region[["best_spec_raw"]]))
+```
+
+## Best sensitivity encoding
+
+```{r, echo = FALSE, message = FALSE, results='asis', warning=FALSE}
+kable(group2df(enc_region[["best_sens_raw"]]))
+```
+
+## Frequency of amino acids
+
+```{r, echo = FALSE, message = FALSE, results='asis', warning=FALSE}
+plot(enc_region[["freq_plot"]] + ggtitle("Regional frequency of amino acids belonging to different encodings"))
+```
+
+## Motivation
+
+1. Is the separation between regional frequency of groups in encoding correlated with the predictive power orf the algorithm?  
+
+2. Are there exactly three regions?  
+
+
 ## Cleavage site
 
 ```{r, echo = FALSE, message = FALSE, results='asis'}
 ggplot(sumcleaves, aes(x = aa, y = n, fill = aa)) +
   geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ pos) + my_theme + theme(legend.position = "right")
+  facet_wrap(~ pos) + my_theme + theme(legend.position = "right") +
+  ggtitle("Frequency of amino acids in cleavage site")
 ```
 
 ## Cleavage site encoding
@@ -77,7 +115,7 @@ ggplot(cs_dat, aes(x = group, y = freq, fill = group)) +
 ## Cleavage site encoding
 
 ```{r, echo = FALSE, message = FALSE, results='asis'}
-datatable(cs_dat, filter = "top", options = list(searching = TRUE)) %>% formatRound(4L:7, 4)
+datatable(cs_dat, filter = "top") %>% formatRound(4L:7, 4)
 ```
 
 
@@ -86,7 +124,8 @@ datatable(cs_dat, filter = "top", options = list(searching = TRUE)) %>% formatRo
 ```{r, echo = FALSE, message = FALSE, results='asis'}
 ggplot(nregions, aes(x = aa, y = n, fill = aa)) +
   geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~ pos) + my_theme + theme(legend.position = "right")
+  facet_wrap(~ pos) + my_theme + theme(legend.position = "right") +
+  ggtitle("Frequency of amino acids in n-region")
 ```
 
 ## n-region encoding
@@ -108,5 +147,11 @@ ggplot(nreg_dat, aes(x = group, y = freq, fill = group)) +
 ## n-region encoding
 
 ```{r, echo = FALSE, message = FALSE, results='asis'}
-datatable(nreg_dat, filter = "top", options = list(searching = TRUE)) %>% formatRound(4L:7, 4)
+datatable(nreg_dat, filter = "top") %>% formatRound(4L:7, 4)
 ```
+
+## Conclusions
+
+n-region encoding and its variants reduces significantly predictive power of signalHsmm.  Rarely occuring amino acids plays a key role in the signal peptide recognition.  
+
+The difference between h-region and c-region indicated by the heuristic algorithm are mostly cosmetic.

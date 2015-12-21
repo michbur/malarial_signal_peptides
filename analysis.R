@@ -84,7 +84,7 @@ names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
 
 signalHsmms87 <- train_signalHsmms(seq50_87)
 names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
-# 
+
 # save(signalHsmms87, signalHsmms10, file = "./cache/signalHsmms.RData")
 # load("./cache/signalHsmms.RData")
 

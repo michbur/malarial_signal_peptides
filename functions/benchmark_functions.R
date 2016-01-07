@@ -12,7 +12,8 @@ read_other_software <- function(directory_name) {
   read_signalp41 <- function(connection) {
     dat <- read.table(connection)
     
-    data.frame(sp.probability = dat[, 10] == "Y",
+    data.frame(#sp.probability = dat[, 10] == "Y",
+               sp.probability = dat[, 9],
                sp.start = ifelse(dat[, 10] == "Y", 1, NA),
                sp.end = ifelse(dat[, 10] == "Y", as.numeric(dat[, 5]) - 1, NA))
   }
@@ -21,23 +22,26 @@ read_other_software <- function(directory_name) {
     #columns: nn Ymax, nn Ymax position, hmm Ymax 
     dat <- do.call(rbind, strsplit(readLines(connection)[-1], " +"))[, c(13, 6, 17, 19)] #mean D for NN and Signal peptide probability for HMM
     res <- data.frame(t(apply(dat, 1, as.numeric)))
-    colnames(res) <- c("nn_prob", "nn_pos", "hmm_prob", "hmm_pos")
+    colnames(res) <- c("nn_prob", "nn_pos", "hmm_pos", "hmm_prob")
     res
   }
   
   read_signalp3nn <- function(connection) {
     res <- read_signalp3(connection)
-    data.frame(sp.probability = res[["nn_prob"]] > 0.5, sp.start = 1, sp.end = res[["nn_pos"]])
+    #data.frame(sp.probability = res[["nn_prob"]] > 0.5, sp.start = 1, sp.end = res[["nn_pos"]])
+    data.frame(sp.probability = res[["nn_prob"]], sp.start = 1, sp.end = res[["nn_pos"]])
   }
   
   read_signalp3hmm <- function(connection) {
     res <- read_signalp3(connection)
-    data.frame(sp.probability = res[["hmm_prob"]] > 0.5, sp.start = 1, sp.end = res[["hmm_pos"]])
+    #data.frame(sp.probability = res[["hmm_prob"]] > 0.5, sp.start = 1, sp.end = res[["hmm_pos"]])
+    data.frame(sp.probability = res[["hmm_prob"]], sp.start = 1, sp.end = res[["hmm_pos"]])
   }
   
   read_predsi <- function(connection) {
     dat <- read.table(connection, sep = "\t")
-    data.frame(sp.probability = dat[, 4] == "Y",
+    data.frame(sp.probability = dat[, 2],
+               #sp.probability = dat[, 4] == "Y",
                sig.start = ifelse(dat[, 4] == "Y", 1, NA),
                sig.end = ifelse(dat[, 4] == "Y", as.numeric(dat[, 3]), NA),
                row.names = dat[, 1])

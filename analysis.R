@@ -111,7 +111,9 @@ metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)),
                                               #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
                                               #                                    read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")),
                                               get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
-                                                                   "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")), 0.5)
+                                                                   "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")
+                                              ), 
+                                   0.5)
 
 write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
 

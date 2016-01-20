@@ -107,7 +107,7 @@ names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
 # et[all_seqs_plasf]
 
 metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)), 
-                                   data.frame(read_other_software("./plasmodium_benchmark_results_NOHOM"), 
+                                   data.frame(read_other_software("./plasmodium_benchmark_results_NOHOM")[["prob"]], 
                                               #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
                                               #                                    read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")),
                                               get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
@@ -144,7 +144,7 @@ cat(pub_tab)
 
 # metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
 metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)), 
-                                  data.frame(read_other_software("./benchmark_results_NOHOM"),
+                                  data.frame(read_other_software("./benchmark_results_NOHOM")[["prob"]],
                                              #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
                                              #                                    read.fasta("./benchmark_data/benchmark_data_NOHOM.fasta", seqtype = "AA")),
                                              get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),

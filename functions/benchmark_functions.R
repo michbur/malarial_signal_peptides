@@ -13,9 +13,9 @@ read_other_software <- function(directory_name) {
     dat <- read.table(connection)
     
     data.frame(#sp.probability = dat[, 10] == "Y",
-               sp.probability = dat[, 9],
-               sp.start = ifelse(dat[, 10] == "Y", 1, NA),
-               sp.end = ifelse(dat[, 10] == "Y", as.numeric(dat[, 5]) - 1, NA))
+      sp.probability = dat[, 9],
+      sp.start = ifelse(dat[, 10] == "Y", 1, NA),
+      sp.end = ifelse(dat[, 10] == "Y", as.numeric(dat[, 5]) - 1, NA))
   }
   
   read_signalp3 <- function(connection) {
@@ -43,7 +43,7 @@ read_other_software <- function(directory_name) {
     data.frame(sp.probability = dat[, 2],
                #sp.probability = dat[, 4] == "Y",
                sig.start = ifelse(dat[, 4] == "Y", 1, NA),
-               sig.end = ifelse(dat[, 4] == "Y", as.numeric(dat[, 3]), NA),
+               sp.end = ifelse(dat[, 4] == "Y", as.numeric(dat[, 3]), NA),
                row.names = dat[, 1])
   }
   
@@ -57,9 +57,9 @@ read_other_software <- function(directory_name) {
       as.numeric(strsplit(strsplit(purged[i,4], "/")[[1]][1], "c")[[1]][[2]]))
     res <- data.frame(sp.probability = purged[, 3] == "Y",
                       sig.start = ifelse(purged[, 3] == "Y", 1, NA),
-                      sig.end = rep(NA, nrow(purged)), 
+                      sp.end = rep(NA, nrow(purged)), 
                       row.names = purged[, 1])
-    res[purged[, 3] == "Y", "sig.end"] <- cl_sites
+    res[purged[, 3] == "Y", "sp.end"] <- cl_sites
     res
   }
   
@@ -73,13 +73,14 @@ read_other_software <- function(directory_name) {
       !(is.null(i[1]) || is.na(i[1])))
     res <- data.frame(sp.probability = cleaved,
                       sig.start = ifelse(cleaved, 1, NA),
-                      sig.end = rep(NA, length(seq_dat_id)),
+                      sp.end = rep(NA, length(seq_dat_id)),
                       row.names = unlist(all_dat[1L:(length(all_dat)/2)*2 - 1]))
-    res[cleaved, "sig.end"] <- as.numeric(sapply(table_dat[cleaved], function(i) i[2])) - 1
+    res[cleaved, "sp.end"] <- as.numeric(sapply(table_dat[cleaved], function(i) i[2])) - 1
     res
   }
   
-  do.call(cbind, lapply(list(signalP41notm = read_signalp41(paste0(directory_name, "/signaP41notm.txt")), 
+
+  prob <- do.call(cbind, lapply(list(signalP41notm = read_signalp41(paste0(directory_name, "/signaP41notm.txt")), 
                              signalP41tm = read_signalp41(paste0(directory_name, "/signaP41tm.txt")), 
                              signalP3nn = read_signalp3nn(paste0(directory_name, "/signalP30.txt")),
                              signalP3hmm = read_signalp3hmm(paste0(directory_name, "/signalP30.txt")),
@@ -87,6 +88,15 @@ read_other_software <- function(directory_name) {
                              philius = read_philius(paste0(directory_name, "/philius.xml")),
                              phobius = read_phobius(paste0(directory_name, "/phobius.txt"))), function(predictor)
                                predictor[["sp.probability"]]))
+  pos <- do.call(cbind, lapply(list(signalP41notm = read_signalp41(paste0(directory_name, "/signaP41notm.txt")), 
+                                     signalP41tm = read_signalp41(paste0(directory_name, "/signaP41tm.txt")), 
+                                     signalP3nn = read_signalp3nn(paste0(directory_name, "/signalP30.txt")),
+                                     signalP3hmm = read_signalp3hmm(paste0(directory_name, "/signalP30.txt")),
+                                     predsi = read_predsi(paste0(directory_name, "/predsi.txt")),
+                                     philius = read_philius(paste0(directory_name, "/philius.xml")),
+                                     phobius = read_phobius(paste0(directory_name, "/phobius.txt"))), function(predictor)
+                                       predictor[["sp.end"]]))
+  list(prob = prob, pos = pos)
 }
 
 #' Calculate performance metrics
@@ -117,16 +127,16 @@ get_signalHsmm_preds <- function(list_of_predictors, connection) {
   res <- sapply(list_of_predictors, function(single_predictor)
     pred2df(predict(single_predictor, seqs))[, "sp.probability"])
   colnames(res) <- names(list_of_predictors)
-#   colnames(res) <- substitute(list_of_predictors) %>%
-#     deparse %>%
-#     paste0(collapse = "") %>% #paste too long calls
-#     strsplit(., "(", fixed = TRUE) %>% 
-#     unlist %>%
-#     nth(2) %>%
-#     strsplit(x = ., split = ")", fixed = TRUE) %>%
-#     unlist %>%
-#     strsplit(., ",[ ]+") %>%
-#     unlist
+  #   colnames(res) <- substitute(list_of_predictors) %>%
+  #     deparse %>%
+  #     paste0(collapse = "") %>% #paste too long calls
+  #     strsplit(., "(", fixed = TRUE) %>% 
+  #     unlist %>%
+  #     nth(2) %>%
+  #     strsplit(x = ., split = ")", fixed = TRUE) %>%
+  #     unlist %>%
+  #     strsplit(., ",[ ]+") %>%
+  #     unlist
   res
 }
 

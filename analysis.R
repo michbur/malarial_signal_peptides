@@ -106,14 +106,15 @@ names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
 # etiquettes are commented out and written by hand in calc_metrics
 # et[all_seqs_plasf]
 
+other_pred_plas <- read_other_software("./plasmodium_benchmark_results_NOHOM")
+signalHsmm_pred_plas <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
+                                       "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")
+
 metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)), 
-                                   data.frame(read_other_software("./plasmodium_benchmark_results_NOHOM")[["prob"]], 
-                                              #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
-                                              #                                    read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")),
-                                              get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
-                                                                   "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")[["prob"]]
-                                              ), 
+                                   data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
                                    0.5)
+
+pos_plas <- melt(data.frame(cbind(other_pred_plas, signalHsmm_pred_plas[["pos"]])))
 
 write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
 
@@ -142,14 +143,11 @@ cat(pub_tab)
 #             names = names(seq_NOHOM), 
 #             file.out = "./benchmark_data/benchmark_data_NOHOM.fasta")
 
-# metrics_all_NOHOM <- calc_metrics(c(rep(1, length(sp_seqsf)), rep(0, length(sp_seqsf))), 
+other_pred <- read_other_software("./benchmark_results_NOHOM")
+signalHsmm_pred <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
+                                        "./benchmark_data/benchmark_data_NOHOM.fasta")
 metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)), 
-                                  data.frame(read_other_software("./benchmark_results_NOHOM")[["prob"]],
-                                             #signalHsmmKmer_10 = signalHsmm_kmer(signalHsmms10[["signalHsmm_10"]], 
-                                             #                                    read.fasta("./benchmark_data/benchmark_data_NOHOM.fasta", seqtype = "AA")),
-                                             get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
-                                                                  "./benchmark_data/benchmark_data_NOHOM.fasta")[["prob"]]
-                                             ), 
+                                  data.frame(other_pred[["prob"]], signalHsmm_pred[["prob"]]), 
                                   0.5)
 
 write.csv(round(metrics_all_NOHOM, 6), file = "./publication/supplements/S2_general_benchmark.csv")

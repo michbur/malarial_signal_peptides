@@ -96,6 +96,10 @@ read_other_software <- function(directory_name) {
                                      philius = read_philius(paste0(directory_name, "/philius.xml")),
                                      phobius = read_phobius(paste0(directory_name, "/phobius.txt"))), function(predictor)
                                        predictor[["sp.end"]]))
+  
+  #remove cs position information for improbable signal peptides
+  pos[prob < 0.5] <- NA
+  
   list(prob = prob, pos = pos)
 }
 
@@ -140,6 +144,10 @@ get_signalHsmm_preds <- function(list_of_predictors, connection) {
   #     unlist %>%
   #     strsplit(., ",[ ]+") %>%
   #     unlist
+  
+  #remove cs position information for improbable signal peptides
+  pos[prob < 0.5] <- NA
+  
   list(prob = prob, pos = pos)
 }
 

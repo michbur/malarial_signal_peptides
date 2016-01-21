@@ -114,7 +114,10 @@ metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)),
                                    data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
                                    0.5)
 
-pos_plas <- melt(data.frame(cbind(other_pred_plas, signalHsmm_pred_plas[["pos"]])))
+pos_plas <- melt(cbind(other_pred_plas[["pos"]], signalHsmm_pred_plas[["pos"]]))
+colnames(pos_plas) <- c("prot", "soft", "pos")
+
+filter(pos_plas, prot <= 51)
 
 write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
 

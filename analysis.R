@@ -114,10 +114,22 @@ metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)),
                                    data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
                                    0.5)
 
-pos_plas <- melt(cbind(other_pred_plas[["pos"]], signalHsmm_pred_plas[["pos"]]))
-colnames(pos_plas) <- c("prot", "soft", "pos")
-
-filter(pos_plas, prot <= 51)
+# real_pos_plas <- sapply(read_uniprot("./plasmodium_benchmark_data/plas.txt", "signal"), function(i) 
+#   attr(i, "signal")[2])[all_seqs_plasf] %>%
+#   na.omit() %>% as.vector()
+# real_pos_plas  <- c(18, 20, 25, 20, 16, 21, 24, 27, 23, 16, 23, 19, 24, 34, 23, 
+#                     16, 23, 20, 21, 22, 16, 24, 21, 19, 16, 21, 34, 27, 30, 20, 21, 
+#                     41, 21, 24, 26, 22, 29, 33, 20, 26, 21, 23, 22, 24, 21, 23, 22, 
+#                     25, 32, 29, 25)
+# pos_plas <- melt(cbind(other_pred_plas[["pos"]], signalHsmm_pred_plas[["pos"]]))
+# colnames(pos_plas) <- c("prot", "soft", "pos")
+# 
+# filter(pos_plas, prot <= 51) %>% 
+#   group_by(soft) %>% 
+#   mutate(sqerr = (pos - real_pos_plas)^2) %>%
+#   summarise(m_err = mean(sqerr, na.rm = TRUE), 
+#             med_err = median(sqerr, na.rm = TRUE)) %>%
+#   data.frame()
 
 write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
 

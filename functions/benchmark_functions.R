@@ -124,9 +124,12 @@ calc_metrics <- function(real_labels, preds, threshold = 0.5) {
 
 get_signalHsmm_preds <- function(list_of_predictors, connection) {
   seqs <- read.fasta(connection, seqtype = "AA")
-  res <- sapply(list_of_predictors, function(single_predictor)
+  prob <- sapply(list_of_predictors, function(single_predictor)
     pred2df(predict(single_predictor, seqs))[, "sp.probability"])
-  colnames(res) <- names(list_of_predictors)
+  pos <- sapply(list_of_predictors, function(single_predictor)
+    pred2df(predict(single_predictor, seqs))[, "sp.end"])
+  colnames(prob) <- names(list_of_predictors)
+  colnames(pos) <- names(list_of_predictors)
   #   colnames(res) <- substitute(list_of_predictors) %>%
   #     deparse %>%
   #     paste0(collapse = "") %>% #paste too long calls
@@ -137,7 +140,7 @@ get_signalHsmm_preds <- function(list_of_predictors, connection) {
   #     unlist %>%
   #     strsplit(., ",[ ]+") %>%
   #     unlist
-  res
+  list(prob = prob, pos = pos)
 }
 
 #' Format benchmark table

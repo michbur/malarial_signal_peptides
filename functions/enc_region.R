@@ -29,7 +29,7 @@ create_enc_region <- function(p1_dat) {
   }))
   
   colnames(aa_nvals) <- tolower(a(colnames(aa_nvals)))
-  aa_nvals
+  aa_nvals[321, ] <- 1 - aa_nvals[321, ]
   
   aa_props <- sapply(aaindex, function(i) i[["D"]])
   
@@ -118,7 +118,8 @@ create_enc_region <- function(p1_dat) {
   #figure comparing encodings ---------------------------
   group_properties <- function(group) {
     res <- do.call(rbind, lapply(1L:length(group), function(subgroup_id)
-      melt(data.frame(group = paste0("Group ", as.character(rep(subgroup_id, 4))), critertion = c("size", "hydroph", "polarity", "alpha"),
+      melt(data.frame(group = paste0("Group ", as.character(rep(subgroup_id, 4))), 
+                      critertion = c("size", "hydroph", "polarity", "alpha"),
                       aa_nvals[unlist(all_traits_combn[int_enc[2], ]), group[[subgroup_id]]]))))
     levels(res[["variable"]]) <- toupper(levels(res[["variable"]]))
     res
@@ -130,9 +131,7 @@ create_enc_region <- function(p1_dat) {
   dat_bestworst <- cbind(enc = unlist(lapply(c("best", "worst"), function(i) rep(i, nrow(dat_best)))),
                          rbind(dat_best, dat_worst))
   levels(dat_bestworst[["enc"]]) <- c("Best\nsensitivity", "Best\nspecificity")
-  
-  
-  
+
   p1 <- ggplot(dat_bestworst, aes(x = critertion, y = value, col = enc, fill = enc)) +
     geom_point(size = 2.5, shape = 21, position = position_dodge(width=0.5)) +
     #geom_text(hjust = -1) +

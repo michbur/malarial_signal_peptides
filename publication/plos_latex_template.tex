@@ -166,6 +166,11 @@
 \newcommand{\lorem}{{\bf LOREM}}
 \newcommand{\ipsum}{{\bf IPSUM}}
 
+\newcommand{\beginsupplement}{%
+        \setcounter{subsection}{0}
+        \renewcommand{\thesubsection}{S\arabic{subsection}}
+     }
+
 %% END MACROS SECTION
 
 
@@ -199,7 +204,7 @@ Pawe\l{} Mackiewicz*\textsuperscript{1},
 \end{flushleft}
 % Please keep the abstract below 300 words
 \section*{Abstract}
-Signal peptides play an essential role in targeting substantial number of proteins to endomembrane system and their export outside the cell. Such proteins are of great importance in metabolism, maintenance of tissue structure, immune response and regulation of other organismal functions. In computational recognition of these peptides, approaches based on learning systems are usually developed. To be successfully learned, these algorithms require big data sets consisting of signal peptides from different types of proteins and taxonomic groups. Therefore, they perform well in general identification of typical signal peptides but are ineffective in atypical ones, for which it is not possible to obtain sufficiently large data sets for  learning algorithms. Such class of peptides is present in many proteins from parasites belonging to the phylum Apicomplexa. Their members, especially \textit{Plasmodium}, are of great medically significance being a malaria agent. That is why, we designed a new more flexible probabilistic model for recognition of eukaryotic signal peptides, which includes knowledge about their organization, amino acid composition and variability. The proposed approach called signalHsmm is based on hidden semi-Markov models (HSMMs) and uses intrinsic knowledge about signal peptides. It is able to recognize signal peptides from the malaria parasites and their relatives more accurately (with AUC = 0.94) than popular programs (0.89), still being universal enough to provide prediction of other eukaryotic signal peptides on par with the best preforming predictors. Moreover, it proves to be very stable regardless of type of learning data. Therefore, our model does not need to be permanently retrained with the continuous expansion of sequence databases. The web-server of signalHsmm is available at \url{http://smorfland.uni.wroc.pl/signalhsmm}.
+Signal peptides play an essential role in targeting substantial number of proteins to endomembrane system and their export outside the cell. Such proteins are of great importance in metabolism, maintenance of tissue structure, immune response and regulation of other organismal functions. The software for computional recognition of these peptides usually employs learning systems. To make correct predictions, these algorithms require big data sets consisting of signal peptides from different types of proteins and taxonomic groups. Therefore, they perform well in general identification of typical signal peptides but are ineffective in atypical ones, for which it is not possible to obtain sufficiently large data sets for  learning algorithms. Such class of peptides is present in many proteins from parasites belonging to the phylum Apicomplexa. Their members, especially \textit{Plasmodium}, are of great medically significance being a malaria agent. That is why, we designed a new more flexible probabilistic model for recognition of eukaryotic signal peptides, which includes knowledge about their organization, amino acid composition and variability. The proposed approach called signalHsmm is based on hidden semi-Markov models (HSMMs). It is able to recognize signal peptides from the malaria parasites and their relatives more accurately (with AUC = 0.94) than popular programs (0.89), still being universal enough to provide prediction of other eukaryotic signal peptides on par with the best preforming predictors. Moreover, it proves to be very stable regardless of type of learning data. Therefore, our model does not need to be permanently retrained with the continuous expansion of sequence databases. The web-server of signalHsmm is available at \url{http://smorfland.uni.wroc.pl/signalhsmm}.
 
 
 % Please keep the Author Summary between 150 and 200 words
@@ -254,7 +259,7 @@ Moreover, the present algorithms require the big number of sequences to be succe
 
 \subsection*{Overview}
 
-Since the functionality of signal peptides depends on the physicochemical properties of residues in a given region, we clustered amino acids into several groups based on their features. The pre-processed sequences were further analyzed by an heuristic algorithm, which determines borders between three characteristic regions in signal peptides ~\cite{1998nielsenprediction}. We refined some criteria in recognition of the regions to attune the algorithm to less typical signal peptides. Next, two models were trained to recognize proteins with and without a signal peptide. The first one was a hidden semi-Markov model, in which each of three signal peptide's regions was represented by a different hidden state. The additional fourth hidden state represented a mature protein. Each state was described by its frequencies of amino acid groups. The distribution of hidden states durations, i.e. the number of amino acids, was based on the empirical distribution of region lengths from the training set. Furthermore, the hidden semi-Markov model was enriched with n-grams representing signal peptide cleavage sites. The second model was a simple probabilistic approach in which no association between amino acids was assumed and probability of amino acids groups occurrence was determined by their frequencies in mature proteins.
+Since the functionality of signal peptides depends on the physicochemical properties of residues in a given region, we clustered amino acids into several groups based on their features. The pre-processed sequences were further analyzed by an heuristic algorithm, which determines borders between three characteristic regions in signal peptides, which is an enhanced version of heuristic algorithm employed in signalP 2.0~\cite{1998nielsenprediction}. We refined some criteria in recognition of the regions to attune the algorithm to less typical signal peptides. Next, two models were trained to recognize proteins with and without a signal peptide. The first one was a hidden semi-Markov model, in which each of three signal peptide's regions was represented by a different hidden state. The additional fourth hidden state represented a mature protein. Each state was described by its frequencies of amino acid groups. The distribution of hidden states durations, i.e. the number of amino acids, was based on the empirical distribution of region lengths from the training set. Furthermore, the hidden semi-Markov model was enriched with n-grams representing signal peptide cleavage sites. The second model was a simple probabilistic approach in which no association between amino acids was assumed and probability of amino acids groups occurrence was determined by their frequencies in mature proteins.
 
 \subsection*{Data selection}
 
@@ -555,15 +560,17 @@ The signalHsmm prediction web-server is available at: \url{http://smorfland.uni.
 
 \section*{Supporting Information}
 
-\subsection*{S1 Table}
+\beginsupplement
+\subsection{Table}
 \label{tab:bench2010plas_full}
 {\bf Benchmark results - \textit{Plasmodiidae}.} Performance measures for benchmark test of signal peptide predictors using sequences belonging to \textit{Plasmodiidae}.
 
 SPRAWDZIC CZY MA BYC 2010
 
-\subsection*{S2 Table}
+\subsection{Table}
 \label{tab:bench2010_full}
 {\bf Benchmark results - Eukaryots} Performance measures for benchmark test of signal peptide predictors using all eukaryotic sequences.
+
 
 \section*{Acknowledgments}
 

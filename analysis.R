@@ -32,7 +32,7 @@ source("./functions/signalHsmm_kmer.R")
 
 reglen <- plot_reglen()
 
-cairo_ps("./publication/figures/reglen.eps", width = 9, height = 5, onefile = FALSE)
+cairo_ps("./publication/figures/reglen.eps", width = 9, height = 8, onefile = FALSE)
 grid.arrange(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), reglen[["sp_len"]], 
              textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), reglen[["regions"]], 
              nrow = 2, ncol = 2, widths = c(0.05, 0.95))
@@ -131,6 +131,8 @@ metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)),
 #             med_err = median(sqerr, na.rm = TRUE)) %>%
 #   data.frame()
 
+
+
 write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
 
 pub_tab <- format_bench_table(metrics_plas_NOHOM, 
@@ -138,6 +140,15 @@ pub_tab <- format_bench_table(metrics_plas_NOHOM,
 for different classifiers considering proteins belonging to \\textit{Plasmodiidae}.",
                               "tab:bench2010plas")
 cat(pub_tab)
+
+
+# real_pos_plas from the code snippet above
+bench_plas_seq <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")
+
+write.fasta(c(lapply(1L:51, function(i) bench_plas_seq[[i]][1:length(bench_plas_seq[[i]])]), 
+              lapply(1L:51, function(i) bench_plas_seq[[i]][real_pos_plas[i]:length(bench_plas_seq[[i]])])), 
+            names = c(paste0("pos", 1L:51), paste0("neg", 1L:51)), 
+            file.out = "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
 
 
 

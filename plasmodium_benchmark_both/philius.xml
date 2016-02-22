@@ -1,0 +1,981 @@
+<?xml version="1.0" ?>
+<philius-output>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos1</fastaHeader>
+    <psa sequenceID="26274342" type="1" typeString="Globular with Signal Peptide" typeScore="0.94" spProbabilitySum="18.50" tmProbabilitySum="0.00" sequence="MKVIGLLFSFVFFAIKCKSETIEVYNDLIQKLEKLESLSVDGLELFQKSQVIINATQPTETIDPFTNHNFAQQVQDFVTKFEGLGFTEQTELVNLIKALTPNRYGVKYLIESKEEFNGLMHAINFYYDVLRDKLNDMCANNYCEIPEHLK">
+        <segmentList>
+            <philiusSegment id="8154915" sequenceID="26274342" start="1" end="19" type="0" typeString="Signal Peptide" typeConfidence="0.92">
+                <spSegmentList>
+                    <philiusSPSegment id="925701" segmentID="8154915" start="1" end="10" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925702" segmentID="8154915" start="11" end="16" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925703" segmentID="8154915" start="17" end="19" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925704" segmentID="8154915" start="19" end="20" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154916" sequenceID="26274342" start="20" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos2</fastaHeader>
+    <psa sequenceID="26274343" type="1" typeString="Globular with Signal Peptide" typeScore="0.59" spProbabilitySum="12.60" tmProbabilitySum="0.10" sequence="MKKIITLKNLFLIILVYIFSEKKDLRCNVIKGNNIKDDEDKRFHLFYYSHNLFKTPETKEKKNKKECFYKNGGIYNLSKEIRMRKDTSVKIKQRTCPFHKEGSSFEMGSKNITCFYPIVGKKERKTLDTIIIKKNVTNDHVVSSDMHSNV">
+        <segmentList>
+            <philiusSegment id="8154917" sequenceID="26274343" start="1" end="20" type="0" typeString="Signal Peptide" typeConfidence="0.59">
+                <spSegmentList>
+                    <philiusSPSegment id="925705" segmentID="8154917" start="1" end="11" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925706" segmentID="8154917" start="12" end="17" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925707" segmentID="8154917" start="18" end="20" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925708" segmentID="8154917" start="20" end="21" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154918" sequenceID="26274343" start="21" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos3</fastaHeader>
+    <psa sequenceID="26274344" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="25.80" tmProbabilitySum="0.00" sequence="MIKLSKKYCLGISFVLYILLSVCEGHKNLTCDFNDVYKLEFHPNQQTSVTKLCNLTPNVLEKVTIKCGSDKLNYNLYPPTCFEEVYASRNMMHLKKIKEFVIGSSMFMRRSLTPNKINEVSFRIPPNMMPEKPIYCFCENKKTITINGSN">
+        <segmentList>
+            <philiusSegment id="8154919" sequenceID="26274344" start="1" end="25" type="0" typeString="Signal Peptide" typeConfidence="0.99">
+                <spSegmentList>
+                    <philiusSPSegment id="925709" segmentID="8154919" start="1" end="16" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925710" segmentID="8154919" start="17" end="22" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925711" segmentID="8154919" start="23" end="25" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925712" segmentID="8154919" start="25" end="26" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154920" sequenceID="26274344" start="26" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos4</fastaHeader>
+    <psa sequenceID="26274345" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="20.20" tmProbabilitySum="0.00" sequence="MKGVIFCLVVLLWRQAWVSSKSHKCDFTKEKYLLSGEKEVSCEIDANPSDDITFICPNKIDSLCFHTVNISKNINQNKSTMSIQDLLYGSVVYGNTLFISPYVRTNTPFYCFCNLDTVTIQKFLKINRFLKDDDELSEADVMKHLKGGNV">
+        <segmentList>
+            <philiusSegment id="8154921" sequenceID="26274345" start="1" end="20" type="0" typeString="Signal Peptide" typeConfidence="0.95">
+                <spSegmentList>
+                    <philiusSPSegment id="925713" segmentID="8154921" start="1" end="11" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925714" segmentID="8154921" start="12" end="17" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925715" segmentID="8154921" start="18" end="20" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925716" segmentID="8154921" start="20" end="21" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154922" sequenceID="26274345" start="21" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos5</fastaHeader>
+    <psa sequenceID="26274346" type="0" typeString="Globular" typeScore="0.54" spProbabilitySum="10.30" tmProbabilitySum="0.10" sequence="MKSYISLFFILCVIFNKNVIKCTGESQTGNTGGGQAGNTVGDQAGSTGGSPQGSTGASQPGSSEPSNPVSSGHSVSTVSVSQTSTSSEKQDTIQVKSALLKDYMGLKVTGPCNENFIMFLVPHIYIDVDTEDTNIELRTTLKETNNAISF">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos6</fastaHeader>
+    <psa sequenceID="26274347" type="0" typeString="Globular" typeScore="0.75" spProbabilitySum="5.40" tmProbabilitySum="0.20" sequence="MKEIYYIVILCSLYLINLGNCSEGTDKIISENGDVKFDLIPKENTERSHKLINPWEKFMEKYDIEKVHGSGIRVDLGEDARVENQDYRIPSGKCPVMGKGITIQNSKVSFLTRVATGNQKVREGGLAFPQTDVNISPITIDNLKLMYKDH">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos7</fastaHeader>
+    <psa sequenceID="26274348" type="1" typeString="Globular with Signal Peptide" typeScore="0.74" spProbabilitySum="14.10" tmProbabilitySum="0.30" sequence="MRKLYCVLLLSAFEFTYMINFGRGQNYWEHPYQKSDVYHPINEHREHPKEYQYPLHQEHTYQQEDSGEDENTLQHAYPIDHEGAEPAPQEQNLFSSIEIVERSNYMGNPWTEYMAKYDIEEVHGSGIRVDLGEDAEVAGTQYRLPSGKCP">
+        <segmentList>
+            <philiusSegment id="8154923" sequenceID="26274348" start="1" end="18" type="0" typeString="Signal Peptide" typeConfidence="0.70">
+                <spSegmentList>
+                    <philiusSPSegment id="925717" segmentID="8154923" start="1" end="9" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925718" segmentID="8154923" start="10" end="15" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925719" segmentID="8154923" start="16" end="18" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925720" segmentID="8154923" start="18" end="19" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154924" sequenceID="26274348" start="19" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos8</fastaHeader>
+    <psa sequenceID="26274349" type="1" typeString="Globular with Signal Peptide" typeScore="0.97" spProbabilitySum="24.80" tmProbabilitySum="0.40" sequence="MAKRIFSVSFLLVLLNVLHICIKFSVADLPTHVETKNLLGKWKILRTKTSPNLTTCGSSQPNKNTYNVGITDYKKYLLENNYEFVSELNVILSDDYVLYGDIYNTQDNEHRSKWKVLAVYDENKRVIGTWTTICDEGFEIKIGNETYAAL">
+        <segmentList>
+            <philiusSegment id="8154925" sequenceID="26274349" start="1" end="27" type="0" typeString="Signal Peptide" typeConfidence="0.88">
+                <spSegmentList>
+                    <philiusSPSegment id="925721" segmentID="8154925" start="1" end="18" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925722" segmentID="8154925" start="19" end="24" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925723" segmentID="8154925" start="25" end="27" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925724" segmentID="8154925" start="27" end="28" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154926" sequenceID="26274349" start="28" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos9</fastaHeader>
+    <psa sequenceID="26274350" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="23.20" tmProbabilitySum="0.00" sequence="MKKCTILVVASLLLVNSLLPGYGQNKIIQAQRNLNELCYNEGNDNKLYHVLNSKNGKIYNRNTVNRLLPMLRRKKNEKKNEKIERNNKLKQPPPPPNPNDPPPPNPNDPPPPNPNDPPPPNPNDPPPPNANDPPPPNANDPAPPNANDPA">
+        <segmentList>
+            <philiusSegment id="8154927" sequenceID="26274350" start="1" end="23" type="0" typeString="Signal Peptide" typeConfidence="0.97">
+                <spSegmentList>
+                    <philiusSPSegment id="925725" segmentID="8154927" start="1" end="14" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925726" segmentID="8154927" start="15" end="20" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925727" segmentID="8154927" start="21" end="23" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925728" segmentID="8154927" start="23" end="24" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154928" sequenceID="26274350" start="24" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos10</fastaHeader>
+    <psa sequenceID="26274351" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="19.60" tmProbabilitySum="0.00" sequence="MMRKLAILSVSSFLFVEALFQEYQCYGSSSNTRVLNELNYDNAGTNLYNELEMNYYGKQENWYSLKKNSRSLGENDDGNNEDNEKLRKPKHKKLKQPADGNPDPNANPNVDPNANPNVDPNANPNVDPNANPNANPNANPNANPNANPNA">
+        <segmentList>
+            <philiusSegment id="8154929" sequenceID="26274351" start="1" end="18" type="0" typeString="Signal Peptide" typeConfidence="0.99">
+                <spSegmentList>
+                    <philiusSPSegment id="925729" segmentID="8154929" start="1" end="9" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925730" segmentID="8154929" start="10" end="15" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925731" segmentID="8154929" start="16" end="18" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925732" segmentID="8154929" start="18" end="19" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154930" sequenceID="26274351" start="19" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos11</fastaHeader>
+    <psa sequenceID="26274352" type="1" typeString="Globular with Signal Peptide" typeScore="0.83" spProbabilitySum="17.90" tmProbabilitySum="1.60" sequence="MKKLSVLAISSFLIVDFLFPGYHHNSNSTKSRNLSELCYNNVDTKLFNELEVRYSTNQDHFYNYNKTIRLLNENNNEKDGNVTNERKKKPTKAVENKLKQPPGDDDDAGNDEGNDAGNDAGNAAGNAAGNAAGNAAGNAAGNAAGNAAGN">
+        <segmentList>
+            <philiusSegment id="8154931" sequenceID="26274352" start="1" end="20" type="0" typeString="Signal Peptide" typeConfidence="0.82">
+                <spSegmentList>
+                    <philiusSPSegment id="925733" segmentID="8154931" start="1" end="11" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925734" segmentID="8154931" start="12" end="17" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925735" segmentID="8154931" start="18" end="20" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925736" segmentID="8154931" start="20" end="21" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154932" sequenceID="26274352" start="21" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.98"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos12</fastaHeader>
+    <psa sequenceID="26274353" type="1" typeString="Globular with Signal Peptide" typeScore="0.97" spProbabilitySum="21.00" tmProbabilitySum="0.00" sequence="MKNFILLAVSSILLVDLLPTHFEHNVDLSRAINVNGVSFNNVDTSSLGAQQVRQSASRGRGLGEKPKEGADKEKKKEKGKEKEEEPKKPNENKLKQPNEGQPQAQGDGANAGQPQAQGDGANAGQPQAQGDGANAGQPQAQGDGANAGQP">
+        <segmentList>
+            <philiusSegment id="8154933" sequenceID="26274353" start="1" end="22" type="0" typeString="Signal Peptide" typeConfidence="0.91">
+                <spSegmentList>
+                    <philiusSPSegment id="925737" segmentID="8154933" start="1" end="13" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925738" segmentID="8154933" start="14" end="19" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925739" segmentID="8154933" start="20" end="22" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925740" segmentID="8154933" start="22" end="23" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154934" sequenceID="26274353" start="23" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos13</fastaHeader>
+    <psa sequenceID="26274354" type="0" typeString="Globular" typeScore="0.48" spProbabilitySum="6.00" tmProbabilitySum="4.90" sequence="MFLKGYTSNVVLIILTFFILLTKEEKNIKNNISGYCFLNFGLKKNAIIKKREKQNLKLFCYNGIRIGQGYDIHKIKVLDEEYNTYANNDFNKNEQSFKTLTLGGVKINNVLVLSHSDGDIIYHSIVDSILGALGSLDIGTLFPDKDEKNK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos14</fastaHeader>
+    <psa sequenceID="26274355" type="1" typeString="Globular with Signal Peptide" typeScore="0.98" spProbabilitySum="36.20" tmProbabilitySum="0.30" sequence="MKSFKNKNTLRRKKAFPVFTKILLVSFLVWVLKCSNNCNNGNGSGDSFDFRNKRTLAQKQHEHHHHHHHQHQHQHQAPHQAHHHHHHGEVNHQAPQVHQQVHGQDQAHHHHHHHHHQLQPQQLQGTVANPPSNEPVVKTQVFREARPGGG">
+        <segmentList>
+            <philiusSegment id="8154935" sequenceID="26274355" start="1" end="36" type="0" typeString="Signal Peptide" typeConfidence="0.95">
+                <spSegmentList>
+                    <philiusSPSegment id="925741" segmentID="8154935" start="1" end="27" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925742" segmentID="8154935" start="28" end="33" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925743" segmentID="8154935" start="34" end="36" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925744" segmentID="8154935" start="36" end="37" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154936" sequenceID="26274355" start="37" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos15</fastaHeader>
+    <psa sequenceID="26274356" type="0" typeString="Globular" typeScore="0.77" spProbabilitySum="1.50" tmProbabilitySum="2.90" sequence="MRVLTPSLYIYAFFIFCVRFKCGNRTTVASAIRASYDMPPKELRVGDMLKKTSQPNCNYRTRGKCRKFFFVWKLDKMRDAHLGVQAKRRKNHLRSGSATYEASLGEHQLKGKRKESATNVEKEKKEKEQQEERLPVPKVGNKMPEKKPDW">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos16</fastaHeader>
+    <psa sequenceID="26274357" type="1" typeString="Globular with Signal Peptide" typeScore="0.47" spProbabilitySum="10.80" tmProbabilitySum="5.90" sequence="MNFLVLFFSYSIFVLPYSILVYGISKDRKCCEYGNSVDSSKILYIAGSVRKRRKTFEKKINVSNFEREGNANGYKHIDNKGIYATKQNLEFDEARNKEANENNKNDATTVNRKIIIESENKNNHNNQEQNIKDCYTNENAQNDEKNKKVK">
+        <segmentList>
+            <philiusSegment id="8154937" sequenceID="26274357" start="1" end="23" type="0" typeString="Signal Peptide" typeConfidence="0.45">
+                <spSegmentList>
+                    <philiusSPSegment id="925745" segmentID="8154937" start="1" end="14" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925746" segmentID="8154937" start="15" end="20" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925747" segmentID="8154937" start="21" end="23" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925748" segmentID="8154937" start="23" end="24" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154938" sequenceID="26274357" start="24" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.71"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos17</fastaHeader>
+    <psa sequenceID="26274358" type="2" typeString="Transmembrane" typeScore="0.91" spProbabilitySum="0.10" tmProbabilitySum="16.40" topologyConfidence="0.86" sequence="MHFGIPSLFYLYILFSIIMRIKCVITKNLKKTKKRTCSYIPHGNMEKGIILNYIEKPNPAYLKRGKNKNKNKNKKGDIYKLRNVEILLYANRYVHEGNENFSSTTKKLLLTPKVGNKMPEGKKPDWFHVAAPTVAKYNKLKDDIKKLNLH">
+        <segmentList>
+            <philiusSegment id="8154939" sequenceID="26274358" start="1" end="7" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.87"/>
+            <philiusSegment id="8154940" sequenceID="26274358" start="8" end="26" type="3" typeString="Transmembrane Helix" typeConfidence="0.86"/>
+            <philiusSegment id="8154941" sequenceID="26274358" start="27" end="150" type="2" typeString="Cytoplasmic" typeConfidence="0.90"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos18</fastaHeader>
+    <psa sequenceID="26274359" type="0" typeString="Globular" typeScore="0.83" spProbabilitySum="0.40" tmProbabilitySum="3.20" sequence="MKVIKTLSIINFFIFVTFNIKNESKYSNTFINNAYNMSIRRSMAESKPSTGAGGSAGGSAGGSAGGSAGGSAGGSAGSGDGNGADAEGSSSTPATTTTTKTTTTTTTTNDAEASTSTSSENPNHKNAETNPKGKGEVQEPNQANKETQNN">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos19</fastaHeader>
+    <psa sequenceID="26274360" type="1" typeString="Globular with Signal Peptide" typeScore="0.84" spProbabilitySum="17.30" tmProbabilitySum="0.00" sequence="MNKIYCILFLSAQCLVHMGKCEPNQKPSRLTRSAKNVLLEQEPMVERSTRMSNPWKAFMEKYDIEKTHSSGIRVDLGEDAEVGNSSYRIPAGKCPVFGKGIVIQNSEVSFLTPVATGNQKLKDGGFAFPQANDHISPISIKNLRERYKEN">
+        <segmentList>
+            <philiusSegment id="8154942" sequenceID="26274360" start="1" end="21" type="0" typeString="Signal Peptide" typeConfidence="0.78">
+                <spSegmentList>
+                    <philiusSPSegment id="925749" segmentID="8154942" start="1" end="12" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925750" segmentID="8154942" start="13" end="18" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925751" segmentID="8154942" start="19" end="21" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925752" segmentID="8154942" start="21" end="22" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154943" sequenceID="26274360" start="22" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos20</fastaHeader>
+    <psa sequenceID="26274361" type="2" typeString="Transmembrane" typeScore="0.88" spProbabilitySum="1.70" tmProbabilitySum="14.80" topologyConfidence="0.62" sequence="MYLFIYIFFFFFFFFFFVIVQKDIEQLDIKCAHEQMNIQKQYDEKKKPLFEKRDEIIQKIPGFWANTLRKHPALSDIVPEDIDILNHLVKLDLKDNMDNNGSYKITFIFGEKAKEFMEPLTLVKHVTFDNNQEKVVECTRIKWKEGKNPI">
+        <segmentList>
+            <philiusSegment id="8154944" sequenceID="26274361" start="1" end="3" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.66"/>
+            <philiusSegment id="8154945" sequenceID="26274361" start="4" end="21" type="3" typeString="Transmembrane Helix" typeConfidence="0.81"/>
+            <philiusSegment id="8154946" sequenceID="26274361" start="22" end="150" type="2" typeString="Cytoplasmic" typeConfidence="0.62"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos21</fastaHeader>
+    <psa sequenceID="26274362" type="1" typeString="Globular with Signal Peptide" typeScore="0.52" spProbabilitySum="20.70" tmProbabilitySum="10.30" sequence="MKILSVFFLALFFIIFNKESLAEKTNKGTGSGVSSKKKNKKGSGEPLIDVHDLISDMIKKEEELVEVNKRKSKYKLATSVLAGLLGVVSTVLLGGVGLVLYNTEKGRHPFKIGSSDPADNANPDADSESNGEPNADPQVTAQDVTPEQPQ">
+        <segmentList>
+            <philiusSegment id="8154947" sequenceID="26274362" start="1" end="22" type="0" typeString="Signal Peptide" typeConfidence="0.90">
+                <spSegmentList>
+                    <philiusSPSegment id="925753" segmentID="8154947" start="1" end="13" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925754" segmentID="8154947" start="14" end="19" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925755" segmentID="8154947" start="20" end="22" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925756" segmentID="8154947" start="22" end="23" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154948" sequenceID="26274362" start="23" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.73"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos22</fastaHeader>
+    <psa sequenceID="26274363" type="1" typeString="Globular with Signal Peptide" typeScore="0.97" spProbabilitySum="21.90" tmProbabilitySum="0.10" sequence="MNQIRPYILLLIVSLLKFISAVDSNIEGPVIGIDLGTTYSCVGVFKNGRVEILNNELGNRITPSYVSFVDGERKVGEAAKLEATVHPTQTVFDVKRLIGRKFDDQEVVKDRSLLPYEIVNNQGKPNIKVQIKDKDTTFAPEQISAMVLEK">
+        <segmentList>
+            <philiusSegment id="8154949" sequenceID="26274363" start="1" end="21" type="0" typeString="Signal Peptide" typeConfidence="0.97">
+                <spSegmentList>
+                    <philiusSPSegment id="925757" segmentID="8154949" start="1" end="12" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925758" segmentID="8154949" start="13" end="18" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925759" segmentID="8154949" start="19" end="21" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925760" segmentID="8154949" start="21" end="22" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154950" sequenceID="26274363" start="22" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos23</fastaHeader>
+    <psa sequenceID="26274364" type="1" typeString="Globular with Signal Peptide" typeScore="0.97" spProbabilitySum="24.70" tmProbabilitySum="0.00" sequence="MVSFSKNKVLSAAVFASVLLLDNNNSEFNNNLFSKNAKGLNSNKRLLHESQAHAGDAHHAHHVADAHHAHHVADAHHAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANA">
+        <segmentList>
+            <philiusSegment id="8154951" sequenceID="26274364" start="1" end="26" type="0" typeString="Signal Peptide" typeConfidence="0.91">
+                <spSegmentList>
+                    <philiusSPSegment id="925761" segmentID="8154951" start="1" end="17" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925762" segmentID="8154951" start="18" end="23" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925763" segmentID="8154951" start="24" end="26" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925764" segmentID="8154951" start="26" end="27" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154952" sequenceID="26274364" start="27" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos24</fastaHeader>
+    <psa sequenceID="26274365" type="1" typeString="Globular with Signal Peptide" typeScore="0.98" spProbabilitySum="20.30" tmProbabilitySum="0.30" sequence="MKIIFFLCSFLFFIINTQCVTHESYQELVKKLEALEDAVLTGYSLFQKEKMVLNEGTSGTAVTTSTPGSSGSVTSGGSVASVASVASGGSGGSVASGGSGNSRRTNPSDNSSDSNTKTYADLKHRVQNYLFTIKELKYPELFDLTNHMLT">
+        <segmentList>
+            <philiusSegment id="8154953" sequenceID="26274365" start="1" end="19" type="0" typeString="Signal Peptide" typeConfidence="0.99">
+                <spSegmentList>
+                    <philiusSPSegment id="925765" segmentID="8154953" start="1" end="10" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925766" segmentID="8154953" start="11" end="16" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925767" segmentID="8154953" start="17" end="19" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925768" segmentID="8154953" start="19" end="20" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154954" sequenceID="26274365" start="20" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos25</fastaHeader>
+    <psa sequenceID="26274366" type="1" typeString="Globular with Signal Peptide" typeScore="0.61" spProbabilitySum="11.70" tmProbabilitySum="0.10" sequence="MNKLYSLFLFLFIQLSIKYYNAKVTVDTVCKKGFLIQMSGHLECKCENDLVLVNEETCEEKVLKCDETTVNKPCGDFSKCIKIDGSPISYACKCNPGYDMVNNVCILNECKNVTCGNGKCILDTSNPVKTGVCSCNIGKVPNADDKNKCS">
+        <segmentList>
+            <philiusSegment id="8154955" sequenceID="26274366" start="1" end="16" type="0" typeString="Signal Peptide" typeConfidence="0.60">
+                <spSegmentList>
+                    <philiusSPSegment id="925769" segmentID="8154955" start="1" end="7" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925770" segmentID="8154955" start="8" end="13" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925771" segmentID="8154955" start="14" end="16" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925772" segmentID="8154955" start="16" end="17" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154956" sequenceID="26274366" start="17" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos26</fastaHeader>
+    <psa sequenceID="26274367" type="1" typeString="Globular with Signal Peptide" typeScore="0.81" spProbabilitySum="19.10" tmProbabilitySum="1.90" sequence="MKIPSLYFFFFIQIAIILTIAAPSDDEPCKNGYLIEMSNHIECKCNNDYVLTNRYECEPKNKCTSLEDTNKPCADYARCLEDPYKDNKSNFYCLCNRGYIQYEDKCIQAECNYKECGEGKCVWDGIHEDGAFCSCNIGKVINPEDNNKCT">
+        <segmentList>
+            <philiusSegment id="8154957" sequenceID="26274367" start="1" end="21" type="0" typeString="Signal Peptide" typeConfidence="0.81">
+                <spSegmentList>
+                    <philiusSPSegment id="925773" segmentID="8154957" start="1" end="12" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925774" segmentID="8154957" start="13" end="18" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925775" segmentID="8154957" start="19" end="21" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925776" segmentID="8154957" start="21" end="22" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154958" sequenceID="26274367" start="22" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.97"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos27</fastaHeader>
+    <psa sequenceID="26274368" type="2" typeString="Transmembrane" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="18.00" topologyConfidence="0.77" sequence="MFIYLFIYLFFKMDKKRTFYYLFFFFTFLVYVLYFDNIKSVLRSSTKKKKKKKICKSTFYVHEESEEIKSWLRNSNERDKGKKFFIFERLIKERKYICVNKYKRNNKLKWIYKNTYEKTKNICDDYNILFKCIKGIIYDKNKETFFETFF">
+        <segmentList>
+            <philiusSegment id="8154959" sequenceID="26274368" start="1" end="17" type="2" typeString="Cytoplasmic" typeConfidence="0.77"/>
+            <philiusSegment id="8154960" sequenceID="26274368" start="18" end="35" type="3" typeString="Transmembrane Helix" typeConfidence="0.96"/>
+            <philiusSegment id="8154961" sequenceID="26274368" start="36" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.78"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos28</fastaHeader>
+    <psa sequenceID="26274369" type="1" typeString="Globular with Signal Peptide" typeScore="0.49" spProbabilitySum="13.60" tmProbabilitySum="5.80" sequence="MMLYISAKKAQVAFILYIVLVLRIISGNNDFCKPSSLNSEISGFIGYKCNFSNEGVHNLKPDMRERRSIFCTIHSYFIYDKIRLIIPKKSSSPEFKILPEKCFQKVYTDYENRVETDISELGLIEYEIEENDTNPNYNERTITISPFSPK">
+        <segmentList>
+            <philiusSegment id="8154962" sequenceID="26274369" start="1" end="27" type="0" typeString="Signal Peptide" typeConfidence="0.49">
+                <spSegmentList>
+                    <philiusSPSegment id="925777" segmentID="8154962" start="1" end="18" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925778" segmentID="8154962" start="19" end="24" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925779" segmentID="8154962" start="25" end="27" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925780" segmentID="8154962" start="27" end="28" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154963" sequenceID="26274369" start="28" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.95"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos29</fastaHeader>
+    <psa sequenceID="26274370" type="2" typeString="Transmembrane" typeScore="0.95" spProbabilitySum="0.80" tmProbabilitySum="17.70" topologyConfidence="0.43" sequence="MLYFFGNSRFFLFFFYFFFYFVLVIKSSVGKNEYVSPDELNIKTSGFLGYKCDFSTEGIHNLEPDIVERRSVICSINSYFIYDKIKLIIPKQDDPKSKFKLLPENCFAKVYSDIEGKTEIPIEQTGLIEYTLEENDTNQDYSERIIQISP">
+        <segmentList>
+            <philiusSegment id="8154964" sequenceID="26274370" start="1" end="7" type="2" typeString="Cytoplasmic" typeConfidence="0.43"/>
+            <philiusSegment id="8154965" sequenceID="26274370" start="8" end="30" type="3" typeString="Transmembrane Helix" typeConfidence="0.78"/>
+            <philiusSegment id="8154966" sequenceID="26274370" start="31" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.50"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos30</fastaHeader>
+    <psa sequenceID="26274371" type="1" typeString="Globular with Signal Peptide" typeScore="0.76" spProbabilitySum="16.10" tmProbabilitySum="3.90" sequence="MHIVSFIIFFFALFFPISICYKINGVCDFSSEGLSLLPEEKLDFSVSRNVDKLSDENNVRHCVHFSKGFEYLRFICPMRKDNYEGIEIRPVECFEYIHIEGREHKLSEILKGSLYEKSINDNIMTRDVFIPPTIYEDMFFECTCDNSLTF">
+        <segmentList>
+            <philiusSegment id="8154967" sequenceID="26274371" start="1" end="20" type="0" typeString="Signal Peptide" typeConfidence="0.76">
+                <spSegmentList>
+                    <philiusSPSegment id="925781" segmentID="8154967" start="1" end="11" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925782" segmentID="8154967" start="12" end="17" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925783" segmentID="8154967" start="18" end="20" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925784" segmentID="8154967" start="20" end="21" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154968" sequenceID="26274371" start="21" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.90"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos31</fastaHeader>
+    <psa sequenceID="26274372" type="0" typeString="Globular" typeScore="0.51" spProbabilitySum="0.10" tmProbabilitySum="9.70" sequence="MNNIYISLYIFFISYIIQLCFNTKYIYCDKKLYVSKNILPSVEKKEFVSNVPHKLEWLVHNILEVVHFLEDVNNYIVDFKKDILTKLEHIVQDDTELYESYEYNENLLNQIYLNNEKKLKRYSEYIEKLKDTKLQMFEDTINNFQRENIY">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos32</fastaHeader>
+    <psa sequenceID="26274373" type="2" typeString="Transmembrane" typeScore="0.97" spProbabilitySum="0.00" tmProbabilitySum="19.20" topologyConfidence="0.92" sequence="MYVLVLIHMCYHFTMKRKKLFVYFIFLSFIINFNFNININFVCSNVIQDVISIGNVDICVVNVNSDEAQECILNNEFGKLLLFVCNMNDAFSTTAKTHPENCPSRAFVNQSNPTENSPEVDTYSIYPNLFGTNENRLNDTYSLYSTPYSN">
+        <segmentList>
+            <philiusSegment id="8154969" sequenceID="26274373" start="1" end="19" type="2" typeString="Cytoplasmic" typeConfidence="0.94"/>
+            <philiusSegment id="8154970" sequenceID="26274373" start="20" end="39" type="3" typeString="Transmembrane Helix" typeConfidence="0.92"/>
+            <philiusSegment id="8154971" sequenceID="26274373" start="40" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.97"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos33</fastaHeader>
+    <psa sequenceID="26274374" type="1" typeString="Globular with Signal Peptide" typeScore="0.98" spProbabilitySum="21.50" tmProbabilitySum="0.10" sequence="MKRWSIITGIVIIFCILTCKGQVENKKVDFRTEKGKFVPLNLVPGDVVEYSCPYSLNNDIRNMNGVEREHFDNKKFCFDYIFVGSKLTFLKEYVRGSYNVVHKEEGNLYTSQFSVPPVVLTHRNFDCFCYMEENNVVVKKVLRIHISNGV">
+        <segmentList>
+            <philiusSegment id="8154972" sequenceID="26274374" start="1" end="21" type="0" typeString="Signal Peptide" typeConfidence="0.98">
+                <spSegmentList>
+                    <philiusSPSegment id="925785" segmentID="8154972" start="1" end="12" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925786" segmentID="8154972" start="13" end="18" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925787" segmentID="8154972" start="19" end="21" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925788" segmentID="8154972" start="21" end="22" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154973" sequenceID="26274374" start="22" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos34</fastaHeader>
+    <psa sequenceID="26274375" type="1" typeString="Globular with Signal Peptide" typeScore="0.46" spProbabilitySum="11.40" tmProbabilitySum="8.40" sequence="MRKALYSLLFYMCICLYIYTPVFMANLKEIEVGNYFICNLRDYPTGNCSVDHDYNKTIKLLCPIVNNKNNSNKTYDPSYCFKYDGIKDEFIINNKQAYIHNTLPGVILTNNIENDTYNLSIYPPFVVKEDVTIVCICDSEKGNEGITPYL">
+        <segmentList>
+            <philiusSegment id="8154974" sequenceID="26274375" start="1" end="24" type="0" typeString="Signal Peptide" typeConfidence="0.45">
+                <spSegmentList>
+                    <philiusSPSegment id="925789" segmentID="8154974" start="1" end="15" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925790" segmentID="8154974" start="16" end="21" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925791" segmentID="8154974" start="22" end="24" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925792" segmentID="8154974" start="24" end="25" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154975" sequenceID="26274375" start="25" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.94"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos35</fastaHeader>
+    <psa sequenceID="26274376" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="25.90" tmProbabilitySum="0.00" sequence="MFAVNLKICIFLSLVSFLLQCKNTLANVTFEQKVQTNLSHDKNGDIVYGHREFKGGIYAFLGYDNCTIEVNKTVNGIDWNEKKDVKVSGNNNIAVVYSIFTSEEKMILIFKCDNKFYITKYGKEFKWSDPKVIDVSNVIGTNTTPAVYSG">
+        <segmentList>
+            <philiusSegment id="8154976" sequenceID="26274376" start="1" end="26" type="0" typeString="Signal Peptide" typeConfidence="0.96">
+                <spSegmentList>
+                    <philiusSPSegment id="925793" segmentID="8154976" start="1" end="17" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925794" segmentID="8154976" start="18" end="23" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925795" segmentID="8154976" start="24" end="26" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925796" segmentID="8154976" start="26" end="27" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154977" sequenceID="26274376" start="27" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos36</fastaHeader>
+    <psa sequenceID="26274377" type="1" typeString="Globular with Signal Peptide" typeScore="0.55" spProbabilitySum="12.70" tmProbabilitySum="5.30" sequence="MKRRRIFMYYCFCFLLKYVAFSNVTNPNTTLGHFEICKINIYSGDAEECVLENEFGKMFLFICDIDYNEMSKNIVLPSECAKKTYIDHVNPNGTSPEVNTYDIFPDLIGANESKFRDKFYFYGTPYSSKDIDFICLCFSEVKPDIKHIIK">
+        <segmentList>
+            <philiusSegment id="8154978" sequenceID="26274377" start="1" end="22" type="0" typeString="Signal Peptide" typeConfidence="0.55">
+                <spSegmentList>
+                    <philiusSPSegment id="925797" segmentID="8154978" start="1" end="13" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925798" segmentID="8154978" start="14" end="19" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925799" segmentID="8154978" start="20" end="22" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925800" segmentID="8154978" start="22" end="23" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154979" sequenceID="26274377" start="23" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos37</fastaHeader>
+    <psa sequenceID="26274378" type="2" typeString="Transmembrane" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="39.10" topologyConfidence="0.54" sequence="MKQYEFARHINTYFSVAQNMLFSIFLYYAFSLLIFLSIFVFKMRKALYSLLFYMCICLYIYTPVFMASLKEIEVGNYFICNLKDYPTGNCSVNHDYNKTIKLLCPIIHNKNNSDKTYDPSYCFKYDGIKDEFIINNKQNYIHNTLPGVIL">
+        <segmentList>
+            <philiusSegment id="8154980" sequenceID="26274378" start="1" end="19" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.54"/>
+            <philiusSegment id="8154981" sequenceID="26274378" start="20" end="41" type="3" typeString="Transmembrane Helix" typeConfidence="0.90"/>
+            <philiusSegment id="8154982" sequenceID="26274378" start="42" end="46" type="2" typeString="Cytoplasmic" typeConfidence="0.52"/>
+            <philiusSegment id="8154983" sequenceID="26274378" start="47" end="69" type="3" typeString="Transmembrane Helix" typeConfidence="0.83"/>
+            <philiusSegment id="8154984" sequenceID="26274378" start="70" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.55"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos38</fastaHeader>
+    <psa sequenceID="26274379" type="2" typeString="Transmembrane" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="41.80" topologyConfidence="0.81" sequence="MAYNIWEEYIMANFHNVYPVVTNLFLFIALSYSFCIFVFFSFFFVKMRKVIYFFLIICLHSNVGWHPFFVFFCGVSGLYVKELQVGNYYICNLKDYANETCTVNYDYNKMIKLLCPINKSYEEYDDRYCFKFIGIRDRLVINNQEEPIMD">
+        <segmentList>
+            <philiusSegment id="8154985" sequenceID="26274379" start="1" end="20" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.84"/>
+            <philiusSegment id="8154986" sequenceID="26274379" start="21" end="43" type="3" typeString="Transmembrane Helix" typeConfidence="0.93"/>
+            <philiusSegment id="8154987" sequenceID="26274379" start="44" end="49" type="2" typeString="Cytoplasmic" typeConfidence="0.76"/>
+            <philiusSegment id="8154988" sequenceID="26274379" start="50" end="70" type="3" typeString="Transmembrane Helix" typeConfidence="0.83"/>
+            <philiusSegment id="8154989" sequenceID="26274379" start="71" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.81"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos39</fastaHeader>
+    <psa sequenceID="26274380" type="0" typeString="Globular" typeScore="0.75" spProbabilitySum="0.60" tmProbabilitySum="4.20" sequence="MKGFTGASIIVFYLIKGYLSYIIFPNGYVCDFKFNPLVNVLPSINTTGDIEEVGCTINNPSLSDYIALVCPKKNYNDYEHMEKVPSKCFSSNLYSPYKSEDSAHKLEELKIPEKYSISKDFSDFDLNIILIPSLYNIDKTIYCRCDNSKT">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos40</fastaHeader>
+    <psa sequenceID="26274381" type="2" typeString="Transmembrane" typeScore="0.79" spProbabilitySum="0.20" tmProbabilitySum="12.80" topologyConfidence="0.58" sequence="MCMGRMISIINIILFYFFLWVKKSISELLSSTQYVCDFYFNPLTNVKPTVVGSSEIYEEVGCTINNPTLGDHIVLICPKKNNGDFSNIEIVPTNCFESHLYSAYKNDSSAYHLEKLDIDKKYAINSSFSDFYLKILVIPNEYKSHKTIYC">
+        <segmentList>
+            <philiusSegment id="8154990" sequenceID="26274381" start="1" end="6" type="2" typeString="Cytoplasmic" typeConfidence="0.58"/>
+            <philiusSegment id="8154991" sequenceID="26274381" start="7" end="21" type="3" typeString="Transmembrane Helix" typeConfidence="0.77"/>
+            <philiusSegment id="8154992" sequenceID="26274381" start="22" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.85"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos41</fastaHeader>
+    <psa sequenceID="26274382" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="22.70" tmProbabilitySum="0.00" sequence="MEGKKKRPLFFLLVLLLSHKANNVLFERMKGILLLECENEYVKNENGYKLATGHHYMDNDQIERWLQGTDRSRRVKIEENVKYKYNVEELNTKYEQTKGKRINRILKESTYEAQNVADNNYIDDKANGEYKTDNKTNKGEGARNMVMLDY">
+        <segmentList>
+            <philiusSegment id="8154993" sequenceID="26274382" start="1" end="21" type="0" typeString="Signal Peptide" typeConfidence="0.99">
+                <spSegmentList>
+                    <philiusSPSegment id="925801" segmentID="8154993" start="1" end="12" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925802" segmentID="8154993" start="13" end="18" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925803" segmentID="8154993" start="19" end="21" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925804" segmentID="8154993" start="21" end="22" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154994" sequenceID="26274382" start="22" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos42</fastaHeader>
+    <psa sequenceID="26274383" type="0" typeString="Globular" typeScore="0.82" spProbabilitySum="2.30" tmProbabilitySum="1.20" sequence="MQRWIFCNIVLHILIYLAEFSHEQESYSSNEKIRKDYSDDNNYEPTPSYEKRKKEYGKDESYIKNYRGNNFSYDLSKNSSIFLHMGNGSNSKTLKRCNKKKNIKTNFLRPIEEEKTVLNNYVYKGVNFLDTIKRNDSSYKFDVYKDTSFL">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos43</fastaHeader>
+    <psa sequenceID="26274384" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="21.90" tmProbabilitySum="0.00" sequence="MKRGICLAALLCLFNYLGAGHGENAEEDIRNSEGKVNFFSLDSNLKKNKKSKHNRVKRRNAKISNFLSQKAYVKETDNASGKDAEGSRPSHDSSFVNLNGHVDGKSLSYSVHVKESTPHSTTRESTEKGKENEKIQGVLSSFVQSQEGGE">
+        <segmentList>
+            <philiusSegment id="8154995" sequenceID="26274384" start="1" end="22" type="0" typeString="Signal Peptide" typeConfidence="0.95">
+                <spSegmentList>
+                    <philiusSPSegment id="925805" segmentID="8154995" start="1" end="13" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925806" segmentID="8154995" start="14" end="19" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925807" segmentID="8154995" start="20" end="22" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925808" segmentID="8154995" start="22" end="23" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154996" sequenceID="26274384" start="23" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos44</fastaHeader>
+    <psa sequenceID="26274385" type="1" typeString="Globular with Signal Peptide" typeScore="0.58" spProbabilitySum="14.40" tmProbabilitySum="0.40" sequence="MRKGLIYRTILCYILLILIEKSHQNNIYKVNGNNENFQFSHLNFYSKNNEGLNFGRSKVSKGSNLPSEKSSDNNNDNDYSYKYYNSSIRRKKDNKNNVHSSNLFRPHLFVTLNEKHFANNPTHNSFLSKIKVTGPQEVNNNAMSSDKNPL">
+        <segmentList>
+            <philiusSegment id="8154997" sequenceID="26274385" start="1" end="24" type="0" typeString="Signal Peptide" typeConfidence="0.57">
+                <spSegmentList>
+                    <philiusSPSegment id="925809" segmentID="8154997" start="1" end="15" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925810" segmentID="8154997" start="16" end="21" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925811" segmentID="8154997" start="22" end="24" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925812" segmentID="8154997" start="24" end="25" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8154998" sequenceID="26274385" start="25" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos45</fastaHeader>
+    <psa sequenceID="26274386" type="0" typeString="Globular" typeScore="0.42" spProbabilitySum="8.20" tmProbabilitySum="3.80" sequence="MEKNVLWVIFYNFLVILLASCNDSNRSKSNSLKSESKSLPTYANLMRNGQDKYNNAKTEDNIGNQINNDNNHNGYNDNRINSEYPKTSHLQHSPSLVHLNDHKFTTKPSRHSYVQRNSIYKRNTNNNMENTNNELHVVPNFFIQEKKAAP">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos46</fastaHeader>
+    <psa sequenceID="26274387" type="1" typeString="Globular with Signal Peptide" typeScore="0.54" spProbabilitySum="11.50" tmProbabilitySum="0.60" sequence="MNRILSVTLCLFFIYLYIYKTYGKVKNTDEGLSNIYGAKYYLRSGLFNEKNGKGQKYEDLEEEKEGENDDEEDSNSEESNNDEENELIKGQEGVEQETHGSEDEVSNGREDKVSNGGEDEVSNGGEDEVSNGREDKVSNGGEDEVSNGRE">
+        <segmentList>
+            <philiusSegment id="8154999" sequenceID="26274387" start="1" end="16" type="0" typeString="Signal Peptide" typeConfidence="0.54">
+                <spSegmentList>
+                    <philiusSPSegment id="925813" segmentID="8154999" start="1" end="7" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925814" segmentID="8154999" start="8" end="13" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925815" segmentID="8154999" start="14" end="16" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925816" segmentID="8154999" start="16" end="17" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8155000" sequenceID="26274387" start="17" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.96"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos47</fastaHeader>
+    <psa sequenceID="26274388" type="1" typeString="Globular with Signal Peptide" typeScore="0.99" spProbabilitySum="24.80" tmProbabilitySum="0.10" sequence="MKLLGNSKYIFVVLLLCISVFLNGQETLDEIKYSEEVCTEQIDIHILLDGSGSIGYSNWKAHVIPMLNTLVDNLNISNDEINVSLTLFSTNSRELIKLKGYGSTSKDSLRFILAHLQNNYSPNGNTNLTSALLVVDTLINERMYRPDAIQ">
+        <segmentList>
+            <philiusSegment id="8155001" sequenceID="26274388" start="1" end="24" type="0" typeString="Signal Peptide" typeConfidence="0.98">
+                <spSegmentList>
+                    <philiusSPSegment id="925817" segmentID="8155001" start="1" end="15" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925818" segmentID="8155001" start="16" end="21" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925819" segmentID="8155001" start="22" end="24" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925820" segmentID="8155001" start="24" end="25" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8155002" sequenceID="26274388" start="25" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.99"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos48</fastaHeader>
+    <psa sequenceID="26274389" type="1" typeString="Globular with Signal Peptide" typeScore="0.77" spProbabilitySum="25.50" tmProbabilitySum="4.70" sequence="MNIRKFIPSLALMLIFFAFANLVLSDANDKAKKPAGKGSPSTLQTPGSSSGASLHAVGPNQGGLSQGLSGKDSADKMPLETQLAIEEIKSLSNMLDKKTTVNRNLIISTAVTNMIMLIILSGIVGFKVKKTKNADDDKGDKDKDKDNTDE">
+        <segmentList>
+            <philiusSegment id="8155003" sequenceID="26274389" start="1" end="25" type="0" typeString="Signal Peptide" typeConfidence="0.97">
+                <spSegmentList>
+                    <philiusSPSegment id="925821" segmentID="8155003" start="1" end="16" spSegmentType="0" spSegmentTypeString="N-region"/>
+                    <philiusSPSegment id="925822" segmentID="8155003" start="17" end="22" spSegmentType="1" spSegmentTypeString="H-region"/>
+                    <philiusSPSegment id="925823" segmentID="8155003" start="23" end="25" spSegmentType="2" spSegmentTypeString="C-region"/>
+                    <philiusSPSegment id="925824" segmentID="8155003" start="25" end="26" spSegmentType="3" spSegmentTypeString="Cleavage Site"/>
+                </spSegmentList>
+            </philiusSegment>
+            <philiusSegment id="8155004" sequenceID="26274389" start="26" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.91"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos49</fastaHeader>
+    <psa sequenceID="26274390" type="2" typeString="Transmembrane" typeScore="0.76" spProbabilitySum="1.40" tmProbabilitySum="15.30" topologyConfidence="0.63" sequence="MYNFLSCKKKSIILQVLLIICTYNILLNFVNIFVNNNEKNHKNKYENRIKSFYVEAYNWNFLEKWKSINTNEKLEYKINYNIGLNIDAEIGDFGDYNSDVKTDLILFKYDKDKLLSTIFIYVFSVKENKFIYHTEVSFEGKIMNVTAIDL">
+        <segmentList>
+            <philiusSegment id="8155005" sequenceID="26274390" start="1" end="11" type="2" typeString="Cytoplasmic" typeConfidence="0.63"/>
+            <philiusSegment id="8155006" sequenceID="26274390" start="12" end="32" type="3" typeString="Transmembrane Helix" typeConfidence="0.71"/>
+            <philiusSegment id="8155007" sequenceID="26274390" start="33" end="150" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.90"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos50</fastaHeader>
+    <psa sequenceID="26274391" type="0" typeString="Globular" typeScore="0.60" spProbabilitySum="7.50" tmProbabilitySum="2.10" sequence="MVKCGKYVLILELLLLTLLYNLIKRVSNSGETVSSFVDGYNWNIMERWKAITPKEKLEYKVNYDLGLDIDAEIGDFGDYNSDVKTDLILFKYDKTTMISTIFVYIFSPSENKFIYHTEAKLEGKIVNLMVIDLNFDGSLDALVLFKDNSS">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;pos51</fastaHeader>
+    <psa sequenceID="26274392" type="0" typeString="Globular" typeScore="0.40" spProbabilitySum="7.60" tmProbabilitySum="5.50" sequence="MNHLGNVKYLVIVFLIFFDLFLVNGRDVQNNIVDEIKYSEEVCNDQVDLYLLMDCSGSIRRHNWVNHAVPLAMKLIQQLNLNDNAIHLYVNVFSNNAKEIIRLHSDASKNKEKALIIIRSLLSTNLPYGRTNLTDALLQVRKHLNDRINR">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg1</fastaHeader>
+    <psa sequenceID="26333534" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="KSETIEVYNDLIQKLEKLESLSVDGLELFQKSQVIINATQPTETIDPFTNHNFAQQVQDFVTKFEGLGFTEQTELVNLIKALTPNRYGVKYLIESKEEFNGLMHAINFYYDVLRDKLNDMCANNYCEIPEHLK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg2</fastaHeader>
+    <psa sequenceID="26333535" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="SEKKDLRCNVIKGNNIKDDEDKRFHLFYYSHNLFKTPETKEKKNKKECFYKNGGIYNLSKEIRMRKDTSVKIKQRTCPFHKEGSSFEMGSKNITCFYPIVGKKERKTLDTIIIKKNVTNDHVVSSDMHSNV">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg3</fastaHeader>
+    <psa sequenceID="26333536" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GHKNLTCDFNDVYKLEFHPNQQTSVTKLCNLTPNVLEKVTIKCGSDKLNYNLYPPTCFEEVYASRNMMHLKKIKEFVIGSSMFMRRSLTPNKINEVSFRIPPNMMPEKPIYCFCENKKTITINGSN">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg4</fastaHeader>
+    <psa sequenceID="26333537" type="0" typeString="Globular" typeScore="0.98" spProbabilitySum="0.00" tmProbabilitySum="0.50" sequence="SKSHKCDFTKEKYLLSGEKEVSCEIDANPSDDITFICPNKIDSLCFHTVNISKNINQNKSTMSIQDLLYGSVVYGNTLFISPYVRTNTPFYCFCNLDTVTIQKFLKINRFLKDDDELSEADVMKHLKGGNV">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg5</fastaHeader>
+    <psa sequenceID="26333538" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.10" sequence="NKNVIKCTGESQTGNTGGGQAGNTVGDQAGSTGGSPQGSTGASQPGSSEPSNPVSSGHSVSTVSVSQTSTSSEKQDTIQVKSALLKDYMGLKVTGPCNENFIMFLVPHIYIDVDTEDTNIELRTTLKETNNAISF">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg6</fastaHeader>
+    <psa sequenceID="26333539" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="CSEGTDKIISENGDVKFDLIPKENTERSHKLINPWEKFMEKYDIEKVHGSGIRVDLGEDARVENQDYRIPSGKCPVMGKGITIQNSKVSFLTRVATGNQKVREGGLAFPQTDVNISPITIDNLKLMYKDH">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg7</fastaHeader>
+    <psa sequenceID="26333540" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GQNYWEHPYQKSDVYHPINEHREHPKEYQYPLHQEHTYQQEDSGEDENTLQHAYPIDHEGAEPAPQEQNLFSSIEIVERSNYMGNPWTEYMAKYDIEEVHGSGIRVDLGEDAEVAGTQYRLPSGKCP">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg8</fastaHeader>
+    <psa sequenceID="26333541" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="ADLPTHVETKNLLGKWKILRTKTSPNLTTCGSSQPNKNTYNVGITDYKKYLLENNYEFVSELNVILSDDYVLYGDIYNTQDNEHRSKWKVLAVYDENKRVIGTWTTICDEGFEIKIGNETYAAL">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg9</fastaHeader>
+    <psa sequenceID="26333542" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GQNKIIQAQRNLNELCYNEGNDNKLYHVLNSKNGKIYNRNTVNRLLPMLRRKKNEKKNEKIERNNKLKQPPPPPNPNDPPPPNPNDPPPPNPNDPPPPNPNDPPPPNANDPPPPNANDPAPPNANDPA">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg10</fastaHeader>
+    <psa sequenceID="26333543" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="VEALFQEYQCYGSSSNTRVLNELNYDNAGTNLYNELEMNYYGKQENWYSLKKNSRSLGENDDGNNEDNEKLRKPKHKKLKQPADGNPDPNANPNVDPNANPNVDPNANPNVDPNANPNANPNANPNANPNANPNA">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg11</fastaHeader>
+    <psa sequenceID="26333544" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.10" sequence="HHNSNSTKSRNLSELCYNNVDTKLFNELEVRYSTNQDHFYNYNKTIRLLNENNNEKDGNVTNERKKKPTKAVENKLKQPPGDDDDAGNDEGNDAGNDAGNAAGNAAGNAAGNAAGNAAGNAAGNAAGN">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg12</fastaHeader>
+    <psa sequenceID="26333545" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="PTHFEHNVDLSRAINVNGVSFNNVDTSSLGAQQVRQSASRGRGLGEKPKEGADKEKKKEKGKEKEEEPKKPNENKLKQPNEGQPQAQGDGANAGQPQAQGDGANAGQPQAQGDGANAGQPQAQGDGANAGQP">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg13</fastaHeader>
+    <psa sequenceID="26333546" type="0" typeString="Globular" typeScore="0.96" spProbabilitySum="0.00" tmProbabilitySum="0.80" sequence="EEKNIKNNISGYCFLNFGLKKNAIIKKREKQNLKLFCYNGIRIGQGYDIHKIKVLDEEYNTYANNDFNKNEQSFKTLTLGGVKINNVLVLSHSDGDIIYHSIVDSILGALGSLDIGTLFPDKDEKNK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg14</fastaHeader>
+    <psa sequenceID="26333547" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="CSNNCNNGNGSGDSFDFRNKRTLAQKQHEHHHHHHHQHQHQHQAPHQAHHHHHHGEVNHQAPQVHQQVHGQDQAHHHHHHHHHQLQPQQLQGTVANPPSNEPVVKTQVFREARPGGG">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg15</fastaHeader>
+    <psa sequenceID="26333548" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GNRTTVASAIRASYDMPPKELRVGDMLKKTSQPNCNYRTRGKCRKFFFVWKLDKMRDAHLGVQAKRRKNHLRSGSATYEASLGEHQLKGKRKESATNVEKEKKEKEQQEERLPVPKVGNKMPEKKPDW">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg16</fastaHeader>
+    <psa sequenceID="26333549" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="PYSILVYGISKDRKCCEYGNSVDSSKILYIAGSVRKRRKTFEKKINVSNFEREGNANGYKHIDNKGIYATKQNLEFDEARNKEANENNKNDATTVNRKIIIESENKNNHNNQEQNIKDCYTNENAQNDEKNKKVK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg17</fastaHeader>
+    <psa sequenceID="26333550" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="CVITKNLKKTKKRTCSYIPHGNMEKGIILNYIEKPNPAYLKRGKNKNKNKNKKGDIYKLRNVEILLYANRYVHEGNENFSSTTKKLLLTPKVGNKMPEGKKPDWFHVAAPTVAKYNKLKDDIKKLNLH">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg18</fastaHeader>
+    <psa sequenceID="26333551" type="0" typeString="Globular" typeScore="0.84" spProbabilitySum="0.00" tmProbabilitySum="3.40" sequence="IKNESKYSNTFINNAYNMSIRRSMAESKPSTGAGGSAGGSAGGSAGGSAGGSAGGSAGSGDGNGADAEGSSSTPATTTTTKTTTTTTTTNDAEASTSTSSENPNHKNAETNPKGKGEVQEPNQANKETQNN">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg19</fastaHeader>
+    <psa sequenceID="26333552" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="CEPNQKPSRLTRSAKNVLLEQEPMVERSTRMSNPWKAFMEKYDIEKTHSSGIRVDLGEDAEVGNSSYRIPAGKCPVFGKGIVIQNSEVSFLTPVATGNQKLKDGGFAFPQANDHISPISIKNLRERYKEN">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg20</fastaHeader>
+    <psa sequenceID="26333553" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="KDIEQLDIKCAHEQMNIQKQYDEKKKPLFEKRDEIIQKIPGFWANTLRKHPALSDIVPEDIDILNHLVKLDLKDNMDNNGSYKITFIFGEKAKEFMEPLTLVKHVTFDNNQEKVVECTRIKWKEGKNPI">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg21</fastaHeader>
+    <psa sequenceID="26333554" type="2" typeString="Transmembrane" typeScore="0.98" spProbabilitySum="0.00" tmProbabilitySum="21.50" topologyConfidence="0.91" sequence="FNKESLAEKTNKGTGSGVSSKKKNKKGSGEPLIDVHDLISDMIKKEEELVEVNKRKSKYKLATSVLAGLLGVVSTVLLGGVGLVLYNTEKGRHPFKIGSSDPADNANPDADSESNGEPNADPQVTAQDVTPEQPQ">
+        <segmentList>
+            <philiusSegment id="8197546" sequenceID="26333554" start="1" end="63" type="2" typeString="Cytoplasmic" typeConfidence="0.91"/>
+            <philiusSegment id="8197547" sequenceID="26333554" start="64" end="86" type="3" typeString="Transmembrane Helix" typeConfidence="0.92"/>
+            <philiusSegment id="8197548" sequenceID="26333554" start="87" end="135" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.94"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg22</fastaHeader>
+    <psa sequenceID="26333555" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.10" sequence="SNIEGPVIGIDLGTTYSCVGVFKNGRVEILNNELGNRITPSYVSFVDGERKVGEAAKLEATVHPTQTVFDVKRLIGRKFDDQEVVKDRSLLPYEIVNNQGKPNIKVQIKDKDTTFAPEQISAMVLEK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg23</fastaHeader>
+    <psa sequenceID="26333556" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="LDNNNSEFNNNLFSKNAKGLNSNKRLLHESQAHAGDAHHAHHVADAHHAHHVADAHHAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANAHHAANA">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg24</fastaHeader>
+    <psa sequenceID="26333557" type="0" typeString="Globular" typeScore="0.81" spProbabilitySum="0.00" tmProbabilitySum="4.20" sequence="CVTHESYQELVKKLEALEDAVLTGYSLFQKEKMVLNEGTSGTAVTTSTPGSSGSVTSGGSVASVASVASGGSGGSVASGGSGNSRRTNPSDNSSDSNTKTYADLKHRVQNYLFTIKELKYPELFDLTNHMLT">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg25</fastaHeader>
+    <psa sequenceID="26333558" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="SIKYYNAKVTVDTVCKKGFLIQMSGHLECKCENDLVLVNEETCEEKVLKCDETTVNKPCGDFSKCIKIDGSPISYACKCNPGYDMVNNVCILNECKNVTCGNGKCILDTSNPVKTGVCSCNIGKVPNADDKNKCS">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg26</fastaHeader>
+    <psa sequenceID="26333559" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="AAPSDDEPCKNGYLIEMSNHIECKCNNDYVLTNRYECEPKNKCTSLEDTNKPCADYARCLEDPYKDNKSNFYCLCNRGYIQYEDKCIQAECNYKECGEGKCVWDGIHEDGAFCSCNIGKVINPEDNNKCT">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg27</fastaHeader>
+    <psa sequenceID="26333560" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="YFDNIKSVLRSSTKKKKKKKICKSTFYVHEESEEIKSWLRNSNERDKGKKFFIFERLIKERKYICVNKYKRNNKLKWIYKNTYEKTKNICDDYNILFKCIKGIIYDKNKETFFETFF">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg28</fastaHeader>
+    <psa sequenceID="26333561" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.10" sequence="GNNDFCKPSSLNSEISGFIGYKCNFSNEGVHNLKPDMRERRSIFCTIHSYFIYDKIRLIIPKKSSSPEFKILPEKCFQKVYTDYENRVETDISELGLIEYEIEENDTNPNYNERTITISPFSPK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg29</fastaHeader>
+    <psa sequenceID="26333562" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GKNEYVSPDELNIKTSGFLGYKCDFSTEGIHNLEPDIVERRSVICSINSYFIYDKIKLIIPKQDDPKSKFKLLPENCFAKVYSDIEGKTEIPIEQTGLIEYTLEENDTNQDYSERIIQISP">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg30</fastaHeader>
+    <psa sequenceID="26333563" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="CYKINGVCDFSSEGLSLLPEEKLDFSVSRNVDKLSDENNVRHCVHFSKGFEYLRFICPMRKDNYEGIEIRPVECFEYIHIEGREHKLSEILKGSLYEKSINDNIMTRDVFIPPTIYEDMFFECTCDNSLTF">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg31</fastaHeader>
+    <psa sequenceID="26333564" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="FNTKYIYCDKKLYVSKNILPSVEKKEFVSNVPHKLEWLVHNILEVVHFLEDVNNYIVDFKKDILTKLEHIVQDDTELYESYEYNENLLNQIYLNNEKKLKRYSEYIEKLKDTKLQMFEDTINNFQRENIY">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg32</fastaHeader>
+    <psa sequenceID="26333565" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="FVCSNVIQDVISIGNVDICVVNVNSDEAQECILNNEFGKLLLFVCNMNDAFSTTAKTHPENCPSRAFVNQSNPTENSPEVDTYSIYPNLFGTNENRLNDTYSLYSTPYSN">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg33</fastaHeader>
+    <psa sequenceID="26333566" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GQVENKKVDFRTEKGKFVPLNLVPGDVVEYSCPYSLNNDIRNMNGVEREHFDNKKFCFDYIFVGSKLTFLKEYVRGSYNVVHKEEGNLYTSQFSVPPVVLTHRNFDCFCYMEENNVVVKKVLRIHISNGV">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg34</fastaHeader>
+    <psa sequenceID="26333567" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="MANLKEIEVGNYFICNLRDYPTGNCSVDHDYNKTIKLLCPIVNNKNNSNKTYDPSYCFKYDGIKDEFIINNKQAYIHNTLPGVILTNNIENDTYNLSIYPPFVVKEDVTIVCICDSEKGNEGITPYL">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg35</fastaHeader>
+    <psa sequenceID="26333568" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="ANVTFEQKVQTNLSHDKNGDIVYGHREFKGGIYAFLGYDNCTIEVNKTVNGIDWNEKKDVKVSGNNNIAVVYSIFTSEEKMILIFKCDNKFYITKYGKEFKWSDPKVIDVSNVIGTNTTPAVYSG">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg36</fastaHeader>
+    <psa sequenceID="26333569" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="SNVTNPNTTLGHFEICKINIYSGDAEECVLENEFGKMFLFICDIDYNEMSKNIVLPSECAKKTYIDHVNPNGTSPEVNTYDIFPDLIGANESKFRDKFYFYGTPYSSKDIDFICLCFSEVKPDIKHIIK">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg37</fastaHeader>
+    <psa sequenceID="26333570" type="2" typeString="Transmembrane" typeScore="0.98" spProbabilitySum="0.00" tmProbabilitySum="19.50" topologyConfidence="0.83" sequence="AFSLLIFLSIFVFKMRKALYSLLFYMCICLYIYTPVFMASLKEIEVGNYFICNLKDYPTGNCSVNHDYNKTIKLLCPIIHNKNNSDKTYDPSYCFKYDGIKDEFIINNKQNYIHNTLPGVIL">
+        <segmentList>
+            <philiusSegment id="8197549" sequenceID="26333570" start="1" end="17" type="2" typeString="Cytoplasmic" typeConfidence="0.83"/>
+            <philiusSegment id="8197550" sequenceID="26333570" start="18" end="39" type="3" typeString="Transmembrane Helix" typeConfidence="0.88"/>
+            <philiusSegment id="8197551" sequenceID="26333570" start="40" end="122" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.86"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg38</fastaHeader>
+    <psa sequenceID="26333571" type="2" typeString="Transmembrane" typeScore="0.97" spProbabilitySum="0.00" tmProbabilitySum="20.20" topologyConfidence="0.80" sequence="SFCIFVFFSFFFVKMRKVIYFFLIICLHSNVGWHPFFVFFCGVSGLYVKELQVGNYYICNLKDYANETCTVNYDYNKMIKLLCPINKSYEEYDDRYCFKFIGIRDRLVINNQEEPIMD">
+        <segmentList>
+            <philiusSegment id="8197552" sequenceID="26333571" start="1" end="17" type="2" typeString="Cytoplasmic" typeConfidence="0.80"/>
+            <philiusSegment id="8197553" sequenceID="26333571" start="18" end="37" type="3" typeString="Transmembrane Helix" typeConfidence="0.90"/>
+            <philiusSegment id="8197554" sequenceID="26333571" start="38" end="118" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.82"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg39</fastaHeader>
+    <psa sequenceID="26333572" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="SYIIFPNGYVCDFKFNPLVNVLPSINTTGDIEEVGCTINNPSLSDYIALVCPKKNYNDYEHMEKVPSKCFSSNLYSPYKSEDSAHKLEELKIPEKYSISKDFSDFDLNIILIPSLYNIDKTIYCRCDNSKT">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg40</fastaHeader>
+    <psa sequenceID="26333573" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="SELLSSTQYVCDFYFNPLTNVKPTVVGSSEIYEEVGCTINNPTLGDHIVLICPKKNNGDFSNIEIVPTNCFESHLYSAYKNDSSAYHLEKLDIDKKYAINSSFSDFYLKILVIPNEYKSHKTIYC">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg41</fastaHeader>
+    <psa sequenceID="26333574" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="ANNVLFERMKGILLLECENEYVKNENGYKLATGHHYMDNDQIERWLQGTDRSRRVKIEENVKYKYNVEELNTKYEQTKGKRINRILKESTYEAQNVADNNYIDDKANGEYKTDNKTNKGEGARNMVMLDY">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg42</fastaHeader>
+    <psa sequenceID="26333575" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="EQESYSSNEKIRKDYSDDNNYEPTPSYEKRKKEYGKDESYIKNYRGNNFSYDLSKNSSIFLHMGNGSNSKTLKRCNKKKNIKTNFLRPIEEEKTVLNNYVYKGVNFLDTIKRNDSSYKFDVYKDTSFL">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg43</fastaHeader>
+    <psa sequenceID="26333576" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GENAEEDIRNSEGKVNFFSLDSNLKKNKKSKHNRVKRRNAKISNFLSQKAYVKETDNASGKDAEGSRPSHDSSFVNLNGHVDGKSLSYSVHVKESTPHSTTRESTEKGKENEKIQGVLSSFVQSQEGGE">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg44</fastaHeader>
+    <psa sequenceID="26333577" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="QNNIYKVNGNNENFQFSHLNFYSKNNEGLNFGRSKVSKGSNLPSEKSSDNNNDNDYSYKYYNSSIRRKKDNKNNVHSSNLFRPHLFVTLNEKHFANNPTHNSFLSKIKVTGPQEVNNNAMSSDKNPL">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg45</fastaHeader>
+    <psa sequenceID="26333578" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="CNDSNRSKSNSLKSESKSLPTYANLMRNGQDKYNNAKTEDNIGNQINNDNNHNGYNDNRINSEYPKTSHLQHSPSLVHLNDHKFTTKPSRHSYVQRNSIYKRNTNNNMENTNNELHVVPNFFIQEKKAAP">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg46</fastaHeader>
+    <psa sequenceID="26333579" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="GKVKNTDEGLSNIYGAKYYLRSGLFNEKNGKGQKYEDLEEEKEGENDDEEDSNSEESNNDEENELIKGQEGVEQETHGSEDEVSNGREDKVSNGGEDEVSNGGEDEVSNGREDKVSNGGEDEVSNGRE">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg47</fastaHeader>
+    <psa sequenceID="26333580" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.10" sequence="LNGQETLDEIKYSEEVCTEQIDIHILLDGSGSIGYSNWKAHVIPMLNTLVDNLNISNDEINVSLTLFSTNSRELIKLKGYGSTSKDSLRFILAHLQNNYSPNGNTNLTSALLVVDTLINERMYRPDAIQ">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg48</fastaHeader>
+    <psa sequenceID="26333581" type="2" typeString="Transmembrane" typeScore="0.76" spProbabilitySum="0.00" tmProbabilitySum="16.20" topologyConfidence="0.56" sequence="SDANDKAKKPAGKGSPSTLQTPGSSSGASLHAVGPNQGGLSQGLSGKDSADKMPLETQLAIEEIKSLSNMLDKKTTVNRNLIISTAVTNMIMLIILSGIVGFKVKKTKNADDDKGDKDKDKDNTDE">
+        <segmentList>
+            <philiusSegment id="8197555" sequenceID="26333581" start="1" end="79" type="2" typeString="Cytoplasmic" typeConfidence="0.56"/>
+            <philiusSegment id="8197556" sequenceID="26333581" start="80" end="100" type="3" typeString="Transmembrane Helix" typeConfidence="0.70"/>
+            <philiusSegment id="8197557" sequenceID="26333581" start="101" end="126" type="1" typeString="Non-Cytoplasmic" typeConfidence="0.79"/>
+        </segmentList>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg49</fastaHeader>
+    <psa sequenceID="26333582" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.00" sequence="IFVNNNEKNHKNKYENRIKSFYVEAYNWNFLEKWKSINTNEKLEYKINYNIGLNIDAEIGDFGDYNSDVKTDLILFKYDKDKLLSTIFIYVFSVKENKFIYHTEVSFEGKIMNVTAIDL">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg50</fastaHeader>
+    <psa sequenceID="26333583" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.20" sequence="SGETVSSFVDGYNWNIMERWKAITPKEKLEYKVNYDLGLDIDAEIGDFGDYNSDVKTDLILFKYDKTTMISTIFVYIFSPSENKFIYHTEAKLEGKIVNLMVIDLNFDGSLDALVLFKDNSS">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+<philiusProteinSequenceResponse>
+    <fastaHeader>&gt;neg51</fastaHeader>
+    <psa sequenceID="26333584" type="0" typeString="Globular" typeScore="0.99" spProbabilitySum="0.00" tmProbabilitySum="0.10" sequence="GRDVQNNIVDEIKYSEEVCNDQVDLYLLMDCSGSIRRHNWVNHAVPLAMKLIQQLNLNDNAIHLYVNVFSNNAKEIIRLHSDASKNKEKALIIIRSLLSTNLPYGRTNLTDALLQVRKHLNDRINR">
+        <segmentList/>
+    </psa>
+</philiusProteinSequenceResponse>
+</philius-output>

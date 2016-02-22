@@ -242,11 +242,9 @@ Moreover, the present algorithms require the big number of sequences to be succe
 
 \begin{figure}[ht]\centering
 \includegraphics[width=0.95\textwidth]{figures/reglen.eps}
-\caption{Distribution of lengths for signal peptides (A) and their regions (B) expressed in the number of amino acid residues for sequences excluding members of \textit{Plasmodiidae} family (Other) and members of this family (Plasmod). Yellow bars represent a fitted geometric distribution.}
+\caption{Distribution of lengths for signal peptides (A) and their regions (B) expressed in the number of amino acid residues for sequences excluding members of \textit{Plasmodiidae} family (Other) and members of this family (Plasmodium). Yellow bars represent a fitted geometric distribution.}
 \label{fig:reglen}
 \end{figure}
-DOPISAC PLASMOD. RYSUNEK ROZCAGNALBYM W PIONIE.
-
 
 % All programs used in signal peptide recognition are trained on real protein sequences. Therefore, they succeed in the recognition of peptides similar to those in the learning set but fail in the case of artificial signal peptides. Such peptides are designed to increase effectiveness of protein secretion~\cite{2010futatsumorisugaisignal}. They are especially important in industrial applications to increase yield of proteins. Therefore, only explicit knowledge about the organization of signal peptides allows creating sequences that will be the most efficient in the export of proteins~\cite{2013ngengineering}. Signal peptides have also an important application in gene therapy. Mimicking the natural mechanism of protein export, artificial signal peptides with tumor epitopes increase the antitumor immune response~\cite{2003heenhanced}. Such epitopes must be properly inserted into a signal peptide without decreasing its secretion properties through disruption of the regional structure. Instead of time-consuming and expensive laboratory experiments, it would be very useful to survey \textit{in silico} many artificial peptides to select the ones that would fulfill the designed role.
 
@@ -274,7 +272,7 @@ To reduce the set according to homology of collected protein sequences, we filte
 \centering
 \caption{Number of sequences with signal peptides used in the study for  different types of learning sets.} 
 \label{tab:sets}
-\begin{tabular}{llll}
+\begin{tabular}{clll}
   \toprule
 		\multirow{Set} &
 		\multicolumn{3}{l}{Homology reduction}\\
@@ -288,10 +286,6 @@ To reduce the set according to homology of collected protein sequences, we filte
 \end{tabular}
 \end{table}
 
-
-
-JAK DAC Set NA SRODKU W POZIOMIE I ZROBIC ABY NAPISY NIE DOTYKALY LINII
-UZUPELNIC I SPRAWDZIC TABELKE
 
 
 \subsection*{Clustering of amino acids into groups}
@@ -326,8 +320,8 @@ Size & Size~\cite{dawson1972size} \\
 We considered in total 13 amino acid scales present in AAIndex database~\cite{2008kawashimaaaindex} (Tab.~\ref{tab:aaprop}). We selected one scale per a given property and carried out all possible 96 permutations of them. Based on that, we created 96 possible clusterings of amino acids using Euclidean distance and Ward's method. Next, we cut the clusterings to create four group of amino acids. In 31\% of cases, the groupings were identical. To compare the usefulness of these encodings, we performed a 5-fold cross-validation training our algorithm on every encoding. We created balanced data sets by subsampling proteins without a signal peptide to equal the number of proteins with a signal peptide. The cross-validation was repeated 60 times to ensure that every protein without signal peptide was included in the learning set with the probability higher than 0.5.
 
 \subsection*{Hidden semi-Markov model}
-Our algorithm is based on hidden semi-Markov model (HSMM), which is an extension of hidden Markov model (HMM)~\cite{1989rabinera}. In the context of amino acid sequence, the HMM assumes that the amino acid residues are observations and aims to identify an underlying cause of their occurrence, which results from so called hidden states representing particular signal peptide regions. The HMM consists of two stochastic processes. The first is a discrete Markov chain $X_{t=1}^T$ on the set of  hidden states $\{S_1, \dots S_n\}$, where $t$ means a step of this process. The states are "the cause" of the observations. In a subsequent step $t+1$, the hidden state might change to another according to a transition matrix $A = (a)_{i,j=1}^n$, where $a_{i,j} = \mathcal{P}(X_{t+1} = S_j | X_t = S_i)$ means a probability of being in a state $j$ on condition that in the previous step was a state $i$. The second process $E_{t=1}^T$ is an observation process defined on the set of possible observations $\{O_1, \dots, O_m\}$. They are assumed to occur independently but conditionally on the hidden states that emits these observations. 
-The distribution of observations are given by a matrix $B = (b)_{i,j=1}^m$, where $b_{i,k} = \mathcal{P}(E_t = O_k | X_t = S_i)$ means a probability of emission of observation $k$ on condition that a hidden state was $i$. In our case, the observations are (encoded) amino acids.
+Our algorithm is based on hidden semi-Markov model (HSMM), which is an extension of hidden Markov model (HMM)~\cite{1989rabinera, Yu2010215, koski_hidden_2001}. The HMM consists of two stochastic processes. The first is a discrete Markov chain $X_{t=1}^T$ on the set of  hidden states $\{S_1, \dots S_n\}$, where $t$ means a step of this process and $T$ means the total duration of the process corresponding to the length of signal peptide. The hidden states represent particular signal peptide regions and are "the cause" of the observations, which are amino acid residues in analyzed sequences. In a subsequent step $t+1$, the hidden state might change to another according to a transition matrix $A = (a)_{i,j=1}^n$, where $a_{i,j} = \mathcal{P}(X_{t+1} = S_j | X_t = S_i)$ means a probability of being in a state $j$ on condition that in the previous step was a state $i$. The second process $E_{t=1}^T$ is an observation process defined on the set of possible observations $\{O_1, \dots, O_m\}$. They are assumed to occur independently but conditionally on the hidden states that emits these observations. 
+The distribution of observations are given by a matrix $B = (b)_{i,k=1}^m$, where $b_{i,k} = \mathcal{P}(E_t = O_k | X_t = S_i)$ means a probability of emission of observation $k$ on condition that a hidden state was $i$.
 The main goal of signalHsmm is to find the most probable signal peptide's regions boundaries for a given sequences. This is achieved with Viterbi algorithm.
 
 In the regular HMM, the hidden state duration, i.e. the number of observations emitted by the hidden state, has a geometric distribution. Durbin et al.~\cite{Durbin98} showed how to extend it for different distributions without significant increase in computational 
@@ -348,16 +342,16 @@ complexity. Similar ideas were used for signal peptide recognition, for example 
 \tikzstyle{frame}=[text=black,above, bottom color=white, top color=blue!50!black!70  ]
 \tikzstyle{frameComp}=[text=black,below, bottom color=red!50!white!70, top color=red!50!white!70  ]
  \tikzstyle{line3} = [color=green!50!black!70, line width=1.5mm]
-\def\names{{"$O_{1,1}$","...","$O_{1,d_1}$", "...","$O_{k, 1}$", "...", "$O_{k, d_k}$"}}%
+\def\names{{"$O_{1,1}$","...","$O_{1,d_1}$", "...","$O_{n, 1}$", "...", "$O_{n, d_n}$"}}%
 \begin{tikzpicture}[>=latex']
 %wąsate nawiasy
-\draw [decorate, decoration={brace,amplitude=10pt},line3,xshift=0pt,yshift=0pt] (2.5,1) -> (10.5,1) node [branch,midway,yshift=0.8cm,color=black] 
-	{\textbf{Hidden states}};
+%\draw [decorate, decoration={brace,amplitude=10pt},line3,xshift=0pt,yshift=0pt] (2.5,1) -> (10.5,1) node [branch,midway,yshift=0.8cm,color=black] 
+	%{\textbf{Hidden states}};
 % \draw [->,decoration={brace,mirror,amplitude=10pt},line2,xshift=0pt,yshift=0pt] (11,-3) -- (3,-3) node [branch2,midway,yshift=-0.6cm,color=black] 
 % 	{\textbf{Kierunek odczytu na nici Cricka ($3' \to 5'$)}}; 
    % Draw blocks, inputs and outputs
  
-\node[block, text width=3em] at (1+2,0) (block1) {\footnotesize $1^{st}$ hidden state};
+\node[block] at (1+2,0) (block1) {\footnotesize $S_1$};
 \node[blockComp] at (-.5+2,-2)  (komp1) {\footnotesize \pgfmathparse{\names[0]}\pgfmathresult};
 \node[blockComp] at (1+2,-2)  (komp2) {\footnotesize \pgfmathparse{\names[1]}\pgfmathresult};
 \node[blockComp] at (2.5+2,-2)  (komp3) {\footnotesize \pgfmathparse{\names[2]}\pgfmathresult};
@@ -371,7 +365,7 @@ complexity. Similar ideas were used for signal peptide recognition, for example 
 \node[blockComp] at (4.5+2,-2)  (komp4) {\footnotesize \pgfmathparse{\names[3]}\pgfmathresult};
 \draw[line,->]  (block2) --  (komp4) ;
 
-\node[block,text width=3em, bottom color=green!50!white!70] at (8+2,0) (block3) {\footnotesize $k^{th}$ hidden state};
+\node[block, bottom color=green!50!white!70] at (8+2,0) (block3) {\footnotesize $S_n$};
 \node[blockComp] at (6.5+2,-2)  (komp5) {\footnotesize \pgfmathparse{\names[4]}\pgfmathresult};
 \node[blockComp] at (8+2,-2)  (komp6) {\footnotesize \pgfmathparse{\names[5]}\pgfmathresult};
 \node[blockComp] at (9.5+2,-2)  (komp7) {\footnotesize \pgfmathparse{\names[6]}\pgfmathresult};
@@ -385,21 +379,21 @@ complexity. Similar ideas were used for signal peptide recognition, for example 
 (1,-1.8) -- (5,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_1$}};
 
 \draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=10pt,mirror,raise=10pt},yshift=-10pt]
-(8,-1.8) -- (12,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_k$}};
+(8,-1.8) -- (12,-1.8) node [branch2, midway, yshift=-1cm,color=black] {\textbf{Duration of length $d_n$}};
 
 \draw [color=red!50!black!70, line width=1.5mm, decorate,decoration={brace,amplitude=15pt,mirror,raise=10pt},yshift=-10pt]
-(1,-2.6) -- (12,-2.6) node [branch2, midway, yshift=-1.3cm,color=black] {\textbf{Observations, $\sum_{i=1}^k d_i = T$}};
+(1,-2.6) -- (12,-2.6) node [branch2, midway, yshift=-1.3cm,color=black] {\textbf{Total duration, $\sum_{i=1}^k d_i = T$}};
 \end{tikzpicture}
-\caption{General scheme of hidden semi-Markov model.}
+\caption{General scheme of hidden semi-Markov model. The model consists of hidden states $S$ representing regions of a signal peptide with the length distribution given by the state duration $d$. The hidden states emit observations $O$ which are amino acid residues.}
 \label{fig:hsmm}
 \end{figure}
 
-In our approach, we used a modification of HMM called hidden semi-Markov model (HSMM)~\cite{Yu2010215}. It extends the HMM by assuming a duration distribution for a given hidden state (Fig.~\ref{fig:hsmm}). Then, in addition to matrices $A$ and $B$, the model includes probabilities of duration in hidden states: 
+In our approach, we used a modification of HMM called hidden semi-Markov model (HSMM)~\cite{Yu2010215}. It extends the HMM by assuming a duration distribution for a given hidden state (Fig.~\ref{fig:hsmm}). Then, the model includes additionally probabilities of duration in hidden states: 
 $$\mathcal{P}(\text{duration in state} = d | \text{state is } S_i), \;\; i = 1, \dots, n, \;\; d = 1, \dots, D$$,
 where $D$ is the maximum allowed duration.
-Since our data sets are of reasonable size and $D$ is small -- around 30 amino acid residues, computational effort is not much higher than in the regular HMM. 
+Since our data sets are sufficiently large and $D$ is small -- around 30 amino acid residues, computational effort is not much higher than in the regular HMM. 
 
-Our model has a very specific structure. Almost all entries in the transition matrix $A$ are zeros because regions represented by hidden states are sequential. Possible transitions between them are depicted as arrows in Fig.~\ref{fig:ngramext}. Probabilities of observations for the hidden states and hidden states durations were estimated from training data. The advantage of HSMM model results not only from its better performance but also form its straightforwardness and flexibility. 
+Almost all entries in the transition matrix $A$ are zeros because regions represented by hidden states are sequential. Possible transitions between them are depicted as arrows in Fig.~\ref{fig:ngramext}. Probabilities of observations for the hidden states and hidden states durations were estimated from training data. The advantage of HSMM model results not only from its better performance but also form its straightforwardness and flexibility. 
 
 
 %model structure
@@ -507,7 +501,8 @@ TABELKI W SUPLEMENCIE MUSZA BYC PONUMEROWANE
 
 To provide the honest comparison of our algorithm with previous software, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (the iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1, the newest classifier present in the benchmark. In addition to this, we prepared the smaller data set, covering only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 iteration had to extract the signal peptide model from data set much limited than training sets of any classifier included in the benchmark.
 
-Together with signalHsmm, we evaluated several signal peptide predicting algorithms in recognition of atypical signal peptides from malaria parasites: SignalP 4.1, PrediSi, Phobius and Philius (see Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for all performance measures). The older version of SignalP 4.1, SignalP 3.0, was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa~\cite{2012cilingirapicoap}. Our algorithm obtained the greatest AUC and maximal sensitivity as SignalP 3.0 (HMM). For 12 of 23 performance parameters, signalHsmm was the best or as good as others and for no parameter, it obtained the worst position (Supplemental Table~\ref{tab:bench2010plas_full}). PrediSi received the best specificity but at the expense of significant reducing sensitivity.
+Together with signalHsmm, we evaluated several signal peptide predicting algorithms in recognition of atypical signal peptides from malaria parasites: SignalP 4.1, PrediSi, Phobius and Philius (see Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for all performance measures). The older version of SignalP 4.1, SignalP 3.0, was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa and other taxa due to their increased sensitivity ~\cite{2012cilingirapicoap, sperschneider_evaluation_2015}. 
+Our algorithm obtained the greatest AUC and maximal sensitivity as SignalP 3.0 (HMM). For 12 of 23 performance parameters, signalHsmm was the best or as good as others and for no parameter, it obtained the worst position (Supplemental Table~\ref{tab:bench2010plas_full}). PrediSi received the best specificity but at the expense of significant reducing sensitivity.
 
 We trained several iterations of signalHsmm  described above to check improvements introduced to our software: a new probabilistic model (hidden semi-Markov model) and a simplified alphabet of amino acids. The latter was compared with the version trained on raw amino acids sequences, denoted as 'raw aa' in Tab.~\ref{tab:bench2010plas}. The performance of this iteration was  worse than performance of its counterpart trained on the reduced alphabet. The version with the amino acid encodings outperformed the version with simple amino acids in 20 of 23 measures (Supplemental Table~\ref{tab:bench2010plas_full}). This result confirms that unique function of signal peptide does not depend on specific amino acids, but on more general features and our simpler model is able to recognize the unique architecture of signal peptide more accurately.
 

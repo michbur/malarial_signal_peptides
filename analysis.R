@@ -150,6 +150,12 @@ write.fasta(c(lapply(1L:51, function(i) bench_plas_seq[[i]][1:length(bench_plas_
             names = c(paste0("pos", 1L:51), paste0("neg", 1L:51)), 
             file.out = "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
 
+signalHsmm_pred_plas <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
+                                             "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
+other_pred_plas <- read_other_software("./plasmodium_benchmark_both")
+metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 51)), 
+                                   data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
+                                   0.5)
 
 
 # BENCHMARK - ALL TAXONS NO HOMOLOGOUS -------------------------------------

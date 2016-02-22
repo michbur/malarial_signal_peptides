@@ -115,7 +115,7 @@ read_other_software <- function(directory_name) {
 #' @return a data frame of performance measures
 
 calc_metrics <- function(real_labels, preds, threshold = 0.5) {
-  metrics <- HMeasure(true.class = real_labels, scores = preds, threshold = threshold)[["metrics"]]
+  metrics <- HMeasure(true.class = real_labels, scores = preds > 0.5, threshold = threshold)[["metrics"]]
   
   TP <- as.numeric(metrics[["TP"]])
   FP <- as.numeric(metrics[["FP"]])

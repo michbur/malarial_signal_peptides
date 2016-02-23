@@ -180,11 +180,13 @@ format_bench_table <- function(x, caption, label) {
                      "signalP 3.0 (NN) \\cite{2004bendtsenimproved}",
                      "signalP 3.0 (HMM) \\cite{2004bendtsenimproved}",
                      "PrediSi \\cite{2004hillerpredisi}",
-                     "Phobius \\cite{2004klla}",
                      "Philius \\cite{2008reynoldstransmembrane}",
+                     "Phobius \\cite{2004klla}",
                      #"signalHsmm-2010 (k-mer)", 
-                     "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 90\\%)", "signalHsmm2010 (hom. 50\\%)", 
-                     "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 90\\%)", "signalHsmm1987 (hom. 50\\%)")
+                     "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 50\\%)", "signalHsmm2010 (hom. 90\\%)", 
+                     "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 50\\%)", "signalHsmm1987 (hom. 90\\%)")
+  
+  tab <- tab[, c(2, 3, 4, 1)]
   
   rws <- seq(1, nrow(tab) - 1, by = 2)
   col <- rep("\\rowcolor[gray]{0.85}", length(rws))

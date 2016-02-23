@@ -410,9 +410,9 @@ Almost all entries in the transition matrix $A$ are zeros because regions repres
 \end{figure}
 
     
-\subsection*{Extension of n-grams}
-
-Hidden semi-Markov models can be easy enhanced by inclusion of additional hidden states. To improve our model, we added few supplementary states representing specific motives that can occur in the proximity of cleavage site. The sequence of cleavage sites is more conserved than other parts of signal peptide~\cite{2004hillerpredisi} and can be described by n-grams (k-mers, short vectors of $n$ characters derived from input sequences). Using the biogram software~\cite{biogramPackage}, we extracted n-grams from cleavage sites of signal peptides. Their sequences were encoded using amino acid classification providing the best sensitivity of the general model (Tab. \ref{tab:best}). Selected n-grams representing less common cleavage site motifs were included in the HSMM model as alternative paths at the end of c-region (Fig.~\ref{fig:ngramext}B).
+% \subsection*{Extension of n-grams}
+% 
+% Hidden semi-Markov models can be easy enhanced by inclusion of additional hidden states. To improve our model, we added few supplementary states representing specific motives that can occur in the proximity of cleavage site. The sequence of cleavage sites is more conserved than other parts of signal peptide~\cite{2004hillerpredisi} and can be described by n-grams (k-mers, short vectors of $n$ characters derived from input sequences). Using the biogram software~\cite{biogramPackage}, we extracted n-grams from cleavage sites of signal peptides. Their sequences were encoded using amino acid classification providing the best sensitivity of the general model (Tab. \ref{tab:best}). Selected n-grams representing less common cleavage site motifs were included in the HSMM model as alternative paths at the end of c-region (Fig.~\ref{fig:ngramext}B).
 
 
 \section*{Results and discussion}
@@ -502,12 +502,10 @@ The encodings of amino acid plays crucial role in the recognition of signal pept
 
 \subsection*{Benchmark tests}
 
-TABELKI W SUPLEMENCIE MUSZA BYC PONUMEROWANE
+To provide the honest comparison of our algorithm with previous software, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (the iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1, the newest classifier present in the benchmark. In addition to this, we prepared the smaller data set, covering only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 iteration had to extract the signal peptide model from data set more limited than training sets of any classifier included in the benchmark.
 
-To provide the honest comparison of our algorithm with previous software, we trained our model on 2311 signal peptide-containing sequences deposited in Uniprot until 2010 year (the iteration of signalHsmm called signalHsmm-2010). The data set should correspond to the set used to train SignalP 4.1, the newest classifier present in the benchmark. In addition to this, we prepared the smaller data set, covering only 336 sequences collected till 1987 year, just after the first method predicting signal peptide was published~\cite{1986vonheijnea}. The signalHsmm-1987 iteration had to extract the signal peptide model from data set much limited than training sets of any classifier included in the benchmark.
-
-Together with signalHsmm, we evaluated several signal peptide predicting algorithms in recognition of atypical signal peptides from malaria parasites: SignalP 4.1, PrediSi, Phobius and Philius (see Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for all performance measures). The older version of SignalP 4.1, SignalP 3.0, was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa and other taxa due to their increased sensitivity ~\cite{2012cilingirapicoap, sperschneider_evaluation_2015}. 
-Our algorithm obtained the greatest AUC and maximal sensitivity as SignalP 3.0 (HMM). For 12 of 23 performance parameters, signalHsmm was the best or as good as others and for no parameter, it obtained the worst position (Supplemental Table~\ref{tab:bench2010plas_full}). PrediSi received the best specificity but at the expense of significant reducing sensitivity.
+Together with signalHsmm, we evaluated several signal peptide predicting algorithms in recognition of atypical signal peptides from malaria parasites: SignalP 4.1, PrediSi, Phobius and Philius (see Tab.~\ref{tab:bench2010plas} for the most common performance measures, and Supplemental Table~\ref{tab:bench2010plas_full} for 23 performance measures). The older version of SignalP 4.1, SignalP 3.0, was also incorporated in the analysis, because it is often chosen over its newer counterpart in the analysis of sequences belonging to Apicomplexa and other taxa due to the increased sensitivity ~\cite{2012cilingirapicoap, sperschneider_evaluation_2015}. 
+Our algorithm obtained the greatest AUC, MCC and maximal sensitivity. For 12 of 23 performance measures, signalHsmm was the best or as good as others and for no parameter, it obtained the worst position (Supplemental Table~\ref{tab:bench2010plas_full}). PrediSi received the best specificity but at the expense of significantly reduced sensitivity.
 
 We trained several iterations of signalHsmm  described above to check improvements introduced to our software: a new probabilistic model (hidden semi-Markov model) and a simplified alphabet of amino acids. The latter was compared with the version trained on raw amino acids sequences, denoted as 'raw aa' in Tab.~\ref{tab:bench2010plas}. The performance of this iteration was  worse than performance of its counterpart trained on the reduced alphabet. The version with the amino acid encodings outperformed the version with simple amino acids in 20 of 23 measures (Supplemental Table~\ref{tab:bench2010plas_full}). This result confirms that unique function of signal peptide does not depend on specific amino acids, but on more general features and our simpler model is able to recognize the unique architecture of signal peptide more accurately.
 
@@ -521,23 +519,23 @@ To check susceptibility of our model to overfitting, we trained several iteratio
 \label{tab:bench2010plas}
 \begin{tabular}{rllll}
   \toprule
-Program & AUC & Sensitivity & Specificity & MCC \\ 
+ & Sensitivity & Specificity & MCC & AUC \\ 
   \midrule
-SignalP 4.1 (no tm) \cite{2011petersensignalp} & 0.8816 & 0.8627 & 0.9005 & 0.6997 \\ 
-   \rowcolor[gray]{0.85}SignalP 4.1 (tm) \cite{2011petersensignalp} & 0.7927 & 0.6471 & 0.9384 & 0.6093 \\ 
-  SignalP 3.0 (NN) \cite{2004bendtsenimproved} & 0.8938 & 0.8824 & 0.9052 & \textbf{0.7220} \\ 
-   \rowcolor[gray]{0.85}SignalP 3.0 (HMM) \cite{2004bendtsenimproved} & 0.7773 & \textbf{1.0000} & 0.5545 & 0.4416 \\ 
-  PrediSi \cite{2004hillerpredisi} & 0.6453 & 0.3333 & \textbf{0.9573} & 0.3849 \\ 
-   \rowcolor[gray]{0.85}Phobius \cite{2004klla} & 0.7707 & 0.6078 & 0.9336 & 0.5684 \\ 
-  Philius \cite{2008reynoldstransmembrane} & 0.7880 & 0.6471 & 0.9289 & 0.5895 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-2010 & \textbf{0.9372} & \textbf{1.0000} & 0.7583 & 0.6157 \\ 
-  signalHsmm-2010 (raw aa) & 0.9216 & 0.9608 & 0.7109 & 0.5389 \\ 
-   \rowcolor[gray]{0.85}signalHsmm2010 (hom. 90\%) & 0.9371 & \textbf{1.0000} & 0.7251 & 0.5825 \\ 
-  signalHsmm2010 (hom. 50\%) & 0.9354 & \textbf{1.0000} & 0.7536 & 0.6108 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-1987 & 0.9356 & 0.9608 & 0.8057 & 0.6391 \\ 
-  signalHsmm-1987 (raw aa) & 0.9215 & 0.9608 & 0.8152 & 0.6505 \\ 
-   \rowcolor[gray]{0.85}signalHsmm1987 (hom. 90\%) & 0.9358 & 0.9804 & 0.7962 & 0.6426 \\ 
-  signalHsmm1987 (hom. 50\%) & 0.9357 & 0.9608 & 0.8057 & 0.6391 \\ 
+signalP 4.1 (no tm) \cite{2011petersensignalp} & 0.8235 & 0.9100 & 0.6872 & 0.8667 \\ 
+   \rowcolor[gray]{0.85}signalP 4.1 (tm) \cite{2011petersensignalp} & 0.6471 & 0.9431 & 0.6196 & 0.7951 \\ 
+  signalP 3.0 (NN) \cite{2004bendtsenimproved} & 0.8824 & 0.9052 & 0.7220 & 0.8938 \\ 
+   \rowcolor[gray]{0.85}signalP 3.0 (HMM) \cite{2004bendtsenimproved} & 0.6275 & 0.9194 & 0.5553 & 0.7734 \\ 
+  PrediSi \cite{2004hillerpredisi} & 0.3333 & \textbf{0.9573} & 0.3849 & 0.6453 \\ 
+   \rowcolor[gray]{0.85}Philius \cite{2008reynoldstransmembrane} & 0.6078 & 0.9336 & 0.5684 & 0.7707 \\ 
+  Phobius \cite{2004klla} & 0.6471 & 0.9289 & 0.5895 & 0.7880 \\ 
+   \rowcolor[gray]{0.85}signalHsmm-2010 & 0.9608 & 0.8720 & 0.7266 & 0.9164 \\ 
+  signalHsmm-2010 (raw aa) & 0.8039 & 0.9052 & 0.6643 & 0.8546 \\ 
+   \rowcolor[gray]{0.85}signalHsmm2010 (hom. 50\%) & \textbf{0.9804} & 0.8768 & \textbf{0.7479} & \textbf{0.9286} \\ 
+  signalHsmm2010 (hom. 90\%) & 0.9412 & 0.8768 & 0.7194 & 0.9090 \\ 
+   \rowcolor[gray]{0.85}signalHsmm-1987 & 0.9216 & 0.8910 & 0.7271 & 0.9063 \\ 
+  signalHsmm-1987 (raw aa) & 0.7647 & 0.9052 & 0.6350 & 0.8350 \\ 
+   \rowcolor[gray]{0.85}signalHsmm1987 (hom. 50\%) & 0.9216 & 0.8815 & 0.7123 & 0.9015 \\ 
+  signalHsmm1987 (hom. 90\%) & 0.9216 & 0.8910 & 0.7271 & 0.9063 \\ 
    \bottomrule
 \end{tabular}
 \end{table}
@@ -565,8 +563,6 @@ The signalHsmm prediction web-server is available at: \url{http://smorfland.uni.
 \label{tab:bench2010plas_full}
 {\bf Benchmark results - \textit{Plasmodiidae}.} Performance measures for benchmark test of signal peptide predictors using sequences belonging to \textit{Plasmodiidae}.
 
-SPRAWDZIC CZY MA BYC 2010
-
 \subsection{Table}
 \label{tab:bench2010_full}
 {\bf Benchmark results - Eukaryots} Performance measures for benchmark test of signal peptide predictors using all eukaryotic sequences.
@@ -582,8 +578,6 @@ MB and PM designed the study. All authors participated in the design of the stud
 \section*{References}
 
 \bibliography{lokalizom}
-
-TRZEBA POPRAWIC BIBLIOGRAFIE BO SA DZIWNE DUZE LITERY
 
 % Either type in your references using
 % \begin{thebibliography}{}

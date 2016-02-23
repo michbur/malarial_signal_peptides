@@ -73,20 +73,20 @@ cat(enc_region[["best_spec"]])
 # data
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 19870000] AND reviewed:yes
 #354 proteins, 335 after purification
-seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
+# seq50_87 <- read_uniprot("./training_data/sp1950_1987.txt", ft_names = "signal")
 
 #taxonomy:"Eukaryota [2759]" annotation:(type:signal evidence:experimental) created:[19500000 TO 20100000] AND reviewed:yes
 #2372 proteins, 2313 after purification
-seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
-
-signalHsmms10 <- train_signalHsmms(seq50_10)
-names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
-
-signalHsmms87 <- train_signalHsmms(seq50_87)
-names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
+# seq50_10 <- read_uniprot("./training_data/sp1950_2010.txt", ft_names = "signal")
+# 
+# signalHsmms10 <- train_signalHsmms(seq50_10)
+# names(signalHsmms10) <- paste0(names(signalHsmms10), "_10")
+# 
+# signalHsmms87 <- train_signalHsmms(seq50_87)
+# names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
 
 # save(signalHsmms87, signalHsmms10, file = "./cache/signalHsmms.RData")
-# load("./cache/signalHsmms.RData")
+load("./cache/signalHsmms.RData")
 
 # BENCHMARK - PLASMODIUM HOMOLOGY REDUCED -------------------------------------------------
 
@@ -113,6 +113,8 @@ signalHsmm_pred_plas <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
 metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)), 
                                    data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
                                    0.5)
+
+metrics_plas_NOHOM[, c("AUC", "Sens", "Spec", "MCC")]
 
 # real_pos_plas <- sapply(read_uniprot("./plasmodium_benchmark_data/plas.txt", "signal"), function(i) 
 #   attr(i, "signal")[2])[all_seqs_plasf] %>%
@@ -143,19 +145,19 @@ cat(pub_tab)
 
 
 # real_pos_plas from the code snippet above
-bench_plas_seq <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")
+# bench_plas_seq <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta", seqtype = "AA")
+# 
+# write.fasta(c(lapply(1L:51, function(i) bench_plas_seq[[i]][1:length(bench_plas_seq[[i]])]), 
+#               lapply(1L:51, function(i) bench_plas_seq[[i]][real_pos_plas[i]:length(bench_plas_seq[[i]])])), 
+#             names = c(paste0("pos", 1L:51), paste0("neg", 1L:51)), 
+#             file.out = "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
 
-write.fasta(c(lapply(1L:51, function(i) bench_plas_seq[[i]][1:length(bench_plas_seq[[i]])]), 
-              lapply(1L:51, function(i) bench_plas_seq[[i]][real_pos_plas[i]:length(bench_plas_seq[[i]])])), 
-            names = c(paste0("pos", 1L:51), paste0("neg", 1L:51)), 
-            file.out = "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
-
-signalHsmm_pred_plas <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
-                                             "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
-other_pred_plas <- read_other_software("./plasmodium_benchmark_both")
-metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 51)), 
-                                   data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
-                                   0.5)
+signalHsmm_pred_plas_both <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
+                                                  "./plasmodium_benchmark_data/benchmark_plas_data_both.fasta")
+other_pred_plas_both <- read_other_software("./plasmodium_benchmark_both")
+metrics_plas_NOHOM_both <- calc_metrics(c(rep(1, 51), rep(0, 51)), 
+                                        data.frame(other_pred_plas_both[["prob"]], signalHsmm_pred_plas_both[["prob"]]), 
+                                        0.5)
 
 
 # BENCHMARK - ALL TAXONS NO HOMOLOGOUS -------------------------------------
@@ -183,3 +185,11 @@ metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)),
                                   0.5)
 
 write.csv(round(metrics_all_NOHOM, 6), file = "./publication/supplements/S2_general_benchmark.csv")
+
+
+metrics_plas_NOHOM %>%
+  mutate(soft = rownames(.)) %>%
+  melt %>%
+  group_by(variable) %>%
+  filter(value == min(value)) %>%
+  data.frame

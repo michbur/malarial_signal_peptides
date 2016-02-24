@@ -183,10 +183,17 @@ format_bench_table <- function(x, caption, label) {
                      "Philius \\cite{2008reynoldstransmembrane}",
                      "Phobius \\cite{2004klla}",
                      #"signalHsmm-2010 (k-mer)", 
-                     "signalHsmm-2010", "signalHsmm-2010 (raw aa)", "signalHsmm2010 (hom. 50\\%)", "signalHsmm2010 (hom. 90\\%)", 
-                     "signalHsmm-1987", "signalHsmm-1987 (raw aa)", "signalHsmm1987 (hom. 50\\%)", "signalHsmm1987 (hom. 90\\%)")
+                     "signalHsmm-2010", 
+                     "signalHsmm-2010 (hom. 90\\%)", 
+                     "signalHsmm-2010 (hom. 50\\%)", 
+                     "signalHsmm-2010 (raw aa)", 
+                     "signalHsmm-1987",
+                     "signalHsmm-1987 (hom. 90\\%)", 
+                     "signalHsmm-1987 (hom. 50\\%)",
+                     "signalHsmm-1987 (raw aa)")
   
   tab <- tab[, c(2, 3, 4, 1)]
+  tab <- tab[-c(9, 13), ]
   
   rws <- seq(1, nrow(tab) - 1, by = 2)
   col <- rep("\\rowcolor[gray]{0.85}", length(rws))
@@ -196,6 +203,32 @@ format_bench_table <- function(x, caption, label) {
                sanitize.text.function = identity, sanitize.rownames.function = identity)
   res
 }
+
+format_sup_table <- function(x) {
+  pred_names <- c("signalP 4.1 (no tm)",
+                  "signalP 4.1 (tm)",
+                  "signalP 3.0 (NN)",
+                  "signalP 3.0 (HMM)",
+                  "PrediSi",
+                  "Philius",
+                  "Phobius",
+                  #"signalHsmm-2010 (k-mer)", 
+                  "signalHsmm-2010", 
+                  "signalHsmm-2010 (homol. red. 90%)", 
+                  "signalHsmm-2010 (homol. red. 50%)", 
+                  "signalHsmm-2010 (raw aa)", 
+                  "signalHsmm-1987",
+                  "signalHsmm-1987 (homol. red. 90%)", 
+                  "signalHsmm-1987 (homol. red. 50%)",
+                  "signalHsmm-1987 (raw aa)")
+  
+  dat <- cbind(Software = pred_names, round(x, 6))
+  rownames(dat) <- NULL
+  dat <- dat[-c(9, 13), ]
+  dat
+}
+
+
 
 # count_signals <- function(connection) {
 #   lines <- readLines(connection)

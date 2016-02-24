@@ -84,7 +84,7 @@ cat(enc_region[["best_spec"]])
 # 
 # signalHsmms87 <- train_signalHsmms(seq50_87)
 # names(signalHsmms87) <- paste0(names(signalHsmms87), "_87")
-
+# 
 # save(signalHsmms87, signalHsmms10, file = "./cache/signalHsmms.RData")
 load("./cache/signalHsmms.RData")
 
@@ -114,8 +114,6 @@ metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)),
                                    data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
                                    0.5)
 
-metrics_plas_NOHOM[, c("AUC", "Sens", "Spec", "MCC")]
-
 # real_pos_plas <- sapply(read_uniprot("./plasmodium_benchmark_data/plas.txt", "signal"), function(i) 
 #   attr(i, "signal")[2])[all_seqs_plasf] %>%
 #   na.omit() %>% as.vector()
@@ -135,7 +133,8 @@ metrics_plas_NOHOM[, c("AUC", "Sens", "Spec", "MCC")]
 
 
 
-write.csv(round(metrics_plas_NOHOM, 6), file = "./publication/supplements/S1_plasmodium_benchmark.csv")
+write.csv(format_sup_table(metrics_all_NOHOM), file = "./publication/supplements/S1_plasmodium_benchmark.csv",
+          row.names = FALSE)
 
 pub_tab <- format_bench_table(metrics_plas_NOHOM, 
                               caption = "Comparison of Area Under the Curve, H-measure and Matthews Correlation Coefficient 
@@ -184,7 +183,8 @@ metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)),
                                   data.frame(other_pred[["prob"]], signalHsmm_pred[["prob"]]), 
                                   0.5)
 
-write.csv(round(metrics_all_NOHOM, 6), file = "./publication/supplements/S2_general_benchmark.csv")
+write.csv(format_sup_table(metrics_all_NOHOM), file = "./publication/supplements/S2_general_benchmark.csv",
+          row.names = FALSE)
 
 
 metrics_plas_NOHOM %>%

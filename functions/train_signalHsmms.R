@@ -27,7 +27,7 @@ train_signalHsmms <- function(seqs) {
   signalHsmmNOHOM90 <- train_hsmm(seqs[seq90f], aaaggregation)
   
   list(signalHsmm = signalHsmm,
-       signalHsmmNODEG = signalHsmmNODEG,
+       signalHsmmNOHOM90 = signalHsmmNOHOM90,
        signalHsmmNOHOM50 = signalHsmmNOHOM50,
-       signalHsmmNOHOM90 = signalHsmmNOHOM90)
+       signalHsmmNODEG = signalHsmmNODEG)
 }

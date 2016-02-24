@@ -129,6 +129,8 @@
 \usepackage{booktabs}
 \usepackage{colortbl, xcolor}
 \usepackage{epstopdf}
+\usepackage{array}
+\setlength\extrarowheight{2pt}
 
 % rysunki
 \usepackage{tikz}
@@ -270,23 +272,23 @@ The main testing set consisting of proteins belonging to the organisms from \tex
  
 \subsection*{Homology reduction of studied sequence sets}
 
-To reduce the set according to homology of collected protein sequences, we filtered them using cd-hit~\cite{2012fucdhit}. The homology reduction were subjected sequences of signal peptides and the first 70 amino acid residues in the case of proteins without the peptide, as proposed by~\cite{1997nielsenidentification}. We prepared two learning data sets by removing the homology on two thresholds: 90\% similarity with word length 5 and 50\% similarity with word length 2 (Tab.~\ref{tab:sets}). The testing set was filtered on 50\%-similarity threshold with words of length 2. After this procedure, these sets were reduced to 51 and 211 sequences with and without signal peptide, respectively.
+To reduce the set according to homology of collected protein sequences, we filtered them using cd-hit~\cite{2012fucdhit}. The homology reduction were subjected sequences of signal peptides and the first 70 amino acid residues in the case of proteins without the peptide, as proposed by~\cite{1997nielsenidentification}. We prepared two learning data sets by removing the homology on 50\%-similarity threshold with word length 2 (Tab.~\ref{tab:sets}). The testing set was filtered in the same manner. After this procedure, these sets were reduced to 51 and 211 sequences with and without signal peptide, respectively.
 
 
 \begin{table}[ht]
 \centering
 \caption{Number of sequences with signal peptides used in the study for  different types of learning sets.} 
 \label{tab:sets}
-\begin{tabular}{clll}
+\begin{tabular}{ccc}
   \toprule
 		\multirow{Set} &
-		\multicolumn{3}{l}{Homology reduction}\\
-		\cline{2-4}
- & No & 90\% & 50\% \\ 
+		\multicolumn{2}{c}{Homology reduction}\\
+		\cline{2-3}
+ & No & 50\% \\ 
   \midrule
-\rowcolor[gray]{0.85}Till 2015 & 2438 &   & \\ 
-   Till 2010 & 2311 & 1987 & 748 \\ 
-  \rowcolor[gray]{0.85}Till 1987 & 336 & 278 & 132 \\ 
+\rowcolor[gray]{0.85}Till 2015 & 2438 & \\ 
+   Till 2010 & 2311 & 748 \\ 
+  \rowcolor[gray]{0.85}Till 1987 & 336 & 132 \\ 
    \bottomrule
 \end{tabular}
 \end{table}
@@ -511,11 +513,11 @@ We trained several iterations of signalHsmm  described above to check improvemen
 
 The advantage of hidden semi-Markov model over normal Markov model can be seen through the comparison of the signalHsmm with signal peptide predictors utilizing HMM: Phobius, Philius and SignalP 3.0 (HMM) - Tab.~\ref{tab:bench2010plas}. In all cases, the signalHsmm performed best for AUC and MCC. For the sensitivity, it obtained the largest value (1.0000) as SignalP 3.0. For 15 of 23 measures, our algorithm was best or as good as other software and never was the worst for any parameter (Supplemental Table~\ref{tab:bench2010plas_full}).
 
-To check susceptibility of our model to overfitting, we trained several iterations on data sets with different levels of homology reduction (50\% and 90\%). We discovered that our model, probably thanks to its relative simplicity, did not overfit and results were similar for models both with very restrictive and no homology reduction.
+To check susceptibility of our model to overfitting, we trained several iterations on data sets with homology reduction 50\%. We discovered that our model, probably thanks to its relative simplicity, did not overfit and results were similar for models both with very restrictive and no homology reduction.
 
 \begin{table}[ht]
 \centering
-\caption{Comparison of Area Under the Curve (AUC), H-measure and Matthews Correlation Coefficient (MCC) for different classifiers according to singal peptide-containing proteins from members of \textit{Plasmodiidae}. The abbreviations 'tm' and 'no tm' indicate version considering and not considering transmembrane domains, whereas 'hom. 90\%' and 'hom. 50\%' means reduction of sequence homology for 90\% and 50\% similarity.} 
+\caption{Comparison of Area Under the Curve (AUC), H-measure and Matthews Correlation Coefficient (MCC) for different classifiers according to singal peptide-containing proteins from members of \textit{Plasmodiidae}. The abbreviations 'tm' and 'no tm' indicate version considering and not considering transmembrane domains, whereas 'hom. 50\%' means reduction of sequence homology for 50\% similarity.} 
 \label{tab:bench2010plas}
 \begin{tabular}{rllll}
   \toprule
@@ -528,14 +530,12 @@ signalP 4.1 (no tm) \cite{2011petersensignalp} & 0.8235 & 0.9100 & 0.6872 & 0.86
   PrediSi \cite{2004hillerpredisi} & 0.3333 & \textbf{0.9573} & 0.3849 & 0.6453 \\ 
    \rowcolor[gray]{0.85}Philius \cite{2008reynoldstransmembrane} & 0.6078 & 0.9336 & 0.5684 & 0.7707 \\ 
   Phobius \cite{2004klla} & 0.6471 & 0.9289 & 0.5895 & 0.7880 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-2010 & 0.9608 & 0.8720 & 0.7266 & 0.9164 \\ 
-  signalHsmm-2010 (raw aa) & 0.8039 & 0.9052 & 0.6643 & 0.8546 \\ 
-   \rowcolor[gray]{0.85}signalHsmm2010 (hom. 50\%) & \textbf{0.9804} & 0.8768 & \textbf{0.7479} & \textbf{0.9286} \\ 
-  signalHsmm2010 (hom. 90\%) & 0.9412 & 0.8768 & 0.7194 & 0.9090 \\ 
-   \rowcolor[gray]{0.85}signalHsmm-1987 & 0.9216 & 0.8910 & 0.7271 & 0.9063 \\ 
-  signalHsmm-1987 (raw aa) & 0.7647 & 0.9052 & 0.6350 & 0.8350 \\ 
-   \rowcolor[gray]{0.85}signalHsmm1987 (hom. 50\%) & 0.9216 & 0.8815 & 0.7123 & 0.9015 \\ 
-  signalHsmm1987 (hom. 90\%) & 0.9216 & 0.8910 & 0.7271 & 0.9063 \\ 
+   \rowcolor[gray]{0.85}signalHsmm-2010 & 0.9804 & 0.8720 & 0.7409 & 0.9262 \\ 
+  signalHsmm-2010 (hom. 50\%) & \textbf{1.0000} & 0.8768 & \textbf{0.7621} & \textbf{0.9384} \\ 
+   \rowcolor[gray]{0.85}signalHsmm-2010 (raw aa) & 0.9804 & 0.8720 & 0.7409 & 0.9262 \\ 
+  signalHsmm-1987 & 0.9216 & 0.8910 & 0.7271 & 0.9063 \\ 
+   \rowcolor[gray]{0.85}signalHsmm-1987 (hom. 50\%) & 0.9412 & 0.8768 & 0.7194 & 0.9090 \\ 
+  signalHsmm-1987 (raw aa) & 0.9216 & 0.8863 & 0.7196 & 0.9039 \\ 
    \bottomrule
 \end{tabular}
 \end{table}

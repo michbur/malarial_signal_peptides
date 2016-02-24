@@ -59,3 +59,8 @@ ggplot(mfreq_deg, aes(x = variable, y = value, fill = taxon)) +
 ggplot(mfreq_nondeg, aes(x = variable, y = value, fill = taxon)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_grid(taxon ~ type)
+
+library(ica)
+ica_deg <- icafast(freq_deg[, -c(1L:2)], nc = 2)
+
+ica_deg_df <- cbind(freq_deg[, c(1L:2)], ica_deg[["S"]])

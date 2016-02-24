@@ -188,8 +188,15 @@ write.csv(format_sup_table(metrics_all_NOHOM), file = "./publication/supplements
 
 
 metrics_plas_NOHOM %>%
-  mutate(soft = rownames(.)) %>%
-  melt %>%
-  group_by(variable) %>%
-  filter(value == min(value)) %>%
-  data.frame
+  mutate(soft = factor(rownames(.), ordered = TRUE)) %>%
+  melt(variable.name = "measure") %>%
+  group_by(measure) %>%
+  filter(soft != "signalHsmmNOHOM90_10" & soft != "signalHsmmNOHOM90_87") %>%
+  filter(measure != "MER" & measure != "ER") %>%
+  mutate(centile = cut(value, breaks = quantile(value, seq(0, 1, 0.1)), 
+                       include.lowest = TRUE, labels = 10L:1)) %>%
+  select(soft, measure, centile) %>%
+  dcast(soft ~ measure)
+  
+
+

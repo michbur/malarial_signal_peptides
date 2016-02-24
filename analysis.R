@@ -191,13 +191,22 @@ metrics_plas_NOHOM %>%
   melt(variable.name = "measure") %>%
   group_by(measure) %>%
   filter(soft != "signalHsmmNOHOM90_10" & soft != "signalHsmmNOHOM90_87") %>%
-  filter(measure != "MER" & measure != "ER") %>%
-  mutate(centile = cut(value, breaks = quantile(value, seq(0, 1, 0.1)), 
-                       include.lowest = TRUE, labels = 10L:1)) %>%
+  mutate(centile = 11 - .bincode(value, breaks = quantile(value, seq(0, 1, 0.1)), 
+                            include.lowest = TRUE)) %>%
   select(soft, measure, centile) %>%
   dcast(soft ~ measure) %>% 
-  write.csv(file = "./publication/nie_dawac/centiles.csv",
+  write.csv2(file = "./publication/nie_dawac/centiles_plas.csv",
             row.names = FALSE)
-  
 
-
+ 
+metrics_all_NOHOM %>%
+  mutate(soft = factor(rownames(.), levels = rownames(.))) %>%
+  melt(variable.name = "measure") %>%
+  group_by(measure) %>%
+  filter(soft != "signalHsmmNOHOM90_10" & soft != "signalHsmmNOHOM90_87") %>%
+  mutate(centile = 11 - .bincode(value, breaks = quantile(value, seq(0, 1, 0.1)), 
+                                 include.lowest = TRUE)) %>%
+  select(soft, measure, centile) %>%
+  dcast(soft ~ measure) %>% 
+  write.csv2(file = "./publication/nie_dawac/centiles_other.csv",
+             row.names = FALSE)

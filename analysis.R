@@ -133,7 +133,7 @@ metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)),
 
 
 
-write.csv(format_sup_table(metrics_all_NOHOM), file = "./publication/supplements/S1_plasmodium_benchmark.csv",
+write.csv(format_sup_table(metrics_plas_NOHOM), file = "./publication/supplements/S1_plasmodium_benchmark.csv",
           row.names = FALSE)
 
 pub_tab <- format_bench_table(metrics_plas_NOHOM, 

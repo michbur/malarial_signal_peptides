@@ -186,9 +186,8 @@ metrics_all_NOHOM <- calc_metrics(c(rep(1, 127), rep(0, 127)),
 write.csv(format_sup_table(metrics_all_NOHOM), file = "./publication/supplements/S2_general_benchmark.csv",
           row.names = FALSE)
 
-
 metrics_plas_NOHOM %>%
-  mutate(soft = factor(rownames(.), ordered = TRUE)) %>%
+  mutate(soft = factor(rownames(.), levels = rownames(.))) %>%
   melt(variable.name = "measure") %>%
   group_by(measure) %>%
   filter(soft != "signalHsmmNOHOM90_10" & soft != "signalHsmmNOHOM90_87") %>%
@@ -196,7 +195,9 @@ metrics_plas_NOHOM %>%
   mutate(centile = cut(value, breaks = quantile(value, seq(0, 1, 0.1)), 
                        include.lowest = TRUE, labels = 10L:1)) %>%
   select(soft, measure, centile) %>%
-  dcast(soft ~ measure)
+  dcast(soft ~ measure) %>% 
+  write.csv(file = "./publication/nie_dawac/centiles.csv",
+            row.names = FALSE)
   
 
 

@@ -27,7 +27,6 @@ all_prots <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.f
 
 get_signals <- function(all_prots, cs, u) {
   do.call(rbind, lapply(1L:length(all_prots), function(id) {
-    browser()
     table(factor(degenerate(all_prots[[id]][2L:cs[id]], u), levels = u))/(cs[id] - 1)
     })) %>% 
     data.frame %>% 

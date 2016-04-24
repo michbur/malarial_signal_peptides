@@ -110,6 +110,9 @@ other_pred_plas <- read_other_software("./plasmodium_benchmark_results_NOHOM")
 signalHsmm_pred_plas <- get_signalHsmm_preds(c(signalHsmms10, signalHsmms87),
                                        "./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta")
 
+write.csv(data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
+          file = "./plasmodium_protein_analysis/preds.csv", row.names = FALSE)
+
 metrics_plas_NOHOM <- calc_metrics(c(rep(1, 51), rep(0, 211)), 
                                    data.frame(other_pred_plas[["prob"]], signalHsmm_pred_plas[["prob"]]), 
                                    0.5)

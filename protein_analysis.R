@@ -1,0 +1,58 @@
+preds <- read.csv("./plasmodium_protein_analysis/preds.csv") > 0.5
+ets <- c(rep(TRUE, 51), rep(FALSE, 211))
+
+cs <- c(18, 20, 25, 20, 16, 21, 24, 27, 23, 16, 23, 19, 24, 34, 23,
+        16, 23, 20, 21, 22, 16, 24, 21, 19, 16, 21, 34, 27, 30, 20, 21,
+        41, 21, 24, 26, 22, 29, 33, 20, 26, 21, 23, 22, 24, 21, 23, 22,
+        25, 32, 29, 25)
+
+all_TP <- data.frame(preds) %>% 
+  slice(1L:51) %>%
+  colSums %>%
+  data.frame() %>% 
+  select(TP = 1) %>%
+  mutate(classifier = rownames(.))
+
+data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(grep("_87", colnames(.)))
+
+only_sig <- data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalHsmmNOHOM50_10, signalP3nn) %>% 
+  rowSums == 1 
+
+all_prots <- read.fasta("./plasmodium_benchmark_data/benchmark_plas_data_NOHOM.fasta",
+                        seqtype = "AA")[1L:51]
+
+get_signals <- function(all_prots, cs, u) {
+  do.call(rbind, lapply(1L:length(all_prots), function(id) {
+    browser()
+    table(factor(degenerate(all_prots[[id]][2L:cs[id]], u), levels = u))/(cs[id] - 1)
+    })) %>% 
+    data.frame %>% 
+    mutate(only_sig = only_sig, prot_id = factor(1L:nrow(.))) %>% 
+    melt(variable.name = "aa")
+}
+
+
+aa <- a()[-1]
+names(aa) <- a()[-1]
+signals <- get_signals(all_prots, cs, aa)
+
+
+ggplot(filter(signals, only_sig), aes(x = aa, y = value)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ prot_id)
+
+agg_signals <- group_by(signals, only_sig, aa) %>% 
+  summarise(value = mean(value)) %>% 
+  ungroup
+
+ggplot(agg_signals, aes(x = aa, y = value, fill = only_sig)) +
+  geom_bar(stat = "identity", position = "dodge")
+
+cs_dat <- data.frame(cs, only_sig)
+
+ggplot(cs_dat, aes(x = only_sig, y = cs)) +
+  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 1)

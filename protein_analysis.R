@@ -35,7 +35,6 @@ get_signals <- function(all_prots, cs, u) {
     melt(variable.name = "aa")
 }
 
-
 aa <- a()[-1]
 names(aa) <- a()[-1]
 signals <- get_signals(all_prots, cs, aa)
@@ -71,6 +70,15 @@ deg_freq_plot <- function(x) {
 
 cs_dat <- data.frame(cs, only_sig)
 
-
-
 save(all_TP, signals, signals_deg, cs_dat, my_theme, file = "./plasmodium_protein_analysis/presentation.RData")
+
+only_sig <- data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalHsmmNOHOM50_10, signalP3nn) %>% 
+  rowSums == 1 
+only_sig_sp4 <- data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalHsmmNOHOM50_10, signalP41notm) %>% 
+  rowSums == 1 
+dput(names(all_prots)[only_sig])
+names(all_prots)[only_sig_sp4] 

@@ -1,0 +1,56 @@
+---
+title: "Predicting malarial signal <br> peptides with signalHsmm"
+author: "Michał Burdukiewicz"
+date: "25-04-2016"
+output:
+  ioslides_presentation: null
+  fig_height: 5.5
+  beamer_presentation: default
+slidy_presentation: default
+fig_width: 9.5
+widescreen: yes
+---
+  
+```{r, echo = FALSE, message = FALSE, results='asis',warning=FALSE}
+library(DT)
+library(knitr)
+require(XML)
+require(seqinr)
+require(fitdistrplus)
+require(dplyr)
+require(signalHsmm)
+require(hmeasure)
+require(pbapply)
+require(reshape2)
+require(hmeasure)
+require(xtable)
+require(biogram)
+require(ggplot2)
+require(grid)
+require(gridExtra)
+
+options(DT.options = list(iDisplayLength = 5, searching = TRUE))
+
+load("presentation.RData")
+
+```
+
+## signalHsmm versus other software
+
+signalHsmm has the most sensitive predictions of malarial signal peptides.
+
+```{r, echo = FALSE, message = FALSE, results='asis',warning=FALSE}
+datatable(all_TP, rownames = FALSE, filter = "top")
+```
+
+The usage of reduced amino acid alphabet has an impact on the sensitivity.
+
+## Lengths of signal peptides
+
+```{r, echo = FALSE, message = FALSE, results='asis',warning=FALSE}
+ggplot(cs_dat, aes(x = !only_sig, y = cs)) +
+  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.8) +
+  scale_x_discrete("Recognized by signalP") +
+  scale_y_continuous("Position of cleavage site") +
+  my_theme
+```

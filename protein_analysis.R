@@ -11,7 +11,8 @@ all_TP <- data.frame(preds) %>%
   colSums %>%
   data.frame() %>% 
   select(TP = 1) %>%
-  mutate(classifier = rownames(.))
+  mutate(classifier = rownames(.),
+         signalHsmm = grepl("signalHsmm", classifier))
 
 data.frame(preds) %>% 
   slice(1L:51) %>%
@@ -30,7 +31,7 @@ get_signals <- function(all_prots, cs, u) {
     table(factor(degenerate(all_prots[[id]][2L:cs[id]], u), levels = names(u)))/(cs[id] - 1)
     })) %>% 
     data.frame %>% 
-    mutate(only_sig = only_sig, prot_id = factor(1L:nrow(.))) %>% 
+    mutate(only_sig = only_sig, prot_id = paste0("Protein: ", 1L:nrow(.))) %>% 
     melt(variable.name = "aa")
 }
 
@@ -38,20 +39,38 @@ get_signals <- function(all_prots, cs, u) {
 aa <- a()[-1]
 names(aa) <- a()[-1]
 signals <- get_signals(all_prots, cs, aa)
-
+signals_deg <- get_signals(all_prots, cs, sapply(enc_region[["best_sens_raw"]], toupper))
 
 ggplot(filter(signals, only_sig), aes(x = aa, y = value)) +
   geom_bar(stat = "identity") +
-  facet_wrap(~ prot_id)
+  facet_wrap(~ prot_id) +
+  scale_x_discrete("Amino acid") +
+  scale_y_continuous("Frequency") +
+  my_theme
 
-agg_signals <- group_by(signals, only_sig, aa) %>% 
-  summarise(value = mean(value)) %>% 
-  ungroup
+ggplot(filter(signals_deg, only_sig), aes(x = aa, y = value)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ prot_id) +
+  scale_x_discrete("Amino acid") +
+  scale_y_continuous("Frequency") +
+  my_theme
 
-ggplot(agg_signals, aes(x = aa, y = value, fill = only_sig)) +
-  geom_bar(stat = "identity", position = "dodge")
+
+deg_freq_plot <- function(x) {
+  agg_signals <- group_by(x, only_sig, aa) %>% 
+    summarise(value = mean(value)) %>% 
+    ungroup
+  
+  ggplot(agg_signals, aes(x = aa, y = value, fill = !only_sig)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    scale_x_discrete("Amino acid") +
+    scale_y_continuous("Mean frequency") +
+    scale_fill_discrete("Recognized by signalP") +
+    my_theme
+}
 
 cs_dat <- data.frame(cs, only_sig)
 
-ggplot(cs_dat, aes(x = only_sig, y = cs)) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 1)
+
+
+save(all_TP, signals, signals_deg, cs_dat, my_theme, file = "./plasmodium_protein_analysis/presentation.RData")

@@ -31,6 +31,19 @@ require(gridExtra)
 
 options(DT.options = list(iDisplayLength = 5, searching = TRUE))
 
+deg_freq_plot <- function(x) {
+  agg_signals <- group_by(x, only_sig, aa) %>% 
+    summarise(value = mean(value)) %>% 
+    ungroup
+  
+  ggplot(agg_signals, aes(x = aa, y = value, fill = !only_sig)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    scale_x_discrete("Amino acid") +
+    scale_y_continuous("Mean frequency") +
+    scale_fill_discrete("Recognized by signalP") +
+    my_theme
+}
+
 load("presentation.RData")
 
 ```
@@ -54,3 +67,35 @@ ggplot(cs_dat, aes(x = !only_sig, y = cs)) +
   scale_y_continuous("Position of cleavage site") +
   my_theme
 ```
+
+## Frequency - full alphabet
+
+```{r, echo = FALSE, message = FALSE, results='asis',warning=FALSE}
+deg_freq_plot(signals)
+```
+
+## Frequency - reduced alphabet
+
+```{r, echo = FALSE, message = FALSE, results='asis',warning=FALSE}
+deg_freq_plot(signals_deg)
+```
+
+## Problematic proteins
+
+ - Merozoite surface antigen 2 (Plasmodium falciparum (isolate 3D7))
+ - Apical membrane antigen 1 (Plasmodium fragile)
+ - Histidine-rich protein PFHRP-III (Plasmodium falciparum)
+ - Sporozoite surface protein P36p (Plasmodium falciparum (isolate 3D7))
+ - Sporozoite surface protein P36 (Plasmodium berghei (strain Anka))
+ - Sporozoite surface protein P36 (Plasmodium falciparum (isolate 3D7))
+ 
+## Protein table
+
+| Name                             | Source                              | Evidence                                   |
+|----------------------------------|-------------------------------------|--------------------------------------------|
+| Merozoite surface antigen 2      | Plasmodium falciparum (isolate 3D7) | Experimental evidence at protein leveli    |
+| Apical membrane antigen 1        | Plasmodium fragile                  | Protein inferred from homology             |
+| Histidine-rich protein PFHRP-III | Plasmodium falciparum               | Experimental evidence at transcript level  |
+| Sporozoite surface protein P36p  | Plasmodium falciparum (isolate 3D7) | Protein inferred from homology             |
+| Sporozoite surface protein P36   | Plasmodium berghei (strain Anka)    | Experimental evidence at transcript level  |
+| Sporozoite surface protein P36   | Plasmodium falciparum (isolate 3D7) | Protein inferred from homology             |

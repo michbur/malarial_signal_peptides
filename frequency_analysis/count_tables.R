@@ -4,8 +4,8 @@ library(reshape2)
 library(dplyr)
 library(biogram)
 
-np_seq <- read_uniprot("non_plas.txt", ft_names = "signal")
-p_seq <- read_uniprot("plas.txt", ft_names = "signal")
+np_seq <- read_uniprot("./plasmodium_benchmark_data/non_plas.txt", ft_names = "signal")
+p_seq <- read_uniprot("./plasmodium_benchmark_data/plas.txt", ft_names = "signal")
 
 #signal: if TRUE, signal peptide, if FALSE, mature protein
 get_freqs <- function(list_of_prots) {
@@ -35,3 +35,12 @@ get_freqs <- function(list_of_prots) {
 whole_data <- rbind(data.frame(plasmodium = "no", get_freqs(np_seq)),
                     data.frame(plasmodium = "yes", get_freqs(p_seq)))
 write.csv2(whole_data, file = "sp_freqs.csv", row.names = FALSE)
+
+source("./protein_analysis.R")
+
+data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalP3nn, signalP41notm) %>%
+  mutate(prot_name = names(all_prots)) %>% 
+  inner_join(get_freqs(p_seq)) %>% 
+  write.csv2(file = "sp_freqs_preds.csv", row.names = FALSE)

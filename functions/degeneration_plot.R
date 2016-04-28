@@ -29,11 +29,11 @@ get_aa_freqs <- function(seqs, enc, taxon) {
   colnames(deg_mature) <- unlist(strsplit(colnames(deg_mature), "_0"))
   
   list(deg = data.frame(taxon = taxon,
-                        rbind(data.frame(type = "signal", deg_sig),
-                              data.frame(type = "mature", deg_mature))),
+                        rbind(data.frame(name = sapply(seqs, attr, which = "name"), type = "signal", deg_sig),
+                              data.frame(name = sapply(seqs, attr, which = "name"), type = "mature", deg_mature))),
        nondeg = data.frame(taxon = taxon,
-                           rbind(data.frame(type = "signal", nondeg_sig),
-                                 data.frame(type = "mature", nondeg_mature))))
+                           rbind(data.frame(name = sapply(seqs, attr, which = "name"), type = "signal", nondeg_sig),
+                                 data.frame(name = sapply(seqs, attr, which = "name"), type = "mature", nondeg_mature))))
 }
 
 
@@ -44,10 +44,35 @@ freq_plas <- get_aa_freqs(read_uniprot("./plasmodium_benchmark_data/plas.txt", f
                            enc_region[["best_sens_raw"]], "plasmodium")
 
 freq_deg <- rbind(freq_other[["deg"]], freq_plas[["deg"]])
-write.csv2(freq_deg, file = "./frequency_analysis/freq_deg.csv")
 
 freq_nondeg <- rbind(freq_other[["nondeg"]], freq_plas[["nondeg"]])
+
 write.csv2(freq_nondeg, file = "./frequency_analysis/freq_nondeg.csv")
+write.csv2(freq_deg, file = "./frequency_analysis/freq_deg.csv")
+
+source("./protein_analysis.R")
+
+data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalP3nn, signalP41notm) %>%
+  mutate(name = names(all_prots)) %>% 
+  inner_join(freq_nondeg) %>% 
+  write.csv2(file = "./frequency_analysis/freq_nondegSP.csv")
+
+data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalP3nn, signalP41notm) %>%
+  mutate(name = names(all_prots)) %>% 
+  inner_join(freq_deg) %>% 
+  write.csv2(file = "./frequency_analysis/freq_degSP.csv")
+
+
+
+data.frame(preds) %>% 
+  slice(1L:51) %>%
+  select(signalP3nn, signalP41notm) %>%
+  mutate(prot_name = names(all_prots)) 
+
 
 mfreq_deg <- melt(freq_deg)
 mfreq_nondeg <- melt(freq_nondeg)

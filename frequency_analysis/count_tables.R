@@ -41,6 +41,6 @@ source("./protein_analysis.R")
 data.frame(preds) %>% 
   slice(1L:51) %>%
   select(signalP3nn, signalP41notm) %>%
-  mutate(prot_name = names(all_prots)) %>% 
+  mutate(name = names(all_prots)) %>% 
   inner_join(get_freqs(p_seq)) %>% 
   write.csv2(file = "sp_freqs_preds.csv", row.names = FALSE)

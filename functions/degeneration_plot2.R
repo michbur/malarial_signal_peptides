@@ -23,12 +23,20 @@ dat_nondeg <- do_pca(freq_nondeg)
 #   geom_point(size = 6) 
 
 plot_pca <- function(x)
-  ggplot(x, aes(x = PC1, y = PC2, color = both, fill = both, linetype = both)) + 
+  ggplot(x, aes(x = PC1, y = PC2, color = both, shape = both, fill = both, linetype = both)) + 
   geom_density_2d(color = "black", contour = TRUE) +
-  stat_density2d(aes(fill=both), color = "black", alpha = 0.7, contour = TRUE, geom="polygon") +
+  #geom_point() +
+  stat_density2d(aes(fill=both,alpha=..level..), color = "black", 
+                 contour = TRUE, geom="polygon") +
   scale_linetype_discrete("") +
   scale_fill_discrete("") +
+  scale_alpha_continuous(range = c(0.35, 1)) +
+  guides(alpha = FALSE) +
   my_theme
 
-plot_pca(dat_nondeg) + ggtitle("Full alphabet")
-plot_pca(dat_deg) + ggtitle("Reduced alphabet")
+p_nondeg <- plot_pca(dat_nondeg) + guides(fill = FALSE, linetype = FALSE) 
+p_deg <- plot_pca(dat_deg)
+
+grid.arrange(textGrob("A", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), p_nondeg, 
+             textGrob("B", x = 0.75, y = 0.9, gp=gpar(fontsize=22)), p_deg, 
+             nrow = 2, ncol = 2, widths = c(0.05, 0.95))

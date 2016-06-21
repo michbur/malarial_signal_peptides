@@ -9,7 +9,9 @@ do_pca <- function(x)
   data.frame() %>% 
   select(1, 2) %>% 
   cbind(select(x, type, taxon), .) %>% 
-  mutate(both = paste0(type, taxon))
+  mutate(type_nice = factor(type, labels = c("mature protein", "signal peptide")),
+         taxon_nice = factor(taxon, labels = c("other", "Plasmodium"))) %>% 
+  mutate(both = paste0(type_nice, " (", taxon_nice, ")"))
 
 dat_deg <- do_pca(freq_deg) 
 dat_nondeg <- do_pca(freq_nondeg)
@@ -20,15 +22,13 @@ dat_nondeg <- do_pca(freq_nondeg)
 # ggplot(dat_nondeg, aes(x = PC1, y = PC2, color = both, shape = both)) + 
 #   geom_point(size = 6) 
 
-ggplot(dat_deg, aes(x = PC1, y = PC2, color = both, fill = both)) + 
-  geom_density_2d() +
-  ggtitle("Reduced amino acid alphabet") +
+plot_pca <- function(x)
+  ggplot(x, aes(x = PC1, y = PC2, color = both, fill = both, linetype = both)) + 
+  geom_density_2d(color = "black", contour = TRUE) +
+  stat_density2d(aes(fill=both), color = "black", alpha = 0.7, contour = TRUE, geom="polygon") +
+  scale_linetype_discrete("") +
+  scale_fill_discrete("") +
   my_theme
 
-stat_density_2d(aes(x = PC1, y = PC2, color = both, shape = both), dat_nondeg) %>% 
-  str
-
-ggplot(dat_nondeg, aes(x = PC1, y = PC2, color = both, shape = both)) + 
-  geom_density_2d(contour = TRUE) +
-  ggtitle("Full amino acid alphabet") +
-  my_theme
+plot_pca(dat_nondeg) + ggtitle("Full alphabet")
+plot_pca(dat_deg) + ggtitle("Reduced alphabet")

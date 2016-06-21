@@ -1,6 +1,3 @@
-
-
-
 get_aa_freqs <- function(seqs, enc, taxon) {
   nondeg_sig <- do.call(rbind, lapply(seqs, function(single_seq) {
     aas <- single_seq[2L:attr(single_seq, "signal")[2]]
@@ -89,3 +86,6 @@ library(ica)
 ica_deg <- icafast(freq_deg[, -c(1L:2)], nc = 2)
 
 ica_deg_df <- cbind(freq_deg[, c(1L:2)], ica_deg[["S"]])
+
+
+princomp

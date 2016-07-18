@@ -25,7 +25,7 @@ dat_nondeg <- do_pca(freq_nondeg)
 plot_pca <- function(x)
   ggplot(x, aes(x = PC1, y = PC2, color = both, shape = both, fill = both, linetype = both)) + 
   geom_density_2d(color = "black", contour = TRUE) +
-  #geom_point() +
+  geom_point() +
   stat_density2d(aes(fill=both,alpha=..level..), color = "black", 
                  contour = TRUE, geom="polygon") +
   scale_linetype_discrete("") +

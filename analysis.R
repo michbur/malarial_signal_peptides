@@ -13,7 +13,7 @@ require(ggplot2)
 require(grid)
 require(gridExtra)
 
-if(Sys.info()["nodename"] == "phobos" )
+if(Sys.info()["nodename"] %in% c("phobos", "michal-XPS14"))
   pathway <- "/home/michal/Dropbox/signal-peptide2_data/"
 
 if(Sys.info()["nodename"] == "MICHALKOMP" )
@@ -46,6 +46,7 @@ dev.off()
 # rep_res <- perf_rep(fold_res, 0.05)
 # save(rep_res, file = "./analysis_data/cv_results.RData")
 load("./analysis_data/cv_results.RData")
+write.csv(create_cvplotdat(rep_res), file = "cv_res.csv", row.names = FALSE)
 cvplot <- plot_cvplot(create_cvplotdat(rep_res))
 
 cairo_ps("./publication/figures/cvres.eps", width = 9, height = 5, onefile = FALSE)
